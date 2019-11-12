@@ -1,23 +1,27 @@
 import * as React from 'react';
-import { createStyles, WithStyles, withStyles, AppBar, Toolbar, Button, Typography, IconButton, Snackbar } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles, Typography, IconButton, Snackbar, Checkbox, Avatar, Grid } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CloseIcon from '@material-ui/icons/Close';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import PersonIcon from '@material-ui/icons/Person';
+import { Recipe } from '../dt/recipes';
 
 const styles = () => createStyles({
 })
 
 interface State {
-    favorited: boolean;
     snackBarOpen: boolean;
+    toDelete: Boolean;
 }
 
 interface Props {
-    recipeName: String,
-    recipeOwner: String,
-    img: string
+    recipe: Recipe;
+    id: number;
+    deleteMode: Boolean;
+    selectForDelete?: (id: number) => void;
+    loggedIn: boolean;
+    addToFavorite: (id: number) => void;
+    favorited: boolean;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -26,16 +30,16 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
     constructor(props: PropsWithStyles) {
         super(props)
         this.state = {
-            favorited: false,
-            snackBarOpen: false
+            snackBarOpen: false,
+            toDelete: false
         }
     }
 
     onFavoriting = (event: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
-            favorited: !this.state.favorited,
             snackBarOpen: true
         });
+        this.props.addToFavorite(this.props.id);
     }
 
     handleCloseSnackbar = (event: React.SyntheticEvent | React.MouseEvent) => {
@@ -44,11 +48,19 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
         });
     }
 
-    render = () => {
-        const { classes } = this.props;
+    handleCheckbox = (event: React.MouseEvent) => {
+        this.setState({
+            toDelete: !this.state.toDelete
+        })
 
+        if (this.props.selectForDelete) {
+            this.props.selectForDelete(this.props.id)
+        }
+    }
+
+    render = () => {
         return (
-            <div style={{ width: '22%', height: '20%', display: 'inline-block', marginLeft: '15px', marginRight: '15px' }}>
+            <div style={{ width: '22%', height: '20%', display: 'inline-block', marginLeft: '15px', marginRight: '15px', marginTop: '15px' }}>
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -60,7 +72,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<Typography>{this.state.favorited ? 'A receita foi adicionada aos favoritos!' :
+                    message={<Typography>{this.props.favorited ? 'A receita foi adicionada aos favoritos!' :
                         'A receita foi removida dos favoritos.'} </Typography>}
                     action={[
                         <IconButton
@@ -73,15 +85,20 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                         </IconButton>,
                     ]}
                 />
-                <div style={{ width: '250px', height: '250px', background: `url(${this.props.img}) 50% 50% no-repeat` }} />
-                <IconButton onClick={this.onFavoriting}
-                    style={{ float: 'right', right: '25px', bottom: '45px', zIndex: 1 }}>
-                    {!this.state.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
-                        : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
-                </IconButton>
+                <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
                 <div>
-                    <Typography>{this.props.recipeName}</Typography>
-                    <PersonIcon /> <Typography variant={'caption'}>{this.props.recipeOwner}</Typography>
+                    <Typography variant={'subtitle2'}>{this.props.recipe.name}</Typography>
+                    <Grid container alignItems="center">
+                        <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />
+                        <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
+                    </Grid>
+                    {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
+                        style={{ float: 'right', right: '25px', bottom: '90px', zIndex: 1 }}>
+                        {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
+                            : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
+                    </IconButton> : <Checkbox style={{ float: 'right', right: '0px', top: '-310px', zIndex: 1 }}
+                        onClick={this.handleCheckbox} />}</div>
+                    }
                 </div>
 
             </div>

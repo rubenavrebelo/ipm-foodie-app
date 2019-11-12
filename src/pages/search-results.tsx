@@ -1,25 +1,40 @@
 import * as React from 'react';
-import Navbar from '../components/navbar';
-import SearchBar from '../components/search-bar';
 import CookingPost from '../components/feed-post';
-import { Typography } from '@material-ui/core';
-import { RecipesObject, Recipe } from '../dt/recipes';
+import { Typography, Button } from '@material-ui/core';
+import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
+import { RouteComponentProps, navigate } from '@reach/router';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 
-class SearchResultsPage extends React.Component {
+interface Prop {
+    addToFavorites: (id: number) => void;
+    isFavorited: (recipe: Recipe) => boolean;
+    searchResults: Recipe[];
+    loggedIn: boolean;
+}
 
-    constructor(props: {}) {
+class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
+
+    constructor(props: Prop & RouteComponentProps) {
         super(props)
     }
 
     generatePosts = () => {
-        return Object.keys(RecipesObject).map((recipeName, i) => <CookingPost recipeName={RecipesObject[i].name}
-            recipeOwner={RecipesObject[i].creator} img={RecipesObject[i].image} />)
+        const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.searchResults.includes(RecipesObject[i]))
+        return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
+            addToFavorite={this.props.addToFavorites}
+            recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.loggedIn} />)
+    }
+
+    goBack = (event: React.MouseEvent) => {
+        navigate('/')
     }
 
     render = () => {
         return (
             <div>
+                <Button onClick={this.goBack}><ChevronLeftIcon /> Retornar</Button>
                 <Typography variant={'h2'}>Resultados para:</Typography><Typography variant={'h4'}></Typography>
+                {this.generatePosts()}
             </div>
         )
     }

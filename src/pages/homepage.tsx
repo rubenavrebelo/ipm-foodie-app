@@ -1,19 +1,23 @@
 import * as React from 'react';
-import Navbar from '../components/navbar';
 import SearchBar from '../components/search-bar';
 import CookingPost from '../components/feed-post';
 import { Typography } from '@material-ui/core';
 import { RecipesObject, Recipe } from '../dt/recipes';
+import { RouteComponentProps } from '@reach/router';
 
-class Homepage extends React.Component {
+interface Props {
+    loggedIn: boolean;
+    addToFavorites: (id: number) => void;
+    isFavorited: (recipe: Recipe) => boolean;
+    handleSearch: (search: string) => void;
+}
 
-    constructor(props: {}) {
-        super(props)
-    }
+class Homepage extends React.Component<Props & RouteComponentProps>{
 
     generatePosts = () => {
-        return Object.keys(RecipesObject).map((recipeName, i) => <CookingPost recipeName={RecipesObject[i].name}
-            recipeOwner={RecipesObject[i].creator} img={RecipesObject[i].image} />)
+        return Object.keys(RecipesObject).map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[i])}
+            addToFavorite={this.props.addToFavorites}
+            recipe={RecipesObject[i]} id={i} deleteMode={false} loggedIn={this.props.loggedIn} />)
     }
 
     render = () => {
@@ -21,7 +25,7 @@ class Homepage extends React.Component {
             <div style={{ width: '100%' }}>
                 <div style={{ margin: '0 auto', width: '40%', display: 'block' }}>ImagePlaceholder</div>
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
-                    <SearchBar />
+                    <SearchBar handleSearch={this.props.handleSearch} />
                 </div>
                 <Typography variant={'h4'} style={{ marginTop: '15px' }}>Feed de Receitas</Typography>
 

@@ -1,24 +1,85 @@
 import * as React from 'react';
-import Navbar from '../components/navbar';
-import SearchBar from '../components/search-bar';
 import CookingPost from '../components/feed-post';
-import { Typography, Avatar, Grid } from '@material-ui/core';
-import { RecipesObject, Recipe } from '../dt/recipes';
+import { Typography, Avatar, Grid, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
+import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import { User } from '../dt/user';
+import { RouteComponentProps } from '@reach/router';
+import * as _ from 'lodash';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 export interface Props {
     user: User
+    deletePosts: (recipes: Recipes) => void;
+    addToFavorites: (id: number) => void;
+    isFavorited: (recipe: Recipe) => boolean;
 }
 
-class ProfilePage extends React.Component<Props> {
+export interface State {
+    toDelete: number[],
+    deleteMode: Boolean;
+    confirmDelete: boolean;
+}
 
-    constructor(props: Props) {
+class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
+
+    constructor(props: Props & RouteComponentProps) {
         super(props)
+        this.state = {
+            toDelete: [],
+            deleteMode: false,
+            confirmDelete: false
+        }
     }
 
     generatePosts = () => {
-        return Object.keys(RecipesObject).map((recipeName, i) => <CookingPost recipeName={RecipesObject[i].name}
-            recipeOwner={RecipesObject[i].creator} img={RecipesObject[i].image} />)
+        return Object.keys(this.props.user.recipes).map((recipeName, i) =>
+            <CookingPost recipe={RecipesObject[i]} id={i} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
+                selectForDelete={this.addToDelete} favorited={this.props.isFavorited(RecipesObject[i])} />)
+    }
+
+    handleDeleteMode = (event: React.MouseEvent) => {
+        this.setState({
+            deleteMode: true
+        });
+    }
+
+    addToDelete = (id: number) => {
+        const { toDelete } = this.state;
+        if (toDelete.includes(id)) {
+            const arg = toDelete;
+            arg.splice(toDelete.indexOf(id), 1)
+            this.setState({
+                toDelete: arg
+            })
+        } else {
+            this.setState({
+                toDelete: toDelete.concat(id)
+            })
+        }
+    }
+
+    confirmDelete = (event: React.MouseEvent) => {
+        this.setState({
+            confirmDelete: !this.state.confirmDelete
+        })
+    }
+
+    doDelete = () => {
+        this.props.deletePosts(_.omit(this.props.user.recipes, this.state.toDelete));
+        this.setState({
+            toDelete: [],
+            deleteMode: false,
+            confirmDelete: false
+        })
+    }
+
+    cancelDelete = (event: React.MouseEvent) => {
+        this.setState({
+            toDelete: [],
+            deleteMode: false,
+            confirmDelete: false
+        })
     }
 
     render = () => {
@@ -31,20 +92,37 @@ class ProfilePage extends React.Component<Props> {
                             <Typography style={{ margin: '0 auto', display: 'block' }}>Username</Typography>
                         </Grid>
                         <Grid item style={{ marginLeft: '50px' }}>
-                            <Typography style={{ display: 'inline-block', marginRight: '20px' }}>0 Recipes</Typography>
+                            <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
                             <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.following} Following</Typography>
                             <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.followers} Followers</Typography>
-                            <Typography>Description</Typography>
+                            <Typography>{this.props.user.description}</Typography>
                         </Grid>
                     </Grid>
                     <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />
-
+                    {!this.state.deleteMode ?
+                        <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }} onClick={this.handleDeleteMode}>
+                            <DeleteIcon /> Apagar Posts
+                        </Button>
+                        :
+                        <div>
+                            <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }}
+                                disabled={this.state.toDelete.length === 0}
+                                color={'secondary'}
+                                onClick={this.confirmDelete}>
+                                <DeleteForeverIcon /> Confirmar apagar
+                             </Button>
+                            <Button onClick={this.cancelDelete} style={{ float: 'right', marginRight: '20px', marginTop: '10px' }}>Cancelar</Button>
+                        </div>}
                     <div style={{ padding: '15px', paddingLeft: '20px' }}>
                         {this.generatePosts()}
                     </div>
-
                 </div>
-            </div>
+                <Dialog open={this.state.confirmDelete}>
+                    <DialogTitle>Apagar Receitas</DialogTitle>
+                    <DialogContent>Tem a certeza que deseja apagar as receitas que escolheu? Esta ação é irreversível.</DialogContent>
+                    <DialogActions><Button onClick={this.cancelDelete}>Não</Button><Button color={'secondary'} onClick={this.doDelete}>Sim</Button></DialogActions>
+                </Dialog>
+            </div >
         )
     }
 }

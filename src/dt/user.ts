@@ -1,4 +1,4 @@
-import { Recipes } from "./recipes";
+import { Recipes, Recipe } from "./recipes";
 
 export interface User {
     username: String;
@@ -7,5 +7,5 @@ export interface User {
     description: String;
     followers: Number;
     following: Number;
-    favorites: Recipes;
+    favorites: Recipe[];
 }

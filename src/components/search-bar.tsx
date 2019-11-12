@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createStyles, WithStyles, withStyles, TextField, Link, IconButton, Card, CardHeader, CardContent, Button, Slider, Typography } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles, TextField, Link, IconButton, Card, CardContent, Button, Slider, Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
@@ -7,11 +7,15 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 const styles = () => createStyles({
 })
 
-type PropsWithStyles = WithStyles<typeof styles>
+interface Props {
+    handleSearch: (search: string) => void;
+}
+
+type PropsWithStyles = Props & WithStyles<typeof styles>
 
 interface State {
     advancedSearch: Boolean;
-    searchValue: String;
+    searchValue: string;
 }
 
 class SearchBar extends React.Component<PropsWithStyles, State>{
@@ -36,6 +40,10 @@ class SearchBar extends React.Component<PropsWithStyles, State>{
         })
     }
 
+    doSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+        this.props.handleSearch(this.state.searchValue)
+    }
+
     render = () => {
         const { classes } = this.props;
 
@@ -43,7 +51,7 @@ class SearchBar extends React.Component<PropsWithStyles, State>{
             <div style={{ position: 'relative', width: '100vh' }}>
                 <div style={{ width: '75%' }}>
                     <TextField style={{ width: '90%' }} label={'Pesquisar Receita'} onChange={this.handleSearchChange} />
-                    <IconButton><SearchIcon /></IconButton>
+                    <IconButton onClick={this.doSearch}><SearchIcon /></IconButton>
                     {!this.state.advancedSearch &&
                         <Link onClick={this.handleAdvancedSearch} style={{ position: 'relative', float: 'right', marginRight: '50px', marginTop: '10px' }}>
                             Pesquisa Avançada <ArrowDropDownIcon />
