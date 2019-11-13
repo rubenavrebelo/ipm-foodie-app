@@ -13,6 +13,8 @@ export interface Props {
     deletePosts: (recipes: Recipes) => void;
     addToFavorites: (id: number) => void;
     isFavorited: (recipe: Recipe) => boolean;
+    selectRecipe: (recipe: Recipe) => void;
+    getOwner: (username: string) => User;
 }
 
 export interface State {
@@ -35,7 +37,8 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     generatePosts = () => {
         return Object.keys(this.props.user.recipes).map((recipeName, i) =>
             <CookingPost recipe={RecipesObject[i]} id={i} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
-                selectForDelete={this.addToDelete} favorited={this.props.isFavorited(RecipesObject[i])} />)
+                selectForDelete={this.addToDelete} favorited={this.props.isFavorited(RecipesObject[i])} selectRecipe={this.props.selectRecipe}
+                getOwner={this.props.getOwner} />)
     }
 
     handleDeleteMode = (event: React.MouseEvent) => {

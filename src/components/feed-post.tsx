@@ -5,6 +5,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { Recipe } from '../dt/recipes';
+import { navigate } from '@reach/router';
+import { User } from '../dt/user';
 
 const styles = () => createStyles({
 })
@@ -12,6 +14,7 @@ const styles = () => createStyles({
 interface State {
     snackBarOpen: boolean;
     toDelete: Boolean;
+    owner?: User;
 }
 
 interface Props {
@@ -22,6 +25,8 @@ interface Props {
     loggedIn: boolean;
     addToFavorite: (id: number) => void;
     favorited: boolean;
+    selectRecipe: (recipe: Recipe) => void;
+    getOwner: (usenrame: string) => User;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -31,8 +36,15 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
         super(props)
         this.state = {
             snackBarOpen: false,
-            toDelete: false
+            toDelete: false,
+            owner: undefined
         }
+    }
+
+    componentDidMount = () => {
+        this.setState({
+            owner: this.props.getOwner(this.props.recipe.creator)
+        })
     }
 
     onFavoriting = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -56,6 +68,11 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
         if (this.props.selectForDelete) {
             this.props.selectForDelete(this.props.id)
         }
+    }
+
+    onClick = (event: React.MouseEvent) => {
+        this.props.selectRecipe(this.props.recipe)
+        navigate('/')
     }
 
     render = () => {
@@ -85,11 +102,14 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                         </IconButton>,
                     ]}
                 />
-                <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
+                <a onClick={this.onClick} style={{ cursor: 'pointer' }}>
+                    <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
+                </a>
                 <div>
                     <Typography variant={'subtitle2'}>{this.props.recipe.name}</Typography>
                     <Grid container alignItems="center">
-                        <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />
+                        {this.state.owner ? this.state.owner.image ? <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
+                            <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} /> : <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
                         <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
                     </Grid>
                     {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}

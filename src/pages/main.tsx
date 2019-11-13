@@ -2,15 +2,17 @@ import * as React from 'react';
 import Navbar from '../components/navbar';
 import Homepage from './homepage';
 import ProfilePage from './profile';
-import { User } from '../dt/user';
+import { User, DummyUsers } from '../dt/user';
 import { Router, navigate } from '@reach/router';
 import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import MyFavoritesPage from './myfavorites-page';
 import SearchResultsPage from './search-results';
+import RecipePage from './recipe-page';
 
 interface State {
     user: User;
     searchResults: Recipe[];
+    recipeSelected?: Recipe;
 }
 
 class MainPageHandler extends React.Component<{}, State> {
@@ -26,7 +28,8 @@ class MainPageHandler extends React.Component<{}, State> {
                 description: '',
                 favorites: [],
             },
-            searchResults: []
+            searchResults: [],
+            recipeSelected: undefined
         };
     }
 
@@ -36,12 +39,17 @@ class MainPageHandler extends React.Component<{}, State> {
         })
     }
 
+    selectViewRecipe = (recipe: Recipe) => {
+        this.setState({
+            recipeSelected: recipe
+        }, () => navigate('/recipe'))
+    }
+
     filterSearch = (search: String) => {
         console.log(Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search)))
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
-        })
-        navigate('/search')
+        }, () => navigate('/search'))
     }
 
     addToFavorites = (id: number) => {
@@ -58,6 +66,10 @@ class MainPageHandler extends React.Component<{}, State> {
                 user: newUser
             })
         }
+    }
+
+    getRecipeOwner = (username: string) => {
+        return DummyUsers.filter((user) => user.username === username)[0]
     }
 
     isFavorited = (recipe: Recipe) => {
@@ -77,13 +89,15 @@ class MainPageHandler extends React.Component<{}, State> {
             <div>
                 <Navbar createUser={this.createUser} />
                 <Router>
-                    <ProfilePage isFavorited={this.isFavorited}
+                    <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner}
                         deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} />
-                    <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'}
-                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} />
-                    <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited} />
+                    <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'} selectRecipe={this.selectViewRecipe}
+                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} />
+                    <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
+                        selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}
-                        loggedIn={this.state.user.username !== ''} />
+                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
+                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} />
                 </Router>
             </div>
         )

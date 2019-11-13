@@ -22,7 +22,7 @@ export const RecipesObject: Recipes = {
     0: {
         name: 'chicken piccata',
         difficulty: 3,
-        creator: 'Vizinha da esquina',
+        creator: 'Maria',
         classification: 4,
         ingredients: [
             {
@@ -69,7 +69,7 @@ export const RecipesObject: Recipes = {
     2: {
         name: 'Geleia de Framboesa',
         difficulty: 3,
-        creator: 'Chefe da esquina',
+        creator: 'Trishaa',
         classification: 4,
         ingredients: [
             {
@@ -171,7 +171,7 @@ export const RecipesObject: Recipes = {
     7: {
         name: 'Suspiros',
         difficulty: 2,
-        creator: 'Vizinha da esquina',
+        creator: 'Trishaa',
         classification: 3,
         ingredients: [
             {
@@ -378,7 +378,7 @@ export const RecipesObject: Recipes = {
     18: {
         name: 'Bombocado',
         difficulty: 3,
-        creator: 'Chefe da esquina',
+        creator: 'ClaireBA',
         classification: 5,
         ingredients: [
             {
@@ -395,7 +395,7 @@ export const RecipesObject: Recipes = {
     19: {
         name: 'Torta de nutella',
         difficulty: 2,
-        creator: 'Vizinha da esquina',
+        creator: 'ClaireBA',
         classification: 5,
         ingredients: [
             {

@@ -10,6 +10,8 @@ export interface Props {
     user: User
     isFavorited: (recipe: Recipe) => boolean;
     addToFavorite: (id: number) => void;
+    selectRecipe: (recipe: Recipe) => void;
+    getOwner: (username: string) => User;
 }
 
 class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
@@ -21,7 +23,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
     generatePosts = () => {
         const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.user.favorites.includes(RecipesObject[i]))
         return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
-            addToFavorite={this.props.addToFavorite}
+            addToFavorite={this.props.addToFavorite} selectRecipe={this.props.selectRecipe} getOwner={this.props.getOwner}
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.user.username !== ''} />)
     }
 
