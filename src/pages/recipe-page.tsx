@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Typography, Grid, CardHeader, CardContent, Card } from '@material-ui/core';
 import { Recipe } from '../dt/recipes';
 import { User } from '../dt/user';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Redirect } from '@reach/router';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
+import { navigate, redirectTo } from '@reach/router';
+import { isUndefined } from 'util';
 
 export interface Props {
     user: User,
@@ -27,7 +29,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
     }
     render = () => {
         return (
-            <div>
+            !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
                         <div>

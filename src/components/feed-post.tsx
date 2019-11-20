@@ -78,7 +78,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
 
     render = () => {
         return (
-            <Grid item style={{ width: '22%', height: '20%', display: 'inline-block', marginLeft: '1%', marginRight: '1%', marginTop: '15px' }}>
+            <Grid item style={{ height: '20%', display: 'inline-block', marginLeft: '1%', marginRight: '1%', marginTop: '15px' }}>
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -106,13 +106,13 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                 <a onClick={this.onClick} style={{ cursor: 'pointer' }}>
                     <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
                 </a>
-                <div>
+                <div style={{ width: '250px' }}>
                     <Typography variant={'subtitle2'}>{this.props.recipe.name}</Typography>
                     <Grid container alignItems="center" >
                         {this.state.owner ? this.state.owner.image ? <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
                             <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} /> : <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
                         <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
-                        <Grid item style={{ marginLeft: 'auto', marginRight: '20px', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+                        <Grid item style={{ marginLeft: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
                             <Typography variant={'caption'}>{this.props.recipe.classification}</Typography>
                             <StarIcon style={{ width: '20px', color: 'gold' }} />
                         </Grid>
