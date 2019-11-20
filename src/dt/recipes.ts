@@ -267,7 +267,19 @@ export const RecipesObject: Recipes = {
         image: 'https://t1.rg.ltmcdn.com/pt/images/3/5/7/panini_na_frigideira_8753_600.jpg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Olá pessoal, a receita que ensinaremos hoje é um bom panini low carb
+
+        Ela é uma ótima receita para comer de café da manhã e começar seu dia maravilhosamente bem com essa receita que eu amo!
+        
+        E pro seu bem, ele também se encaixa na dieta low carb
+        
+        Eu particularmente amo essa receita, ela é super simples, prática e rápida de se fazer
+        
+        Além de ela ser super deliciosa e crocante!!
+        
+        Ele fica super macio e crocante, além de ser delicioso
+        
+        Vamos a receita então!`
     },
     10: {
         name: 'Frozen yogurt de framboesa',
@@ -291,7 +303,11 @@ export const RecipesObject: Recipes = {
         image: 'http://cdn.blogdamimis.com.br/wp-content/uploads/2012/09/frozen.jpeg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Essa é a receita mais fácil que já realizei!
+
+        Perfeita para um lanche da tarde, ou uma sobremesa saudável.
+        
+        Você pode usar frutas da sua preferência!`
     },
     11: {
         name: 'Barra energética',
@@ -315,18 +331,17 @@ export const RecipesObject: Recipes = {
         image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2013/07/barrinhas.jpg?fit=640%2C547&ssl=1',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Manter a forma não é tarefa fácil: exige disciplina, força de vontade, consciência e foco. É, ainda, preciso concordar que o objetivo pode parecer impossível de alcançar quando comemos de forma errada ou, ainda pior, quando seguimos uma dieta que não nos agrada. Se se identifica com problema e é fã dos snacks inteligentes, vai gostar de experimentar as nossas receitas de barras energéticas para fazer em casa.
+
+        Sim, estes são um dos melhores snacks para complementar uma dieta e acompanhar uma rotina de exercício físico, e se está farto de comprar as suas, coloque mãos à obra e descubra como preparar estas pequenas delícias fit na sua cozinha.`
     },
     12: {
         name: 'Massa de pizza',
         difficulty: 1,
         creator: 'Chefe da esquina',
-        classification: 1,
+        classification: 5,
         ingredients: [
-            {
-                name: 'Iogurte grego',
-                quantity: '100 g'
-            },
+
             {
                 name: 'sal',
                 quantity: '1 colher',
@@ -339,7 +354,7 @@ export const RecipesObject: Recipes = {
         image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2014/07/pizza_massa.jpg?zoom=1.25&resize=466%2C262',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`É bom`
     },
     13: {
         name: 'Mousse de chocolate',
@@ -356,7 +371,7 @@ export const RecipesObject: Recipes = {
                 quantity: '100g',
             },
         ],
-        image: 'https://naminhapanela.com/wp-content/uploads/2012/05/IMG_0871.jpg',
+        image: 'https://www.teleculinaria.pt/wp-content/uploads/2018/07/mousse-de-chocolate-saudavel-1-768x577.jpg',
         medTime: 30,
         steps: [],
         desc:``
@@ -376,10 +391,12 @@ export const RecipesObject: Recipes = {
                 quantity: '2 chávenas de chá',
             },
         ],
-        image: 'https://www.pingodoce.pt/wp-content/uploads/2016/10/patedeatum-516x310.jpg',
+        image: 'https://t2.rg.ltmcdn.com/pt/images/6/6/5/pate_de_atum_caseiro_6566_600.jpg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`É sempre bom ter algumas latas de atum no armário da cozinha para quando quiser preparar uma receita prática, rápida e deliciosa, como é o caso do paté de atum. Este preparado é ótimo para fazer quando receber convidados e quiser servir uma entradinha ou mesmo para barrar em sandes e acompanhar as saladas do dia-a-dia.
+
+        Para além de ser uma receita simples e saborosa, ainda vai tirar partido do valor nutricional do atum, que é um peixe rico em proteínas, potássio, magnésio, para além de outros minerais e vitaminas importantes para a saúde. Sempre que possível, prefira utilizar o atum fresco à versão em lata, pois é ainda mais saudável.`
     },
     15: {
         name: 'Patê de Peito de Peru',
@@ -399,7 +416,7 @@ export const RecipesObject: Recipes = {
         image: 'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Simples de fazer e toda a gente adora <3`
     },
     16: {
         name: 'Molho para Carne',
@@ -416,10 +433,10 @@ export const RecipesObject: Recipes = {
                 quantity: '1 copo',
             },
         ],
-        image: 'http://delarosa.com.br/wp-content/uploads/2014/03/3.jpg',
+        image: 'http://g.glbimg.com/og/gs/gsat5/f/thumbs/tag/2015/07/15/molho-carnes-620.jpg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`As receitas de carne ficam ainda mais gostosas se forem servidas com um molho caseiro que complementa ou intensifica o sabor da carne usada. Existem várias receitas de molhos para carne que você pode experimentar, mas esta é a melhor!!!`
     },
     17: {
         name: 'Biscoitos de banana e aveia',
@@ -439,7 +456,11 @@ export const RecipesObject: Recipes = {
         image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537207893shutterstock-716366560.jpg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Receita de Cookies de banana e aveia
+ 
+        Por Nídia do Carmo, Editora e redatora no TudoReceitas. 18 julho 2016
+        Receita de Cookies de banana e aveiaImagem: lovelyascharged.wordpress.com
+        Os cookies de banana e aveia são uma opção saudável, simples e rápida para quem busca um lanche ou café da manhã nutritivo e saboroso. Como são naturalmente doces, não é necessário acrescentar açúcar. Além disso, estes biscoitinhos de banana são ainda perfeitos para vegetarianos ou veganos. Se você gostaria de saber como preparar esse cookie saudável, veio ao sitío certo!`
     },
     18: {
         name: 'Bombocado',
@@ -459,7 +480,7 @@ export const RecipesObject: Recipes = {
         image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208403shutterstock-446439268.jpg',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`O bombocado é um daqueles doces que dá vontade de comer aos montes. Seja no café-da-manhã ou no lanche da tarde, este docinho é demais!`
     },
     19: {
         name: 'Torta de nutella',
@@ -476,9 +497,9 @@ export const RecipesObject: Recipes = {
                 quantity: '240g',
             },
         ],
-        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208458shutterstock-253206406.jpg',
+        image: 'https://abrilmdemulher.files.wordpress.com/2016/10/receita-torta-macia-de-nutella.jpg?quality=90&strip=info',
         medTime: 30,
         steps: [],
-        desc:``
+        desc:`Uma das melhores sobremesas da vida!!! É cremosa, é geladinha e é doce na medida, aquela receita pra quem ama Nutella assim como eu!`
     },
 }
