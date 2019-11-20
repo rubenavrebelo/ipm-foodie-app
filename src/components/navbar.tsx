@@ -6,6 +6,7 @@ import FavoriteIconBorder from '@material-ui/icons/FavoriteBorder';
 import AddIcon from '@material-ui/icons/Add';
 import UserDropdown from './user-dropdown';
 import { navigate } from '@reach/router';
+import CreateRecipe from './create-recipe';
 
 const styles = () => createStyles({
     menuButtons: {
@@ -61,7 +62,7 @@ class Navbar extends React.Component<PropsWithStyles, State>{
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <ButtonBase style={{ marginRight: '20px' }}><AddIcon /><Typography>Adicionar</Typography></ButtonBase>
+                                    <CreateRecipe />
                                     <ButtonBase style={{ marginRight: '20px' }} onClick={this.goToFavorites}><FavoriteIconBorder /> <Typography>Favoritos</Typography></ButtonBase>
                                 </Grid>
                                 <Grid item>

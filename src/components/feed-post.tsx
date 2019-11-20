@@ -7,6 +7,7 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { Recipe } from '../dt/recipes';
 import { navigate } from '@reach/router';
 import { User } from '../dt/user';
+import StarIcon from '@material-ui/icons/Star';
 
 const styles = () => createStyles({
 })
@@ -77,7 +78,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
 
     render = () => {
         return (
-            <div style={{ width: '22%', height: '20%', display: 'inline-block', marginLeft: '15px', marginRight: '15px', marginTop: '15px' }}>
+            <Grid item style={{ width: '22%', height: '20%', display: 'inline-block', marginLeft: '1%', marginRight: '1%', marginTop: '15px' }}>
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -107,21 +108,25 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                 </a>
                 <div>
                     <Typography variant={'subtitle2'}>{this.props.recipe.name}</Typography>
-                    <Grid container alignItems="center">
+                    <Grid container alignItems="center" >
                         {this.state.owner ? this.state.owner.image ? <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
                             <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} /> : <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
                         <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
+                        <Grid item style={{ marginLeft: 'auto', marginRight: '20px', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+                            <Typography variant={'caption'}>{this.props.recipe.classification}</Typography>
+                            <StarIcon style={{ width: '20px', color: 'gold' }} />
+                        </Grid>
                     </Grid>
-                    {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
-                        style={{ float: 'right', right: '25px', bottom: '90px', zIndex: 1 }}>
-                        {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
-                            : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
-                    </IconButton> : <Checkbox style={{ float: 'right', right: '0px', top: '-310px', zIndex: 1 }}
-                        onClick={this.handleCheckbox} />}</div>
-                    }
                 </div>
+                {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
+                    style={{ float: 'right', right: '25px', bottom: '90px', zIndex: 1 }}>
+                    {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
+                        : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
+                </IconButton> : <Checkbox style={{ float: 'right', right: '0px', top: '-310px', zIndex: 1 }}
+                    onClick={this.handleCheckbox} />}</div>
+                }
 
-            </div>
+            </Grid>
         )
     }
 }

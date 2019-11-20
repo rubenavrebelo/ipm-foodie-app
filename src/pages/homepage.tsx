@@ -1,7 +1,7 @@
 import * as React from 'react';
 import SearchBar from '../components/search-bar';
 import CookingPost from '../components/feed-post';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { RecipesObject, Recipe } from '../dt/recipes';
 import { RouteComponentProps } from '@reach/router';
 import { User } from '../dt/user';
@@ -31,11 +31,11 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
                     <SearchBar handleSearch={this.props.handleSearch} />
                 </div>
-                <Typography variant={'h4'} style={{ marginTop: '15px' }}>Feed de Receitas</Typography>
+                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '30px' }}>Feed de Receitas</Typography>
 
-                <div style={{ padding: '15px', paddingLeft: '20px' }}>
+                <Grid container style={{ padding: '15px', paddingLeft: '70px' }}>
                     {this.generatePosts()}
-                </div>
+                </Grid>
             </div>
 
         )

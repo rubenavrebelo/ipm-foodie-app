@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Dialog, DialogTitle, TextField, DialogContent, Button, DialogContentText, createStyles, withStyles, WithStyles, Checkbox, FormGroup, FormControlLabel } from '@material-ui/core';
-import PersonIcon from '@material-ui/icons/Person'
+import { Dialog, DialogTitle, TextField, DialogContent, Button, DialogContentText, createStyles, withStyles, WithStyles, Checkbox, FormGroup, FormControlLabel, Typography, Grid, DialogActions } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add'
 import { User } from '../dt/user';
 
 const styles = () => createStyles({
@@ -28,13 +28,13 @@ export interface Props {
     handleCreateUser: (user: User) => void;
 }
 
-type PropsWithStyles = Props & WithStyles<typeof styles>
+type PropsWithStyles = WithStyles<typeof styles>
 
 class CreateRecipe extends React.Component<PropsWithStyles, State>{
     constructor(props: PropsWithStyles) {
         super(props)
         this.state = {
-            dialogOpen: false,
+            dialogOpen: true,
             username: ''
         }
     }
@@ -45,63 +45,36 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         })
     }
 
-    handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
-        this.props.handleLogin(this.state.username);
-        this.handleCreateNewUser();
-        this.setState({
-            dialogOpen: false,
-            username: ''
-        })
-    }
-
-    handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            username: event.target.value
-        })
-    }
-
-    handleCreateNewUser = () => {
-        const user: User = {
-            username: this.state.username,
-            name: this.state.username,
-            description: "This is my cooking profile!",
-            recipes: [],
-            following: 68,
-            followers: 207,
-            favorites: []
-        }
-        this.props.handleCreateUser(user)
-    }
-
     render = () => {
         const { classes } = this.props;
 
         return (
             <div>
-                <Button onClick={this.handleDialog}>
-                    <PersonIcon /> Login</Button>
-                <Dialog open={this.state.dialogOpen} onClose={this.handleDialog}>
-                    <DialogTitle>Login</DialogTitle>
-                    <DialogContent className={classes.dialogContent}>
-                        <DialogContentText>Insira o seu username e password para aceder ao Foodie!</DialogContentText>
-                        <FormGroup>
-                            <TextField variant={'outlined'} onChange={this.handleUsernameChange}
-                                className={classes.usernameTexfield} label={'Username'} />
-                            <TextField variant={'outlined'} type={'password'}
-                                className={classes.passwordTextfield}
-                                label={'Password'} />
-                            <FormControlLabel control={<Checkbox />} label={'Keep me signed in'} />
-                        </FormGroup>
+                <Button style={{ marginRight: '20px' }} onClick={this.handleDialog}>
+                    <AddIcon /><Typography>Adicionar</Typography>
+                </Button>
+                <Dialog open={this.state.dialogOpen} onClose={this.handleDialog} fullWidth>
+                    <DialogTitle>Criar Receita </DialogTitle>
+                    <DialogContent>
+                        <Grid
+                            container
+                            direction="row">
+                            <Grid item xs={6}>
+                                <div style={{ width: '250px', height: '250px', backgroundColor: 'grey' }} />
+                            </Grid>
+                            <Grid container xs={6} direction={'column'}>
+                                <Grid item>
+                                    <TextField label={"Nome Receita"} />
+                                </Grid>
+                                Dificuldade
+                            <Grid item style={{ display: 'flex', alignItems: 'flex-end' }}><TextField label={'Tempo Médio'} /> minutos</Grid>
+                                <Grid item>
+                                    <TextField multiline={true} label={'Descrição'} fullWidth placeholder={'Escreva uma pequena descrição sobre a sua receita!'} />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <DialogActions><Button>Next</Button></DialogActions>
                     </DialogContent>
-                    <div style={{ padding: '20px' }}>
-                        <div style={{ display: 'block' }}>
-                            <Button variant={'contained'} className={classes.signUp}>Sign up</Button>
-                            <Button variant={'contained'} className={classes.login} color={'primary'} onClick={this.handleLogin}>Login</Button>
-                        </div>
-                        <div className={classes.forgot}>
-                            <a href='/' style={{ display: 'block' }}>Forgot your password?</a>
-                        </div>
-                    </div>
                 </Dialog>
             </div>
         )

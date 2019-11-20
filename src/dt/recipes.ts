@@ -6,6 +6,8 @@ export interface Recipe {
     ingredients: Ingredient[];
     image: string;
     name: string;
+    medTime: number;
+    steps: string[]
 }
 
 export interface Ingredient {
@@ -42,7 +44,9 @@ export const RecipesObject: Recipes = {
                 quantity: 'A gosto',
             }
         ],
-        image: 'https://img.taste.com.au/7PtDfK_I/w720-h480-cfill-q80/taste/2017/07/quick-and-easy-meal-planner-128684-2.jpg'
+        image: 'https://img.taste.com.au/7PtDfK_I/w720-h480-cfill-q80/taste/2017/07/quick-and-easy-meal-planner-128684-2.jpg',
+        medTime: 30,
+        steps: []
     },
     1: {
         name: 'Panqueca de Banana',
@@ -64,7 +68,9 @@ export const RecipesObject: Recipes = {
             },
 
         ],
-        image: 'https://www.iguaria.com/wp-content/uploads/2015/05/Panquecas-Banana-com-Mel-1024x768.jpg'
+        image: 'https://www.iguaria.com/wp-content/uploads/2015/05/Panquecas-Banana-com-Mel-1024x768.jpg',
+        medTime: 30,
+        steps: []
     },
     2: {
         name: 'Geleia de Framboesa',
@@ -82,7 +88,9 @@ export const RecipesObject: Recipes = {
             },
 
         ],
-        image: 'https://www.iguaria.com/wp-content/uploads/2013/04/iguaria-geleia-de-framboesas.jpg'
+        image: 'https://www.iguaria.com/wp-content/uploads/2013/04/iguaria-geleia-de-framboesas.jpg',
+        medTime: 30,
+        steps: []
     },
     3: {
         name: 'Mousse de Limão',
@@ -103,7 +111,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1/2 chávena',
             },
         ],
-        image: 'https://assets.almanaquesos.com/wp-content/uploads/2015/10/a-time-for-me-800x638.jpg'
+        image: 'https://assets.almanaquesos.com/wp-content/uploads/2015/10/a-time-for-me-800x638.jpg',
+        medTime: 30,
+        steps: []
     },
     4: {
         name: 'Muffin de Bróculos e Cheddar',
@@ -124,7 +134,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1/2 chávena',
             },
         ],
-        image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-muffin-de-brocolis.jpg'
+        image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-muffin-de-brocolis.jpg',
+        medTime: 30,
+        steps: []
     },
     5: {
         name: 'Macarrão e queijo com leite de amêndoas',
@@ -145,7 +157,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1/2 chávena',
             },
         ],
-        image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-macarr%C3%A3o-leite-de-amendoa.jpg'
+        image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-macarr%C3%A3o-leite-de-amendoa.jpg',
+        medTime: 30,
+        steps: []
     },
     6: {
         name: 'Cheesecake',
@@ -166,7 +180,9 @@ export const RecipesObject: Recipes = {
                 quantity: '200g',
             },
         ],
-        image: 'https://portal-amb-imgs.clubedaana.com.br/2018/10/Cheese-cake-600x400.jpg'
+        image: 'https://portal-amb-imgs.clubedaana.com.br/2018/10/Cheese-cake-600x400.jpg',
+        medTime: 30,
+        steps: []
     },
     7: {
         name: 'Suspiros',
@@ -183,7 +199,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena de chá',
             },
         ],
-        image: 'http://cozinhatravessa.com.br/wp-content/uploads/2015/04/DSC26841.jpg'
+        image: 'http://cozinhatravessa.com.br/wp-content/uploads/2015/04/DSC26841.jpg',
+        medTime: 30,
+        steps: []
     },
     8: {
         name: 'Brigadeiro de chocolate',
@@ -204,7 +222,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 colher',
             },
         ],
-        image: 'https://naminhapanela.com/wp-content/uploads/2010/09/brigadeiro.jpg'
+        image: 'https://naminhapanela.com/wp-content/uploads/2010/09/brigadeiro.jpg',
+        medTime: 30,
+        steps: []
     },
     9: {
         name: 'Panini',
@@ -225,7 +245,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 colher de chá',
             },
         ],
-        image: 'http://3.bp.blogspot.com/-uXjPkvdDm3Q/UjBkc0vqFBI/AAAAAAAAGiQ/U0C4UnxaWcY/s1600/foto+(1).JPG'
+        image: 'https://t1.rg.ltmcdn.com/pt/images/3/5/7/panini_na_frigideira_8753_600.jpg',
+        medTime: 30,
+        steps: []
     },
     10: {
         name: 'Frozen yogurt de framboesa',
@@ -246,7 +268,9 @@ export const RecipesObject: Recipes = {
                 quantity: 'a gosto',
             },
         ],
-        image: 'http://cdn.blogdamimis.com.br/wp-content/uploads/2012/09/frozen.jpeg'
+        image: 'http://cdn.blogdamimis.com.br/wp-content/uploads/2012/09/frozen.jpeg',
+        medTime: 30,
+        steps: []
     },
     11: {
         name: 'Barra energética',
@@ -267,7 +291,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena',
             },
         ],
-        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2013/07/barrinhas.jpg?fit=640%2C547&ssl=1'
+        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2013/07/barrinhas.jpg?fit=640%2C547&ssl=1',
+        medTime: 30,
+        steps: []
     },
     12: {
         name: 'Massa de pizza',
@@ -288,7 +314,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena',
             },
         ],
-        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2014/07/pizza_massa.jpg?zoom=1.25&resize=466%2C262'
+        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2014/07/pizza_massa.jpg?zoom=1.25&resize=466%2C262',
+        medTime: 30,
+        steps: []
     },
     13: {
         name: 'Mousse de chocolate',
@@ -305,7 +333,9 @@ export const RecipesObject: Recipes = {
                 quantity: '100g',
             },
         ],
-        image: 'https://naminhapanela.com/wp-content/uploads/2012/05/IMG_0871.jpg'
+        image: 'https://naminhapanela.com/wp-content/uploads/2012/05/IMG_0871.jpg',
+        medTime: 30,
+        steps: []
     },
     14: {
         name: 'Patê de Atum',
@@ -322,7 +352,9 @@ export const RecipesObject: Recipes = {
                 quantity: '2 chávenas de chá',
             },
         ],
-        image: 'https://www.pingodoce.pt/wp-content/uploads/2016/10/patedeatum-516x310.jpg'
+        image: 'https://www.pingodoce.pt/wp-content/uploads/2016/10/patedeatum-516x310.jpg',
+        medTime: 30,
+        steps: []
     },
     15: {
         name: 'Patê de Peito de Peru',
@@ -339,7 +371,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 colher de chá',
             },
         ],
-        image: 'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400'
+        image: 'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400',
+        medTime: 30,
+        steps: []
     },
     16: {
         name: 'Molho para Carne',
@@ -356,7 +390,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 copo',
             },
         ],
-        image: 'http://delarosa.com.br/wp-content/uploads/2014/03/3.jpg'
+        image: 'http://delarosa.com.br/wp-content/uploads/2014/03/3.jpg',
+        medTime: 30,
+        steps: []
     },
     17: {
         name: 'Biscoitos de banana e aveia',
@@ -373,7 +409,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena',
             },
         ],
-        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537207893shutterstock-716366560.jpg'
+        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537207893shutterstock-716366560.jpg',
+        medTime: 30,
+        steps: []
     },
     18: {
         name: 'Bombocado',
@@ -390,7 +428,9 @@ export const RecipesObject: Recipes = {
                 quantity: '1 lata',
             },
         ],
-        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208403shutterstock-446439268.jpg'
+        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208403shutterstock-446439268.jpg',
+        medTime: 30,
+        steps: []
     },
     19: {
         name: 'Torta de nutella',
@@ -407,6 +447,8 @@ export const RecipesObject: Recipes = {
                 quantity: '240g',
             },
         ],
-        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208458shutterstock-253206406.jpg'
+        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208458shutterstock-253206406.jpg',
+        medTime: 30,
+        steps: []
     },
 }
