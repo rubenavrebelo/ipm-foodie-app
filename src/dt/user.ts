@@ -15,44 +15,7 @@ export const dummy1: User = {
     username: 'Trishaa',
     name: 'Trisha',
     recipes: {
-        2: {
-            name: 'Geleia de Framboesa',
-            difficulty: 3,
-            creator: 'Trisha',
-            classification: 4,
-            ingredients: [
-                {
-                    name: 'Framboesas',
-                    quantity: '500g'
-                },
-                {
-                    name: 'Açúcar',
-                    quantity: '200g',
-                },
-
-            ],
-            image: 'https://www.iguaria.com/wp-content/uploads/2013/04/iguaria-geleia-de-framboesas.jpg',
-            medTime: 30,
-            steps: []
-        }, 7: {
-            name: 'Suspiros',
-            difficulty: 2,
-            creator: 'Trishaa',
-            classification: 3,
-            ingredients: [
-                {
-                    name: 'Ovos',
-                    quantity: '3'
-                },
-                {
-                    name: 'Açúcar',
-                    quantity: '1 chávena de chá',
-                },
-            ],
-            image: 'http://cozinhatravessa.com.br/wp-content/uploads/2015/04/DSC26841.jpg',
-            medTime: 30,
-            steps: []
-        }
+    
     },
     description: 'I am the best cooker in the universe!!!! Unicorns will reign!!!!',
     followers: 1,

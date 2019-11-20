@@ -50,6 +50,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                     </Grid>
                     <Grid item xs={6} style={{ padding: '20px' }}>
                         <Typography variant={'h5'}>{this.props.recipe ? this.props.recipe.name : ''}</Typography>
+                        <Typography>{this.props.recipe ? this.props.recipe.desc : ''}</Typography>
                         <Typography variant={'h6'}>Ingredientes</Typography>
                         {this.renderIngredients()}
                     </Grid>
