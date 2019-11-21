@@ -6,6 +6,7 @@ import {
 import AddIcon from '@material-ui/icons/Add'
 import { User } from '../dt/user';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Step, Ingredient } from '../dt/recipes';
 
 const styles = () => createStyles({
     usernameTexfield: {
@@ -25,10 +26,20 @@ const styles = () => createStyles({
 export interface State {
     dialogOpen: boolean;
     username: String;
-    currentIngredients: string[]
+    currentIngredients: Ingredient[];
     currentMeasure: string;
     currentQuantity: number;
     currentIngredient: string;
+    errorQuantity: boolean;
+    errorIngredient: boolean;
+    currentStep: number;
+    currentName: string;
+    currentMedTime: number;
+    currentDesc: string;
+    errorName: boolean;
+    errorDesc: boolean;
+    errorMedTime: boolean;
+    currentSteps: Step[];
 }
 
 export interface Props {
@@ -47,13 +58,102 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             currentIngredients: [],
             currentIngredient: '',
             currentMeasure: 'g',
-            currentQuantity: -1
+            currentQuantity: 0,
+            errorQuantity: false,
+            errorIngredient: false,
+            currentStep: 3,
+            currentName: '',
+            currentMedTime: 0,
+            currentDesc: '',
+            errorName: false,
+            errorDesc: false,
+            errorMedTime: false,
+            currentSteps: []
         }
     }
 
     handleDialog = (event: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
-            dialogOpen: !this.state.dialogOpen
+            dialogOpen: !this.state.dialogOpen,
+            currentIngredients: [],
+            currentIngredient: '',
+            currentMeasure: 'g',
+            currentQuantity: 0,
+            errorQuantity: false,
+            errorIngredient: false,
+            currentStep: 1,
+            currentName: '',
+            currentMedTime: 0,
+            currentDesc: '',
+            errorName: false,
+            errorDesc: false,
+            errorMedTime: false
+        })
+    }
+
+    handleNext = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (this.state.currentStep === 1) {
+            if (this.state.currentDesc !== '' && this.state.currentMedTime > 0 && this.state.currentName !== '') {
+                this.setState({
+                    currentStep: this.state.currentStep + 1
+                })
+            } else {
+                this.setState({
+                    errorName: this.state.currentName === '',
+                    errorMedTime: this.state.currentMedTime <= 0,
+                    errorDesc: this.state.currentDesc === ''
+                })
+            }
+        } else {
+            this.setState({
+                currentStep: this.state.currentStep + 1
+            })
+        }
+
+    }
+
+    handlePrevious = (event: React.MouseEvent<HTMLButtonElement>) => {
+        this.setState({
+            currentStep: this.state.currentStep - 1
+        })
+    }
+
+    handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            currentName: event.target.value,
+            errorName: event.target.value === ''
+        })
+    }
+
+    handleDesc = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            currentDesc: event.target.value,
+            errorDesc: event.target.value === ''
+        })
+    }
+
+    handleMedTime = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            currentMedTime: parseInt(event.target.value),
+            errorMedTime: parseInt(event.target.value) <= 0
+        })
+    }
+
+    handleDelete = (pos: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
+        const newIngredients = this.state.currentIngredients;
+        newIngredients.splice(pos, 1)
+
+        this.setState({
+            currentIngredients: newIngredients
+        })
+    }
+
+    handleDeleteStep = (pos: number) => (event: React.MouseEvent<HTMLButtonElement>) => {
+        const newSteps = this.state.currentSteps;
+        newSteps.splice(pos, 1)
+
+        this.setState({
+            currentSteps: newSteps
         })
     }
 
@@ -68,12 +168,19 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                     </Grid>
                     <Grid container xs={6} direction={'column'}>
                         <Grid item>
-                            <TextField label={"Nome Receita"} />
+                            <TextField label={"Nome Receita"} onChange={this.handleName} style={{ marginBottom: '15px' }}
+                                error={this.state.errorName} helperText={this.state.errorName ? 'O nome não pode estar vazio' : ''}
+                                value={this.state.currentName} />
                         </Grid>
                         Dificuldade
-                <Grid item style={{ display: 'flex', alignItems: 'flex-end' }}><TextField label={'Tempo Médio'} /> minutos</Grid>
+                        <Grid item style={{ display: 'flex', alignItems: 'flex-end', marginBottom: '15px' }}>
+                            <TextField label={'Tempo Médio'} type={'number'} onChange={this.handleMedTime} inputProps={{ min: 1 }} style={{ marginRight: '5px' }}
+                                error={this.state.errorMedTime} value={this.state.currentMedTime === 0 ? '' : this.state.currentMedTime} helperText={this.state.errorMedTime ? 'O valor deve ser superior a 0.' : ''} /> minutos
+                        </Grid>
                         <Grid item>
-                            <TextField multiline={true} label={'Descrição'} fullWidth placeholder={'Escreva uma pequena descrição sobre a sua receita!'} />
+                            <TextField multiline={true} label={'Descrição'} fullWidth placeholder={'Escreva uma pequena descrição sobre a sua receita!'}
+                                onChange={this.handleDesc} value={this.state.currentDesc}
+                                error={this.state.errorDesc} helperText={this.state.errorDesc ? 'Por favor coloque uma descrição.' : ''} />
                         </Grid>
                     </Grid>
                 </Grid>;
@@ -86,54 +193,87 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                         </List>
                         <div style={{ display: 'flex', alignItems: 'baseline' }}>
                             <TextField label={'Quantidade'} onChange={this.handleQuantity}
-                                style={{ width: '100px', marginRight: '10px' }} type={'number'}
-                                disabled={this.state.currentMeasure === 'qb'}
-                                error={this.state.currentQuantity === 0} inputProps={{ min: 0 }}
+                                style={{ width: '150px', marginRight: '10px' }} type={'number'}
+                                disabled={this.state.currentMeasure === 'qb'} value={this.state.currentQuantity === 0 ? '' : this.state.currentQuantity}
+                                helperText={this.state.errorQuantity ? 'Quantidade tem de ser maior que 0.' : ''}
+                                error={this.state.errorQuantity} inputProps={{ min: 0 }}
                             />
                             <Select onChange={this.handleMeasure} value={this.state.currentMeasure}>
                                 <MenuItem value={'mg'}>mg</MenuItem>
                                 <MenuItem value={'g'}>g</MenuItem>
                                 <MenuItem value={'mL'}>mL</MenuItem>
                                 <MenuItem value={'dL'}>dL</MenuItem>
+                                <MenuItem value={'L'}>L</MenuItem>
                                 <MenuItem value={'unit'}>Unidade</MenuItem>
                                 <MenuItem value={'qb'}>Qb</MenuItem>
-                                <MenuItem value={'cc'}>Colher de chá</MenuItem>
+                                <MenuItem value={'cc'}>Colher(es) de chá</MenuItem>
                                 <MenuItem value={'ccafe'}>Colher(es) de café</MenuItem>
-                                <MenuItem value={'qb'}>Colher(es) de sopa</MenuItem>
+                                <MenuItem value={'cs'}>Colher(es) de sopa</MenuItem>
                             </Select><Typography style={{ marginRight: '5px', marginLeft: '5px' }}>de</Typography>
-                            <TextField label={'Ingrediente'} onKeyDown={this.addStep} onChange={this.handleIngredient}
-                                value={this.state.currentIngredient} />
+                            <TextField label={'Ingrediente'} onKeyDown={this.addIngredient} onChange={this.handleIngredient} helperText={this.state.errorIngredient ? 'O nome do ingrediente não foi inserido.' : ''}
+                                value={this.state.currentIngredient} error={this.state.errorIngredient} />
                         </div>
                         <Typography variant={'caption'}>Pressione Enter para inserir o Ingrediente na receita.</Typography>
 
                     </div>
                 )
-
+            case 3:
+                return (
+                    <div>
+                        {this.renderSteps()}
+                        <TextField helperText={'Carregue enter para inserir o novo passo.'} onKeyDown={this.addStep} />
+                    </div>
+                )
         }
     }
 
-    addStep = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    addIngredient = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            console.log(this.state.currentMeasure)
-            const newIngredients = this.state.currentIngredients;
-            const phrase = this.state.currentMeasure === 'qb' ? `${this.state.currentMeasure} de ${this.state.currentIngredient}`
-                : `${this.state.currentQuantity} ${this.state.currentMeasure} de ${this.state.currentIngredient}`
-            newIngredients.push(phrase)
+            if (this.state.currentIngredient !== '' && (this.state.currentQuantity > 0 || this.state.currentMeasure === 'qb')) {
+                const newIngredients = this.state.currentIngredients;
+                newIngredients.push({
+                    name: this.state.currentIngredient,
+                    quantity: this.state.currentQuantity,
+                    measure: this.state.currentMeasure
+                })
 
-            this.setState({
-                currentIngredients: newIngredients,
-                currentIngredient: '',
-                currentMeasure: 'g',
-                currentQuantity: 0
-            })
+                this.setState({
+                    currentIngredients: newIngredients,
+                    currentIngredient: '',
+                    currentMeasure: 'g',
+                    currentQuantity: 0
+                })
+            } else {
+                this.setState({
+                    errorQuantity: this.state.currentQuantity === 0 && this.state.currentMeasure !== 'qb',
+                    errorIngredient: this.state.currentIngredient === ''
+                })
+            }
         }
-
     }
 
     renderIngredients = () => {
-        return this.state.currentIngredients.map((ing) => <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
-            <Typography>{ing}</Typography><IconButton style={{ position: 'absolute', right: 0 }}><DeleteIcon /></IconButton>
-        </ListItem>)
+        if (this.state.currentIngredients.length > 0) {
+            return this.state.currentIngredients.map((ing, i) => <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
+                <Typography>{this.state.currentIngredients[i].measure === 'qb' ? '' : this.state.currentIngredients[i].quantity}{this.state.currentIngredients[i].measure}</Typography>
+                <Typography style={{ marginLeft: '5px', marginRight: '5px' }}> de </Typography>
+                <Typography>{this.state.currentIngredients[i].name}</Typography>
+                <IconButton style={{ position: 'absolute', right: 0 }} onClick={this.handleDelete(i)}><DeleteIcon /></IconButton>
+            </ListItem>)
+        } else {
+            return <div />
+        }
+    }
+
+    renderSteps = () => {
+        if (this.state.currentSteps.length > 0) {
+            return this.state.currentSteps.map((step, i) => <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
+                <Typography>{i}. {this.state.currentSteps[i].step}</Typography>
+                <IconButton style={{ position: 'absolute', right: 0 }} onClick={this.handleDeleteStep(i)}><DeleteIcon /></IconButton>
+            </ListItem>)
+        } else {
+            return <div />
+        }
     }
 
     handleMeasure = (event: React.ChangeEvent<{ value: unknown }>) => {
@@ -144,14 +284,28 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
 
     handleQuantity = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
-            currentQuantity: parseInt(event.target.value)
+            currentQuantity: parseInt(event.target.value),
+            errorQuantity: event.target.value === '' || parseInt(event.target.value) === 0
         })
     }
 
     handleIngredient = (event: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
-            currentIngredient: event.target.value
+            currentIngredient: event.target.value,
+            errorIngredient: event.target.value === ''
         })
+    }
+
+    addStep = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            const newSteps = this.state.currentSteps
+            newSteps.push({
+                step: 'step'
+            })
+            this.setState({
+                currentSteps: newSteps
+            })
+        }
     }
 
     render = () => {
@@ -164,10 +318,14 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                     <AddIcon /><Typography>Adicionar</Typography>
                 </Button>
                 <Dialog open={this.state.dialogOpen} onClose={this.handleDialog} fullWidth>
-                    <DialogTitle>Criar Receita </DialogTitle>
+                    <DialogTitle>Criar Receita - {this.state.currentStep}/3 {this.state.currentStep === 1 ? 'Informações Receita' : this.state.currentStep === 2 ?
+                        'Ingredientes' : 'Passos'} </DialogTitle>
                     <DialogContent>
-                        {this.getStep(2)}
-                        <DialogActions><Button>Next</Button></DialogActions>
+                        {this.getStep(this.state.currentStep)}
+                        <DialogActions>
+                            {this.state.currentStep > 1 && <Button onClick={this.handlePrevious}>Previous</Button>}
+                            <Button onClick={this.handleNext} disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>Next</Button>
+                        </DialogActions>
                     </DialogContent>
                 </Dialog>
             </div>
