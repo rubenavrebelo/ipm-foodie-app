@@ -41,6 +41,7 @@ export interface State {
     errorDesc: boolean;
     errorMedTime: boolean;
     currentSteps: Step[];
+    currentStepString: string;
 }
 
 export interface Props {
@@ -77,7 +78,8 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             errorName: false,
             errorDesc: false,
             errorMedTime: false,
-            currentSteps: []
+            currentSteps: [],
+            currentStepString: ''
         }
         this.onDragEnd = this.onDragEnd.bind(this)
     }
@@ -164,6 +166,12 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
 
         this.setState({
             currentSteps: newSteps
+        })
+    }
+
+    handleStepChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({
+            currentStepString: event.target.value
         })
     }
 
@@ -260,7 +268,8 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                 )}
                             </Droppable>
                         </DragDropContext>
-                        <TextField helperText={'Carregue enter para inserir o novo passo.'} onKeyDown={this.addStep} />
+                        <TextField multiline={true} value={this.state.currentStepString} onChange={this.handleStepChange}
+                            helperText={'Carregue enter para inserir o novo passo.'} onKeyDown={this.addStep} fullWidth />
                     </div>
                 )
         }
@@ -314,7 +323,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                         {...provided.dragHandleProps}
                     >
                         <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
-                            <Typography>{i}. {this.state.currentSteps[i].step}</Typography>
+                            <Typography>{i + 1}. {this.state.currentSteps[i].step}</Typography>
                             <IconButton style={{ position: 'absolute', right: 0 }} onClick={this.handleDeleteStep(i)}><DeleteIcon /></IconButton>
                         </ListItem>
                     </div>)}
@@ -349,10 +358,11 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         if (event.key === 'Enter') {
             const newSteps = this.state.currentSteps
             newSteps.push({
-                step: 'step'
+                step: this.state.currentStepString,
             })
             this.setState({
-                currentSteps: newSteps
+                currentSteps: newSteps,
+                currentStepString: ''
             })
         }
     }
@@ -372,8 +382,14 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                     <DialogContent>
                         {this.getStep(this.state.currentStep)}
                         <DialogActions>
-                            {this.state.currentStep > 1 && <Button onClick={this.handlePrevious}>Previous</Button>}
-                            <Button onClick={this.handleNext} disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>Next</Button>
+                            {this.state.currentStep > 1 && <Button onClick={this.handlePrevious} style={{ position: 'absolute', left: 24 }}>Previous</Button>}
+                            {this.state.currentStep !== 3 ?
+                                <Button onClick={this.handleNext} variant={'outlined'}
+                                    disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>
+                                    Next
+                            </Button>
+                                :
+                                <Button variant={'contained'}>Criar Receita</Button>}
                         </DialogActions>
                     </DialogContent>
                 </Dialog>
