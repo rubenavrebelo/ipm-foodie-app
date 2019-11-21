@@ -1,13 +1,25 @@
 import * as React from 'react';
 import {
     Dialog, DialogTitle, TextField, DialogContent, Button, DialogContentText, createStyles, withStyles, WithStyles,
-    Typography, Grid, DialogActions, Select, IconButton, MenuItem, List, ListItem
+    Typography, Grid, DialogActions, Select, IconButton, MenuItem, List, ListItem, Box, ButtonBase
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add'
-import { User } from '../dt/user';
+import Rating from '@material-ui/lab/Rating';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Step, Ingredient } from '../dt/recipes';
+import ExtensionIcon from '@material-ui/icons/Extension';
+import AddPhotoIcon from '@material-ui/icons/AddPhotoAlternate';
+import { Step, Ingredient, Recipe } from '../dt/recipes';
 import { DragDropContext, Droppable, DropResult, Draggable } from 'react-beautiful-dnd';
+import $ from 'jquery';
+
+const StyledRating = withStyles({
+    iconFilled: {
+        color: '#ff6d75',
+    },
+    iconHover: {
+        color: '#ff3d47',
+    },
+})(Rating);
 
 const styles = () => createStyles({
     usernameTexfield: {
@@ -22,7 +34,21 @@ const styles = () => createStyles({
     signUp: { marginRight: '50px' },
     login: { width: '150px' },
     forgot: { display: 'block', float: 'left', marginTop: '10px' }
-})
+});
+
+const labels: { [index: string]: string } = {
+    0.5: 'Muito Fácil',
+    1: 'Fácil',
+    1.5: 'Fácil+',
+    2: 'Fazível',
+    2.5: 'Fazível+',
+    3: 'Médio',
+    3.5: 'Médio+',
+    4: 'Difícil',
+    4.5: 'Difícil+',
+    5: 'Hardcore',
+};
+
 
 export interface State {
     dialogOpen: boolean;
@@ -42,11 +68,13 @@ export interface State {
     errorMedTime: boolean;
     currentSteps: Step[];
     currentStepString: string;
+    currentImage?: string;
+    currentRating: number;
 }
 
 export interface Props {
-    handleLogin: (username: String) => void;
-    handleCreateUser: (user: User) => void;
+    addRecipeToUser: (recipe: Recipe) => void;
+    username: string;
 }
 
 const reorder = (list: Step[], startIndex: number, endIndex: number) => {
@@ -57,13 +85,15 @@ const reorder = (list: Step[], startIndex: number, endIndex: number) => {
     return result;
 };
 
-type PropsWithStyles = WithStyles<typeof styles>
+type PropsWithStyles = Props & WithStyles<typeof styles>
 
 class CreateRecipe extends React.Component<PropsWithStyles, State>{
+    private importRef?: HTMLInputElement | null;
+
     constructor(props: PropsWithStyles) {
         super(props)
         this.state = {
-            dialogOpen: true,
+            dialogOpen: false,
             username: '',
             currentIngredients: [],
             currentIngredient: '',
@@ -71,7 +101,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             currentQuantity: 0,
             errorQuantity: false,
             errorIngredient: false,
-            currentStep: 3,
+            currentStep: 1,
             currentName: '',
             currentMedTime: 0,
             currentDesc: '',
@@ -79,7 +109,9 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             errorDesc: false,
             errorMedTime: false,
             currentSteps: [],
-            currentStepString: ''
+            currentStepString: '',
+            currentImage: undefined,
+            currentRating: 2
         }
         this.onDragEnd = this.onDragEnd.bind(this)
     }
@@ -99,7 +131,11 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             currentDesc: '',
             errorName: false,
             errorDesc: false,
-            errorMedTime: false
+            errorMedTime: false,
+            currentSteps: [],
+            currentStepString: '',
+            currentImage: undefined,
+            currentRating: 2
         })
     }
 
@@ -175,6 +211,23 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         })
     }
 
+    testImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        var reader = new FileReader();
+        if (event.target.files) {
+            if (event.target.files.length > 0) {
+                reader.readAsDataURL(event.target.files[0])
+                let img;
+                reader.onloadend = () => {
+                    img = reader.result as string
+                    this.setState({
+                        currentImage: img
+                    })
+                }
+            }
+
+        }
+    }
+
     onDragEnd(result: DropResult) {
         // dropped outside the list
         if (!result.destination) {
@@ -192,6 +245,18 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         });
     }
 
+    handleSelectRating = (event: any) => {
+        this.setState({
+            currentRating: event.target.value
+        })
+    }
+
+    callInput = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (this.importRef) {
+            this.importRef.click()
+        }
+    }
+
     getStep = (step: number) => {
         switch (step) {
             case 1:
@@ -199,7 +264,20 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                     container
                     direction="row">
                     <Grid item xs={6}>
-                        <div style={{ width: '250px', height: '250px', backgroundColor: 'grey' }} />
+                        <input type={'file'}
+                            ref={(ref) => this.importRef = ref}
+                            id={'input-file'} style={{
+                                display: 'none',
+                                border: 'lightgrey 1px solid',
+                                width: '250px', height: '250px', background: `url(${this.state.currentImage}) 50% 50% no-repeat`,
+                                cursor: 'pointer'
+                            }} onChange={this.testImage} />
+                        <ButtonBase onClick={this.callInput} style={{
+                            border: 'lightgrey 1px solid',
+                            width: '250px', height: '250px', background: `url(${this.state.currentImage}) 50% 50% no-repeat`,
+                            cursor: 'pointer'
+                        }}>{this.state.currentImage ? <div /> : <AddPhotoIcon style={{ fontSize: '150px' }} />}</ButtonBase>
+
                     </Grid>
                     <Grid container xs={6} direction={'column'}>
                         <Grid item>
@@ -207,7 +285,17 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                 error={this.state.errorName} helperText={this.state.errorName ? 'O nome não pode estar vazio' : ''}
                                 value={this.state.currentName} />
                         </Grid>
-                        Dificuldade
+                        <Typography>Dificuldade:</Typography>
+                        <Grid item style={{ display: 'flex', alignItems: 'flex-end' }}>
+                            <StyledRating
+                                name="customized-color"
+                                value={this.state.currentRating}
+                                onChange={this.handleSelectRating}
+                                style={{ marginRight: '5px' }}
+                                precision={0.5}
+                            />
+                            <Typography>{labels[this.state.currentRating]}</Typography>
+                        </Grid>
                         <Grid item style={{ display: 'flex', alignItems: 'flex-end', marginBottom: '15px' }}>
                             <TextField label={'Tempo Médio'} type={'number'} onChange={this.handleMedTime} inputProps={{ min: 1 }} style={{ marginRight: '5px' }}
                                 error={this.state.errorMedTime} value={this.state.currentMedTime === 0 ? '' : this.state.currentMedTime} helperText={this.state.errorMedTime ? 'O valor deve ser superior a 0.' : ''} /> minutos
@@ -367,6 +455,42 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         }
     }
 
+    createRecipe = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const recipe: Recipe = {
+            name: this.state.currentName,
+            creator: this.props.username,
+            difficulty: 5,
+            classification: 0,
+            ingredients: this.state.currentIngredients,
+            medTime: this.state.currentMedTime,
+            steps: this.state.currentSteps,
+            desc: this.state.currentDesc,
+            image: this.state.currentImage ? this.state.currentImage : ''
+        }
+
+        this.props.addRecipeToUser(recipe)
+
+        this.setState({
+            dialogOpen: false,
+            username: '',
+            currentIngredients: [],
+            currentIngredient: '',
+            currentMeasure: 'g',
+            currentQuantity: 0,
+            errorQuantity: false,
+            errorIngredient: false,
+            currentStep: 3,
+            currentName: '',
+            currentMedTime: 0,
+            currentDesc: '',
+            errorName: false,
+            errorDesc: false,
+            errorMedTime: false,
+            currentSteps: [],
+            currentStepString: ''
+        })
+    }
+
     render = () => {
         const { classes } = this.props;
 
@@ -382,14 +506,15 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                     <DialogContent>
                         {this.getStep(this.state.currentStep)}
                         <DialogActions>
-                            {this.state.currentStep > 1 && <Button onClick={this.handlePrevious} style={{ position: 'absolute', left: 24 }}>Previous</Button>}
+                            {this.state.currentStep > 1 &&
+                                <Button onClick={this.handlePrevious} style={{ marginRight: 'auto' }}>Previous</Button>}
                             {this.state.currentStep !== 3 ?
                                 <Button onClick={this.handleNext} variant={'outlined'}
                                     disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>
                                     Next
                             </Button>
                                 :
-                                <Button variant={'contained'}>Criar Receita</Button>}
+                                <Button variant={'contained'} onClick={this.createRecipe}>Criar Receita</Button>}
                         </DialogActions>
                     </DialogContent>
                 </Dialog>

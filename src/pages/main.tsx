@@ -39,6 +39,20 @@ class MainPageHandler extends React.Component<{}, State> {
         })
     }
 
+    addRecipeToUser = (recipe: Recipe) => {
+        const user = this.state.user
+        user.recipes = {
+            ...user.recipes,
+            [Object.keys(RecipesObject).length]: recipe
+        }
+
+        console.log(user)
+
+        this.setState({
+            user
+        })
+    }
+
     selectViewRecipe = (recipe: Recipe) => {
         this.setState({
             recipeSelected: recipe
@@ -87,7 +101,7 @@ class MainPageHandler extends React.Component<{}, State> {
     render = () => {
         return (
             <div>
-                <Navbar createUser={this.createUser} />
+                <Navbar createUser={this.createUser} addRecipeToUser={this.addRecipeToUser} />
                 <Router>
                     <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner}
                         deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} />

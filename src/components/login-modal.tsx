@@ -20,11 +20,11 @@ const styles = () => createStyles({
 
 export interface State {
     dialogOpen: boolean;
-    username: String;
+    username: string;
 }
 
 export interface Props {
-    handleLogin: (username: String) => void;
+    handleLogin: (username: string) => void;
     handleCreateUser: (user: User) => void;
 }
 

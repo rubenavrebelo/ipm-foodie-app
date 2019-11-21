@@ -36,8 +36,8 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
 
     generatePosts = () => {
         return Object.keys(this.props.user.recipes).map((recipeName, i) =>
-            <CookingPost recipe={RecipesObject[i]} id={i} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
-                selectForDelete={this.addToDelete} favorited={this.props.isFavorited(RecipesObject[i])} selectRecipe={this.props.selectRecipe}
+            <CookingPost recipe={this.props.user.recipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
+                selectForDelete={this.addToDelete} favorited={this.props.isFavorited(this.props.user.recipes[parseInt(recipeName)])} selectRecipe={this.props.selectRecipe}
                 getOwner={this.props.getOwner} />)
     }
 
@@ -69,6 +69,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     }
 
     doDelete = () => {
+        console.log(this.state.toDelete)
         this.props.deletePosts(_.omit(this.props.user.recipes, this.state.toDelete));
         this.setState({
             toDelete: [],

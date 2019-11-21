@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/Add';
 import UserDropdown from './user-dropdown';
 import { navigate } from '@reach/router';
 import CreateRecipe from './create-recipe';
+import { Recipe } from '../dt/recipes';
 
 const styles = () => createStyles({
     menuButtons: {
@@ -16,12 +17,13 @@ const styles = () => createStyles({
 })
 
 interface State {
-    username: String,
+    username: string,
     currentUser: User | null
 }
 
 interface Props {
     createUser: (user: User) => void;
+    addRecipeToUser: (recipe: Recipe) => void;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -35,7 +37,7 @@ class Navbar extends React.Component<PropsWithStyles, State>{
         }
     }
 
-    handleLogin = (username: String) => {
+    handleLogin = (username: string) => {
         this.setState({
             username
         })
@@ -62,7 +64,7 @@ class Navbar extends React.Component<PropsWithStyles, State>{
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container alignItems="center">
                                 <Grid item>
-                                    <CreateRecipe />
+                                    <CreateRecipe username={this.state.username} addRecipeToUser={this.props.addRecipeToUser} />
                                     <ButtonBase style={{ marginRight: '20px' }} onClick={this.goToFavorites}><FavoriteIconBorder /> <Typography>Favoritos</Typography></ButtonBase>
                                 </Grid>
                                 <Grid item>

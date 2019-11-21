@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Typography, Grid, CardHeader, CardContent, Card } from '@material-ui/core';
+import { Typography, Grid, CardHeader, CardContent, Card, Button } from '@material-ui/core';
 import { Recipe } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
 import { navigate, redirectTo } from '@reach/router';
-import { isUndefined } from 'util';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 export interface Props {
     user: User,
@@ -27,9 +27,15 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
             return <div />
         }
     }
+
+    handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+        navigate('/')
+    }
+
     render = () => {
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
+                <Button onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
                         <div>
