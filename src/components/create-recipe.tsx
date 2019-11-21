@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/Add'
 import { User } from '../dt/user';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Step, Ingredient } from '../dt/recipes';
+import { DragDropContext, Droppable, DropResult, Draggable } from 'react-beautiful-dnd';
 
 const styles = () => createStyles({
     usernameTexfield: {
@@ -47,6 +48,14 @@ export interface Props {
     handleCreateUser: (user: User) => void;
 }
 
+const reorder = (list: Step[], startIndex: number, endIndex: number) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
 type PropsWithStyles = WithStyles<typeof styles>
 
 class CreateRecipe extends React.Component<PropsWithStyles, State>{
@@ -70,6 +79,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             errorMedTime: false,
             currentSteps: []
         }
+        this.onDragEnd = this.onDragEnd.bind(this)
     }
 
     handleDialog = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -157,6 +167,23 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         })
     }
 
+    onDragEnd(result: DropResult) {
+        // dropped outside the list
+        if (!result.destination) {
+            return;
+        }
+
+        const items = reorder(
+            this.state.currentSteps,
+            result.source.index,
+            result.destination.index
+        )
+
+        this.setState({
+            currentSteps: items
+        });
+    }
+
     getStep = (step: number) => {
         switch (step) {
             case 1:
@@ -220,7 +247,19 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             case 3:
                 return (
                     <div>
-                        {this.renderSteps()}
+                        <DragDropContext onDragEnd={this.onDragEnd}>
+                            <Droppable droppableId="droppable">
+                                {(provided, snapshot) => (
+                                    <div
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
+                                    >
+                                        {this.renderSteps()}
+                                        {provided.placeholder}
+                                    </div>
+                                )}
+                            </Droppable>
+                        </DragDropContext>
                         <TextField helperText={'Carregue enter para inserir o novo passo.'} onKeyDown={this.addStep} />
                     </div>
                 )
@@ -267,10 +306,20 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
 
     renderSteps = () => {
         if (this.state.currentSteps.length > 0) {
-            return this.state.currentSteps.map((step, i) => <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
-                <Typography>{i}. {this.state.currentSteps[i].step}</Typography>
-                <IconButton style={{ position: 'absolute', right: 0 }} onClick={this.handleDeleteStep(i)}><DeleteIcon /></IconButton>
-            </ListItem>)
+            return this.state.currentSteps.map((step, i) =>
+                <Draggable key={i} draggableId={'draggable-' + i} index={i}>
+                    {(provided, snapshot) => (<div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                    >
+                        <ListItem style={{ borderBottom: 'lightgrey 1px solid' }}>
+                            <Typography>{i}. {this.state.currentSteps[i].step}</Typography>
+                            <IconButton style={{ position: 'absolute', right: 0 }} onClick={this.handleDeleteStep(i)}><DeleteIcon /></IconButton>
+                        </ListItem>
+                    </div>)}
+                </Draggable>)
+
         } else {
             return <div />
         }
