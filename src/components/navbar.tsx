@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createStyles, WithStyles, withStyles, AppBar, Toolbar, Typography, ButtonBase, Grid } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles, AppBar, Toolbar, Typography, ButtonBase, Grid, Button } from '@material-ui/core';
 import Login from './login-modal';
 import { User } from '../dt/user';
 import FavoriteIconBorder from '@material-ui/icons/FavoriteBorder';
@@ -63,9 +63,11 @@ class Navbar extends React.Component<PropsWithStyles, State>{
                     <div style={{ right: '20px', position: 'absolute' }}>
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container alignItems="center">
-                                <Grid item>
+                                <Grid item style={{ display: 'contents' }}>
                                     <CreateRecipe username={this.state.username} addRecipeToUser={this.props.addRecipeToUser} />
-                                    <ButtonBase style={{ marginRight: '20px' }} onClick={this.goToFavorites}><FavoriteIconBorder /> <Typography>Favoritos</Typography></ButtonBase>
+                                    <Button style={{ marginRight: '20px', color: 'white' }} onClick={this.goToFavorites}>
+                                        <FavoriteIconBorder /> <Typography>Favoritos</Typography>
+                                    </Button>
                                 </Grid>
                                 <Grid item>
                                     <UserDropdown currentUser={this.state.currentUser} />

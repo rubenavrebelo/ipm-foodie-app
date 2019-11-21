@@ -498,7 +498,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
         console.log(this.state.currentIngredients)
         return (
             <div>
-                <Button style={{ marginRight: '20px' }} onClick={this.handleDialog}>
+                <Button style={{ marginRight: '20px', color: 'white' }} onClick={this.handleDialog}>
                     <AddIcon /><Typography>Adicionar</Typography>
                 </Button>
                 <Dialog open={this.state.dialogOpen} onClose={this.handleDialog} fullWidth>
@@ -508,14 +508,14 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                         {this.getStep(this.state.currentStep)}
                         <DialogActions>
                             {this.state.currentStep > 1 &&
-                                <Button onClick={this.handlePrevious} style={{ marginRight: 'auto' }}>Previous</Button>}
+                                <Button onClick={this.handlePrevious} style={{ marginRight: 'auto' }}>Anterior</Button>}
                             {this.state.currentStep !== 3 ?
                                 <Button onClick={this.handleNext} variant={'outlined'}
                                     disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>
-                                    Next
+                                    Próximo
                             </Button>
                                 :
-                                <Button variant={'contained'} onClick={this.createRecipe}>Criar Receita</Button>}
+                                <Button variant={'contained'} color={'primary'} onClick={this.createRecipe}>Criar Receita</Button>}
                         </DialogActions>
                     </DialogContent>
                 </Dialog>
