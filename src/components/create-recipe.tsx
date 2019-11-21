@@ -292,6 +292,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                 value={this.state.currentRating}
                                 onChange={this.handleSelectRating}
                                 style={{ marginRight: '5px' }}
+                                icon={<ExtensionIcon fontSize="inherit" />}
                                 precision={0.5}
                             />
                             <Typography>{labels[this.state.currentRating]}</Typography>
