@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { Typography, Grid, CardHeader, CardContent, Card, Button } from '@material-ui/core';
+import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar } from '@material-ui/core';
 import { Recipe } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
-import { navigate, redirectTo } from '@reach/router';
+import { navigate } from '@reach/router';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ExtensionIcon from '@material-ui/icons/Extension';
+import StarIcon from '@material-ui/icons/Star';
+import TimerIcon from '@material-ui/icons/Timer';
+
 
 export interface Props {
     user: User,
@@ -43,10 +47,10 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                             <Card>
                                 <CardHeader title={this.props.recipe ? this.props.recipe.name : ''} />
                                 <CardContent>
-                                    <Typography>Criada por: {this.props.recipe ? this.props.recipe.creator : ''}</Typography>
-                                    <Typography>Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
-                                    <Typography>Classificação: {this.props.recipe ? this.props.recipe.classification : ''}</Typography>
-                                    <Typography>Tempo Médio: {this.props.recipe ? this.props.recipe.medTime : ''} minutos</Typography>
+                                    <Typography>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
+                                    <Typography style={{ display: 'flex' }}><ExtensionIcon style={{ marginRight: '10px' }} /> Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
+                                    <Typography style={{ display: 'flex' }}><StarIcon style={{ marginRight: '10px' }} />Classificação: {this.props.recipe ? this.props.recipe.classification : ''}</Typography>
+                                    <Typography style={{ display: 'flex' }}><TimerIcon style={{ marginRight: '10px' }} />Tempo Médio: {this.props.recipe ? this.props.recipe.medTime : ''} minutos</Typography>
                                 </CardContent>
                             </Card>
                             <Card>
@@ -58,7 +62,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                     </Grid>
                     <Grid item xs={6} style={{ padding: '20px' }}>
                         <Typography variant={'h5'}>{this.props.recipe ? this.props.recipe.name : ''}</Typography>
-                        <Typography>{this.props.recipe ? this.props.recipe.desc : ''}</Typography>
+                        <Typography style={{ marginTop: '15px', marginBottom: '15px' }}>{this.props.recipe ? this.props.recipe.desc : ''}</Typography>
                         <Typography variant={'h6'}>Ingredientes</Typography>
                         {this.renderIngredients()}
                     </Grid>

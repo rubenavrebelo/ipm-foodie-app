@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-    Dialog, DialogTitle, TextField, DialogContent, Button, DialogContentText, createStyles, withStyles, WithStyles,
+    Dialog, DialogTitle, TextField, DialogContent, Button, createStyles, withStyles, WithStyles,
     Typography, Grid, DialogActions, Select, IconButton, MenuItem, List, ListItem, Box, ButtonBase
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add'
@@ -10,7 +10,6 @@ import ExtensionIcon from '@material-ui/icons/Extension';
 import AddPhotoIcon from '@material-ui/icons/AddPhotoAlternate';
 import { Step, Ingredient, Recipe } from '../dt/recipes';
 import { DragDropContext, Droppable, DropResult, Draggable } from 'react-beautiful-dnd';
-import $ from 'jquery';
 
 const StyledRating = withStyles({
     iconFilled: {
