@@ -5,6 +5,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { RecipesObject, Recipe } from '../dt/recipes';
 import { RouteComponentProps } from '@reach/router';
 import { User } from '../dt/user';
+import HomepageFrog from '../static/homepage_frog.png'
 
 interface Props {
     loggedIn: boolean;
@@ -27,7 +28,9 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
     render = () => {
         return (
             <div style={{ width: '100%' }}>
-                <div style={{ margin: '0 auto', width: '40%', display: 'block' }}>ImagePlaceholder</div>
+                <div style={{ margin: '0 auto', width: '40%', display: 'block', marginTop: '50px' }}>
+                    <img src={HomepageFrog} style={{ width: '80%', marginLeft: '20px' }} />
+                </div>
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
                     <SearchBar handleSearch={this.props.handleSearch} />
                 </div>

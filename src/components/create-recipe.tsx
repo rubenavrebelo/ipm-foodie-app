@@ -67,8 +67,9 @@ export interface State {
     errorMedTime: boolean;
     currentSteps: Step[];
     currentStepString: string;
-    currentImage?: string;
+    currentImage: string;
     currentRating: number;
+    errorImage: boolean;
 }
 
 export interface Props {
@@ -109,8 +110,9 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             errorMedTime: false,
             currentSteps: [],
             currentStepString: '',
-            currentImage: undefined,
-            currentRating: 2
+            currentImage: '',
+            currentRating: 2,
+            errorImage: false
         }
         this.onDragEnd = this.onDragEnd.bind(this)
     }
@@ -133,7 +135,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             errorMedTime: false,
             currentSteps: [],
             currentStepString: '',
-            currentImage: undefined,
+            currentImage: '',
             currentRating: 2
         })
     }
@@ -148,7 +150,8 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                 this.setState({
                     errorName: this.state.currentName === '',
                     errorMedTime: this.state.currentMedTime <= 0,
-                    errorDesc: this.state.currentDesc === ''
+                    errorDesc: this.state.currentDesc === '',
+                    errorImage: this.state.currentImage === ''
                 })
             }
         } else {
@@ -224,6 +227,10 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                 }
             }
 
+        } else {
+            this.setState({
+                errorImage: true
+            })
         }
     }
 
@@ -272,10 +279,11 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                 cursor: 'pointer'
                             }} onChange={this.testImage} />
                         <ButtonBase onClick={this.callInput} style={{
-                            border: 'lightgrey 1px solid',
+                            border: this.state.errorImage ? '#f44336 1px solid' : 'lightgrey 1px solid',
                             width: '250px', height: '250px', background: `url(${this.state.currentImage}) 50% 50% no-repeat`,
                             cursor: 'pointer'
                         }}>{this.state.currentImage ? <div /> : <AddPhotoIcon style={{ fontSize: '150px' }} />}</ButtonBase>
+                        {this.state.errorImage && <Typography variant={'caption'} style={{ color: '#f44336', marginTop: '5px', display: 'block' }}>É necessário colocar uma fotografia.</Typography>}
 
                     </Grid>
                     <Grid container xs={6} direction={'column'}>
@@ -510,7 +518,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                 <Button onClick={this.handlePrevious} style={{ marginRight: 'auto' }}>Anterior</Button>}
                             {this.state.currentStep !== 3 ?
                                 <Button onClick={this.handleNext} variant={'outlined'}
-                                    disabled={this.state.errorName || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>
+                                    disabled={this.state.errorName || this.state.errorImage || this.state.errorDesc || this.state.errorMedTime || (this.state.currentStep === 2 && this.state.currentIngredients.length === 0)}>
                                     Próximo
                             </Button>
                                 :

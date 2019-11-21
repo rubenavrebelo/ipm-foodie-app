@@ -7,6 +7,7 @@ import { RouteComponentProps } from '@reach/router';
 import * as _ from 'lodash';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import DeleteIcon from '@material-ui/icons/Delete'
+import deleteFrog from '../static/delete_frog.png'
 
 export interface Props {
     user: User
@@ -123,8 +124,11 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
                 </div>
                 <Dialog open={this.state.confirmDelete}>
                     <DialogTitle>Apagar Receitas</DialogTitle>
-                    <DialogContent>Tem a certeza que deseja apagar as receitas que escolheu? Esta ação é irreversível.</DialogContent>
-                    <DialogActions><Button onClick={this.cancelDelete}>Não</Button><Button color={'secondary'} onClick={this.doDelete}>Sim</Button></DialogActions>
+                    <DialogContent>
+                        <Typography style={{ marginBottom: '60px' }}>Tem a certeza que deseja apagar as receitas que escolheu? Esta ação é irreversível.</Typography>
+                        <img src={deleteFrog} style={{ width: '40%', position: 'absolute', left: 0, bottom: 0, opacity: 0.5, }} />
+                    </DialogContent>
+                    <DialogActions style={{ position: 'relative' }}><Button onClick={this.cancelDelete}>Não</Button><Button color={'secondary'} onClick={this.doDelete}>Sim</Button></DialogActions>
                 </Dialog>
             </div >
         )

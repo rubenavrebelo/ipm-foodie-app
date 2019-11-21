@@ -8,6 +8,7 @@ import { Recipe } from '../dt/recipes';
 import { navigate } from '@reach/router';
 import { User } from '../dt/user';
 import StarIcon from '@material-ui/icons/Star';
+import frogFavorite from '../static/frog_favorite.png'
 
 const styles = () => createStyles({
 })
@@ -85,13 +86,13 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                         horizontal: 'right',
                     }}
                     open={this.state.snackBarOpen}
-                    autoHideDuration={3000}
+                    autoHideDuration={300000}
                     onClose={this.handleCloseSnackbar}
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<Typography>{this.props.favorited ? 'A receita foi adicionada aos favoritos!' :
-                        'A receita foi removida dos favoritos.'} </Typography>}
+                    message={<div> <img src={frogFavorite} style={{ width: '15%', position: 'absolute', left: 0, bottom: 0 }} /><Typography style={{ width: '300px', marginLeft: '15%' }}>{this.props.favorited ? 'A receita foi adicionada aos favoritos!' :
+                        'A receita foi removida dos favoritos.'} </Typography></div>}
                     action={[
                         <IconButton
                             key="close"
