@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CookingPost from '../components/feed-post';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, Grid } from '@material-ui/core';
 import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import { RouteComponentProps, navigate } from '@reach/router';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
@@ -37,7 +37,9 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
             <div>
                 <Button onClick={this.goBack}><ChevronLeftIcon /> Retornar</Button>
                 <Typography variant={'h2'}>Resultados para:</Typography><Typography variant={'h4'}></Typography>
-                {this.generatePosts()}
+                <Grid container style={{ padding: '15px', paddingLeft: '20px' }}>
+                    {this.generatePosts()}
+                </Grid>
             </div>
         )
     }
