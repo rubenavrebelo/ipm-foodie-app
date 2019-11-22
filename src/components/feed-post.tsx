@@ -86,7 +86,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                         horizontal: 'right',
                     }}
                     open={this.state.snackBarOpen}
-                    autoHideDuration={300000}
+                    autoHideDuration={3000}
                     onClose={this.handleCloseSnackbar}
                     ContentProps={{
                         'aria-describedby': 'message-id',
@@ -123,7 +123,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                     style={{ float: 'right', right: '5px', bottom: '90px', zIndex: 1 }}>
                     {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
                         : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
-                </IconButton> : <Checkbox style={{ float: 'right', right: '0px', top: '-310px', zIndex: 1 }}
+                </IconButton> : <Checkbox style={{ float: 'right', right: '-18px', top: '-315px', zIndex: 1 }}
                     onClick={this.handleCheckbox} />}</div>
                 }
 

@@ -8,6 +8,7 @@ import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import MyFavoritesPage from './myfavorites-page';
 import SearchResultsPage from './search-results';
 import RecipePage from './recipe-page';
+import { isUndefined } from 'util';
 
 interface State {
     user: User;
@@ -60,10 +61,34 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     filterSearch = (search: String) => {
-        console.log(Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search)))
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
         }, () => navigate('/search'))
+    }
+
+    advancedFilterSearch = (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => {
+        let initialSearch = Object.values(RecipesObject).filter((recipe: Recipe) => recipe.name.toLowerCase().includes(search))
+
+        if (tags) {
+
+        }
+        if (!isUndefined(difficulty)) {
+            initialSearch = Object.values(initialSearch).filter((recipe) => recipe.difficulty <= difficulty)
+        }
+
+        if (classification) {
+            initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.classification <= classification)
+            console.log(initialSearch)
+        }
+
+        if (time) {
+            initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.medTime >= time[0] && recipe.medTime <= time[1])
+
+        }
+        this.setState({
+            searchResults: initialSearch
+        }, () => navigate('/search'))
+
     }
 
     addToFavorites = (id: number) => {
@@ -106,7 +131,7 @@ class MainPageHandler extends React.Component<{}, State> {
                     <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner}
                         deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} />
                     <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'} selectRecipe={this.selectViewRecipe}
-                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} />
+                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch} />
                     <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
                         selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}

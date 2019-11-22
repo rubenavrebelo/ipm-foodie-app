@@ -14,6 +14,7 @@ interface Props {
     handleSearch: (search: string) => void;
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
+    advancedFilterSearch: (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => void;
 }
 
 class Homepage extends React.Component<Props & RouteComponentProps>{
@@ -32,7 +33,7 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
                     <img src={HomepageFrog} style={{ width: '80%', display: 'block', margin: '0 auto' }} />
                 </div>
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
-                    <SearchBar handleSearch={this.props.handleSearch} />
+                    <SearchBar handleSearch={this.props.handleSearch} advancedFilterSearch={this.props.advancedFilterSearch} />
                 </div>
                 <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '30px' }}>Feed de Receitas</Typography>
 
