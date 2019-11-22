@@ -572,18 +572,59 @@ export const RecipesObject: Recipes = {
         classification: 5,
         ingredients: [
             {
-                name: 'Chocolate preto',
-                quantity: '170g'
+                name: 'Chocolate de culinária',
+                quantity: '200g'
             },
             {
-                name: 'Chantilly',
+                name: 'Ovos',
+                quantity: '6',
+            },
+            {
+                name: 'Açúcar',
                 quantity: '100g',
             },
+            {
+                name: 'Manteiga',
+                quantity: '50g',
+            },
         ],
-        image: 'https://www.teleculinaria.pt/wp-content/uploads/2018/07/mousse-de-chocolate-saudavel-1-768x577.jpg',
+        image: 'https://images-gmi-pmc.edge-generalmills.com/fe558022-4544-458f-aaa0-eda0de1bcf99.jpg',
         medTime: 30,
-        steps: [],
-        desc: ``
+        steps: [
+            {
+                step:'Pique a tablete de chocolate em pedaços pequeninos e coloque numa taça de pirex',
+                image:'https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_420,w_631/v1/img/upload/package/holiday/H2_Holidays_Chocolate_Chopping_2.jpg'
+            },
+            {
+                step:'Leve a derreter em banho-maria o chocolate com a manteiga',
+                image:'https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_420,w_631/v1/img/upload/package/holiday/H2_Holidays_Chocolate_Just_Melted_4.jpg',
+    
+            },
+            {
+                step:'À parte, numa batedeira, bata as gemas com o açúcar até obter uma mistura cremosa',
+                image:'https://www.iguaria.com/wp-content/uploads/2015/01/Bater-Bolo-Castela-Verde.jpg',
+    
+            },
+            {
+                step:'Incorpore o chocolate que reservou',
+                image:'https://4.bp.blogspot.com/-DZvgJYMKvkQ/W7SuH7p6vpI/AAAAAAAAEus/oARK7HP0pj4nh4k1cYEeswieO4wU8jQQACLcBGAs/s1600/IMG_1215.JPG',
+    
+            }
+            ,
+            {
+                step:'Bata as claras em castelo e envolva manualmente no preparado anterior, até que fique um creme homogéneo',
+                image:'https://2.bp.blogspot.com/-c6yYZiaRGog/W7Suc8iLp0I/AAAAAAAAEvI/GQlcJCh0sxQfDXLHHEZf8wgrjpQvvaaDACEwYBhgL/s1600/IMG_1216.JPG',
+    
+            },
+            {
+                step:'Distribua por ´tacinhas`, leve ao frigorífico umas horas e está pronto a servir!',
+                image:'https://images-gmi-pmc.edge-generalmills.com/fe558022-4544-458f-aaa0-eda0de1bcf99.jpg',
+    
+            },
+            
+        ],
+        tags:['sobremesa','saudável','pequeno-almoço'],
+        desc: `É uma mousse de chocolate super fácil e que agradará toda a família!`
     },
     14: {
         name: 'Patê de Atum',
@@ -593,16 +634,35 @@ export const RecipesObject: Recipes = {
         ingredients: [
             {
                 name: 'Atum em óleo',
-                quantity: '1 lata'
+                quantity: '2 lata'
             },
             {
-                name: 'Requeijão cremoso',
-                quantity: '2 chávenas de chá',
+                name: 'maionese',
+                quantity: '100g',
+            },
+            {
+                name: 'cebola',
+                quantity: '1/2 unidades',
+            },
+            {
+                name: 'ervas',
+                quantity: 'qb',
             },
         ],
         image: 'https://t2.rg.ltmcdn.com/pt/images/6/6/5/pate_de_atum_caseiro_6566_600.jpg',
         medTime: 30,
-        steps: [],
+        steps: [
+            {
+                step:'Para fazer esta receita é muito simples, primeiramente tire todo o óleo do atum, coloque o mesmo numa tigela grande, adicione o restante dos ingredientes e misture bem.',
+                image:'https://mangacompimenta.com/wp-content/uploads/2018/05/patedeatum-3.jpg'
+            },
+            {
+                step:'colocar no frigorifico e em seguida está pronto a servir!',
+                image:'https://t2.rg.ltmcdn.com/pt/images/6/6/5/pate_de_atum_caseiro_6566_600.jpg',
+    
+            },            
+        ],
+        tags:['peixe','saudável','salgado'],
         desc: `É sempre bom ter algumas latas de atum no armário da cozinha para quando quiser preparar uma receita prática, rápida e deliciosa, como é o caso do paté de atum. Este preparado é ótimo para fazer quando receber convidados e quiser servir uma entradinha ou mesmo para barrar em sandes e acompanhar as saladas do dia-a-dia.
 
         Para além de ser uma receita simples e saborosa, ainda vai tirar partido do valor nutricional do atum, que é um peixe rico em proteínas, potássio, magnésio, para além de outros minerais e vitaminas importantes para a saúde. Sempre que possível, prefira utilizar o atum fresco à versão em lata, pois é ainda mais saudável.`
@@ -624,7 +684,18 @@ export const RecipesObject: Recipes = {
         ],
         image: 'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400',
         medTime: 30,
-        steps: [],
+        steps: [
+            {
+                step:'Picar o peito de peru e misturá-lo com o creme de queijo',
+                image:'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400'
+            },
+            {
+                step:'colocar no frigorifico e em seguida está pronto a servir!',
+                image:'https://img.itdg.com.br/tdg/images/recipes/000/049/442/135927/135927_original.jpg?mode=crop&width=710&height=400',
+    
+            },            
+        ],
+        tags:['salgado','saudável','carne'],
         desc: `Simples de fazer e toda a gente adora <3`
     },
     16: {
@@ -634,18 +705,58 @@ export const RecipesObject: Recipes = {
         classification: 5,
         ingredients: [
             {
-                name: 'Vinagre balsâmico',
-                quantity: '1 copo'
+                name: 'copo de vinho branco seco',
+                quantity: '250 ml'
             },
             {
-                name: 'Whiskey',
-                quantity: '1 copo',
+                name: 'cebola picada',
+                quantity: '1/2 unidades',
+            },
+            {
+                name: 'creme de leite',
+                quantity: '55 ml',
+            },
+            {
+                name: 'manteiga picada',
+                quantity: '100 g',
+            },
+            {
+                name: 'tomate picado (sem pele)',
+                quantity: '50 g',
+            },
+            {
+                name: 'sal',
+                quantity: 'qb',
+            },
+            {
+                name: 'pimenta',
+                quantity: 'qb',
             },
         ],
-        image: 'http://g.glbimg.com/og/gs/gsat5/f/thumbs/tag/2015/07/15/molho-carnes-620.jpg',
-        medTime: 30,
-        steps: [],
-        desc: `As receitas de carne ficam ainda mais gostosas se forem servidas com um molho caseiro que complementa ou intensifica o sabor da carne usada. Existem várias receitas de molhos para carne que você pode experimentar, mas esta é a melhor!!!`
+        image: 'https://t2.rg.ltmcdn.com/pt/images/4/7/2/img_molho_simples_para_frango_5274_600.jpg',
+        medTime: 45,
+        steps: [
+            {
+                step:'comece por aquecer uma frigideira em fogo médio. Adicione a cebola e o vinho branco e tempere com sal e pimenta. Deixe a mistura ferver.',
+                image:'https://t1.rg.ltmcdn.com/pt/images/4/7/2/img_molho_simples_para_frango_5274_paso_0_600.jpg'
+            },
+            {
+                step:'De seguida, baixe a temperatura para fogo médio baixo e junte o creme de leite. Cozinhe por 2 minutos, remova a frigideira do fogão e adicione a manteiga aos poucos, batendo sempre com um fouet. Volte a temperar com sal e pimenta do reino e adicione o molho de pimenta e o molho inglês.',
+                image:'https://t2.rg.ltmcdn.com/pt/images/4/7/2/img_molho_simples_para_frango_5274_paso_1_600.jpg',
+    
+            },
+            {
+                step:'Passe o molho por uma peneira fina e coloque o líquido na frigideira de novo. Adicione o tomate e, se desejar, as alcaparras. Misture bem e sirva de seguida.',
+                image:'',
+    
+            }, 
+            {
+                step:'O seu molho para frango simples está pronto a servir! O seu sabor sofisticado é ideal para complementar um frango grelhado suculento.',
+                image:'https://t2.rg.ltmcdn.com/pt/images/4/7/2/img_molho_simples_para_frango_5274_paso_3_600.jpg',
+    
+            },           
+        ],
+        desc: `As receitas de carne ficam ainda mais saborosas se forem servidas com um molho caseiro que complementa ou intensifica o sabor da carne escolhida. Existem várias receitas de molhos para carne que você pode experimentar, mas esta é a melhor!!!`
     },
     17: {
         name: 'Biscoitos de banana e aveia',
@@ -663,8 +774,19 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537207893shutterstock-716366560.jpg',
-        medTime: 30,
-        steps: [],
+        medTime: 40,
+        steps: [
+            {
+                step:'Amasse as bananas e acrescente a aveia, misturando bem. Depois, faça bolinhas no formato de pequenos biscoitos.',
+                image:'http://2.bp.blogspot.com/-z76HK5d0XFg/Uc9-1u90OvI/AAAAAAAAGJA/bbNYTJIpUQc/s640/DSCF5995.JPG',
+    
+            }, 
+            {
+                step:'coloque para assar em uma forma untada por 15 minutos em forno pré-aquecido a 175 graus.',
+                image:'https://www.harpyja.com.br//imagens/uploads/2018/11/foto%20capa%20forno.jpg',
+    
+            },           
+        ],
         desc: `Receita de Cookies de banana e aveia
  
         Por Nídia do Carmo, Editora e redatora no TudoReceitas. 18 julho 2016
@@ -673,7 +795,7 @@ export const RecipesObject: Recipes = {
     },
     18: {
         name: 'Bombocado',
-        difficulty: 3,
+        difficulty: 1,
         creator: 'ClaireBA',
         classification: 5,
         ingredients: [
@@ -686,9 +808,24 @@ export const RecipesObject: Recipes = {
                 quantity: '1 lata',
             },
         ],
-        image: 'https://www.guiadasemana.com.br/contentFiles/image/2018/09/FEA/thumbnail/48283_w380h235_1537208403shutterstock-446439268.jpg',
-        medTime: 30,
-        steps: [],
+        image: 'https://www.dicasdemulher.com.br/wp-content/uploads/2018/12/brigadeiro-branco-16-730x449.jpg',
+        medTime: 15,
+        steps: [
+            {
+                step:'Coloque todos os ingredientes no liquidificador e misture durante 1 minuto.',
+                image:'https://panelinha-sitenovo.s3-sa-east-1.amazonaws.com/receita/1551447923037-beijinho-de-colher.jpg',
+    
+            }, 
+            {
+                step:'Faça pequenas bolas com a mistura. Passe as bolinhas por uma tacinha de coco ralado e coloque-as num tabuleiro de servir.',
+                image:'https://www.iguaria.com/wp-content/uploads/2018/02/Iguaria-Beijos-com-Coco.jpg',
+    
+            },{
+                step:'Leve ao frigorífico até ficarem firmes',
+                image:'https://mediad.publicbroadcasting.net/p/wual/files/styles/x_large/public/201401/cold-winter.jpg',
+    
+            },           
+        ],
         desc: `O bombocado é um daqueles doces que dá vontade de comer aos montes. Seja no café-da-manhã ou no lanche da tarde, este docinho é demais!`
     },
     19: {
@@ -698,17 +835,58 @@ export const RecipesObject: Recipes = {
         classification: 5,
         ingredients: [
             {
-                name: 'Ovos',
-                quantity: '4'
+                name: 'pacote de biscoitos de chocolate',
+                quantity: '1'
+            },
+            {
+                name: 'Nutella',
+                quantity: '300g',
+            },
+            {
+                name: 'Clara de ovo',
+                quantity: '3'
+            },
+            {
+                name: 'margarina',
+                quantity: '100g',
+            },
+            {
+                name: 'açúcar',
+                quantity: '150g'
             },
             {
                 name: 'Nutella',
                 quantity: '240g',
             },
+            
         ],
         image: 'https://abrilmdemulher.files.wordpress.com/2016/10/receita-torta-macia-de-nutella.jpg?quality=90&strip=info',
-        medTime: 30,
-        steps: [],
+        medTime: 50,
+        steps: [
+            {
+                step:'No liquidificador, bata os biscoitos até formar uma farinha. Em seguida junte a manteiga',
+                image:'http://3.bp.blogspot.com/_1Gw2CObkHTg/SwW7RWiikCI/AAAAAAAAAxo/fWPHsu__8UM/s1600/IMG_2975.JPG',
+    
+            }, 
+            {
+                step:'Forre o fundo de uma forma de 18 cm de diâmetro e asse no forno, preaquecido, a 200 ºC, por 10 minutos. Em seguida deixe arrefecer.',
+                image:'http://4.bp.blogspot.com/_1Gw2CObkHTg/SwW1xz5By8I/AAAAAAAAAw4/-nom9Z6xnC4/s1600/IMG_2977.JPG',
+    
+            },{
+                step:'Numa panela, misture o açúcar e a água. Leve ao fogo brando (160 ºC) e deixe ferver até dar ponto de calda',
+                image:'https://1.bp.blogspot.com/-phj5v7tsXsI/XBe_XcUdvXI/AAAAAAAAGSk/cOkx1bquDmMFw4zrs4Vo_UjnH4wlqRxSACLcBGAs/s1600/receita-calda-acucar.jpg',
+    
+            },
+            {
+                step:'Bata as claras em neve, continue batendo e junte a calda em fio até dar ponto de marshmallow',
+                image:'http://1.bp.blogspot.com/-v5YwTFxmFio/T2KGTCgmdwI/AAAAAAAAAM0/8paRyFTV_zY/s1600/mars.jpg',
+    
+            },{
+                step:'Coloque a Nutella® em um recipiente e amoleça em banho-maria. Junte o rum e o marshmallow. Coloque sobre a massa e leve à geladeira por, no mínimo, 5 horas.',
+                image:'https://www.dicascaseiras.org/wp-content/uploads/2016/01/creme-denutella.png',
+    
+            },           
+        ],
         desc: `Uma das melhores sobremesas da vida!!! É cremosa, é geladinha e é doce na medida, aquela receita pra quem ama Nutella assim como eu!`
     },
 }
