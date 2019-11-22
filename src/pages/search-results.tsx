@@ -13,6 +13,7 @@ interface Prop {
     loggedIn: boolean;
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
+    search: String;
 }
 
 class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
@@ -36,7 +37,8 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
         return (
             <div>
                 <Button onClick={this.goBack} style={{ marginTop: '10px', marginLeft: '15px' }}><ChevronLeftIcon /> Retornar</Button>
-                <Typography variant={'h3'} style={{ marginLeft: '15px', marginTop: '20px' }}>Resultados para:</Typography><Typography variant={'h4'}></Typography>
+                <Typography variant={'h3'} style={{ marginLeft: '15px', marginTop: '20px' }}>Resultados para:</Typography>
+                <Typography variant={'h4'} style={{ marginLeft: '15px', marginTop: '20px' }}>{this.props.search}</Typography>
                 <Grid container style={{ padding: '15px', paddingLeft: '20px' }}>
                     {this.generatePosts()}
                 </Grid>

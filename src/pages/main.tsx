@@ -14,6 +14,7 @@ interface State {
     user: User;
     searchResults: Recipe[];
     recipeSelected?: Recipe;
+    searched: String;
 }
 
 class MainPageHandler extends React.Component<{}, State> {
@@ -30,6 +31,7 @@ class MainPageHandler extends React.Component<{}, State> {
                 favorites: [],
             },
             searchResults: [],
+            searched: '',
             recipeSelected: undefined
         };
     }
@@ -61,6 +63,7 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     filterSearch = (search: String) => {
+        this.setState({searched: search})
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
         }, () => navigate('/search'))
@@ -140,7 +143,7 @@ class MainPageHandler extends React.Component<{}, State> {
                     <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
                         selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}
-                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
+                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched}/>
                     <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} />
                 </Router>
             </div>
