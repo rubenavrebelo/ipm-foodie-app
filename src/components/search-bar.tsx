@@ -56,7 +56,7 @@ class SearchBar extends React.Component<PropsWithStyles, State>{
 
     handleDifficulty = (event: any) => {
         this.setState({
-            difficulty: event.target.value
+            difficulty: event.target.value as number
         })
     }
 

@@ -59,9 +59,9 @@ class Navbar extends React.Component<PropsWithStyles, State>{
         const { classes } = this.props;
 
         return (
-            <AppBar style={{ background: 'orange', position: 'relative' }} elevation={0}>
+            <AppBar style={{ background: 'orange', position: 'relative', height: '60px' }} elevation={0}>
                 <Toolbar style={{ padding: '10px' }}>
-                    <img src={logo} style={{ width: '15%' }} />
+                    <img src={logo} style={{ width: '10%', marginBottom: 'auto' }} />
                     <div style={{ right: '20px', position: 'absolute' }}>
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container alignItems="center">

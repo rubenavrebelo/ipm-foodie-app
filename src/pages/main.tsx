@@ -77,7 +77,7 @@ class MainPageHandler extends React.Component<{}, State> {
         }
 
         if (classification) {
-            initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.classification <= classification)
+            initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.classification >= classification)
             console.log(initialSearch)
         }
 

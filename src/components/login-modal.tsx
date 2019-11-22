@@ -78,7 +78,7 @@ class Login extends React.Component<PropsWithStyles, State>{
 
         return (
             <div>
-                <Button onClick={this.handleDialog}>
+                <Button onClick={this.handleDialog} variant={'outlined'} style={{ color: 'white', marginBottom: '25%' }}>
                     <PersonIcon /> Login</Button>
                 <Dialog open={this.state.dialogOpen} onClose={this.handleDialog}>
                     <DialogTitle>Login</DialogTitle>
