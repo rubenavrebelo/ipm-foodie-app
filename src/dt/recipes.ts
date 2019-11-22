@@ -86,7 +86,7 @@ export const RecipesObject: Recipes = {
             },
 
         ],
-        image: 'https://www.iguaria.com/wp-content/uploads/2015/05/Panquecas-Banana-com-Mel-1024x768.jpg',
+        image: 'https://abrilmdemulher.files.wordpress.com/2018/08/panquecas-de-banana.jpg?quality=90&strip=info&w=654&h=436&crop=1',
         medTime: 15,
         steps: [
             {
@@ -163,7 +163,7 @@ export const RecipesObject: Recipes = {
                 quantity: '4 limões',
             },
         ],
-        image: 'https://assets.almanaquesos.com/wp-content/uploads/2015/10/a-time-for-me-800x638.jpg',
+        image: 'http://www.beetsandbones.com/wp-content/uploads/2015/01/lemon-mousse.jpg',
         medTime: 30,
         steps: [
             {
@@ -238,7 +238,7 @@ export const RecipesObject: Recipes = {
                 quantity: '1/2 chávena',
             },
         ],
-        image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-macarr%C3%A3o-leite-de-amendoa.jpg',
+        image: 'https://thestayathomechef.com/wp-content/uploads/2019/02/Macaroni-and-Cheese-1.jpg',
         medTime: 40,
         steps: [
             {
@@ -480,8 +480,8 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena',
             },
         ],
-        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2013/07/barrinhas.jpg?fit=640%2C547&ssl=1',
-        medTime: 80,
+        image: 'https://cdn.e-konomista.pt/uploads/2019/07/barras-energticas_1519212565-425x318.jpg',
+        medTime: 40,
         steps: [
             {
                 step:'Comece por reunir os ingredientes necessários ao preparo desta receita para esportistas. Se você não encontrar algum destes ingredientes, pode substituir por outro do mesmo gênero (por exemplo: uva-passa, baga goji, tâmara, avelã, amêndoa, etc).',
@@ -530,7 +530,7 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena',
             },
         ],
-        image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2014/07/pizza_massa.jpg?zoom=1.25&resize=466%2C262',
+        image: 'https://portal-amb-imgs.clubedaana.com.br/2016/08/massa-de-pizza-de-inhame-21406.jpg',
         medTime: 120,
         steps: [
             {
