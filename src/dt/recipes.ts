@@ -30,7 +30,7 @@ export const RecipesObject: Recipes = {
     0: {
         name: 'Picadinho de Frango',
         difficulty: 3,
-        creator: 'Maria',
+        creator: 'GordonRamsay',
         classification: 4,
         ingredients: [
             {
@@ -58,7 +58,7 @@ export const RecipesObject: Recipes = {
     1: {
         name: 'Panquecas de Banana',
         difficulty: 3,
-        creator: 'Chefe da esquina',
+        creator: 'YodaBestCook',
         classification: 4,
         ingredients: [
             {
@@ -104,7 +104,7 @@ export const RecipesObject: Recipes = {
     3: {
         name: 'Mousse de Limão',
         difficulty: 1,
-        creator: 'Vizinha da esquina',
+        creator: 'GrampaCarl',
         classification: 5,
         ingredients: [
             {
@@ -128,7 +128,7 @@ export const RecipesObject: Recipes = {
     4: {
         name: 'Muffin de Bróculos e Cheddar',
         difficulty: 3,
-        creator: 'Chefe da esquina',
+        creator: 'AlienWoman',
         classification: 2,
         ingredients: [
             {
@@ -154,7 +154,7 @@ export const RecipesObject: Recipes = {
     5: {
         name: 'Macarrão e queijo com leite de amêndoas',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'GordonRamsay',
         classification: 4,
         ingredients: [
             {
@@ -180,7 +180,7 @@ export const RecipesObject: Recipes = {
     6: {
         name: 'Cheesecake',
         difficulty: 2,
-        creator: 'Vizinha da esquina',
+        creator: 'GrampaCarl',
         classification: 5,
         ingredients: [
             {
@@ -225,7 +225,7 @@ export const RecipesObject: Recipes = {
     8: {
         name: 'Brigadeiro de chocolate',
         difficulty: 4,
-        creator: 'Chefe da esquina',
+        creator: 'GrampaCarl',
         classification: 4,
         ingredients: [
             {
@@ -249,7 +249,7 @@ export const RecipesObject: Recipes = {
     9: {
         name: 'Panini',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'AlienWoman',
         classification: 5,
         ingredients: [
             {
@@ -285,7 +285,7 @@ export const RecipesObject: Recipes = {
     10: {
         name: 'Frozen yogurt de framboesa',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'YodaBestCook',
         classification: 5,
         ingredients: [
             {
@@ -313,7 +313,7 @@ export const RecipesObject: Recipes = {
     11: {
         name: 'Barra energética',
         difficulty: 3,
-        creator: 'Vizinha da esquina',
+        creator: 'YodaBestCook',
         classification: 3,
         ingredients: [
             {
@@ -339,7 +339,7 @@ export const RecipesObject: Recipes = {
     12: {
         name: 'Massa de pizza',
         difficulty: 1,
-        creator: 'Chefe da esquina',
+        creator: 'GordonRamsay',
         classification: 5,
         ingredients: [
 
@@ -360,7 +360,7 @@ export const RecipesObject: Recipes = {
     13: {
         name: 'Mousse de chocolate',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'TodTheMan',
         classification: 5,
         ingredients: [
             {
@@ -380,7 +380,7 @@ export const RecipesObject: Recipes = {
     14: {
         name: 'Patê de Atum',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'TodTheMan',
         classification: 3,
         ingredients: [
             {
@@ -402,7 +402,7 @@ export const RecipesObject: Recipes = {
     15: {
         name: 'Patê de Peito de Peru',
         difficulty: 2,
-        creator: 'Chefe da esquina',
+        creator: 'TodTheMan',
         classification: 2,
         ingredients: [
             {
@@ -422,7 +422,7 @@ export const RecipesObject: Recipes = {
     16: {
         name: 'Molho para Carne',
         difficulty: 1,
-        creator: 'Chefe da esquina',
+        creator: 'AlienWoman',
         classification: 5,
         ingredients: [
             {
@@ -442,7 +442,7 @@ export const RecipesObject: Recipes = {
     17: {
         name: 'Biscoitos de banana e aveia',
         difficulty: 3,
-        creator: 'Vizinha da esquina',
+        creator: 'YodaBestCook',
         classification: 1,
         ingredients: [
             {
