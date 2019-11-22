@@ -8,6 +8,7 @@ import UserDropdown from './user-dropdown';
 import { navigate } from '@reach/router';
 import CreateRecipe from './create-recipe';
 import { Recipe } from '../dt/recipes';
+import logo from '../static/logo.png';
 
 const styles = () => createStyles({
     menuButtons: {
@@ -60,6 +61,7 @@ class Navbar extends React.Component<PropsWithStyles, State>{
         return (
             <AppBar style={{ background: 'orange', position: 'relative' }} elevation={0}>
                 <Toolbar style={{ padding: '10px' }}>
+                    <img src={logo} style={{ width: '20%' }} />
                     <div style={{ right: '20px', position: 'absolute' }}>
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container alignItems="center">

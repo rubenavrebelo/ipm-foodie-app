@@ -29,7 +29,7 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
         return (
             <div style={{ width: '100%' }}>
                 <div style={{ margin: '0 auto', width: '40%', display: 'block', marginTop: '50px' }}>
-                    <img src={HomepageFrog} style={{ width: '80%', marginLeft: '20px' }} />
+                    <img src={HomepageFrog} style={{ width: '80%', display: 'block', margin: '0 auto' }} />
                 </div>
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
                     <SearchBar handleSearch={this.props.handleSearch} />

@@ -222,7 +222,8 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                 reader.onloadend = () => {
                     img = reader.result as string
                     this.setState({
-                        currentImage: img
+                        currentImage: img,
+                        errorImage: false
                     })
                 }
             }
