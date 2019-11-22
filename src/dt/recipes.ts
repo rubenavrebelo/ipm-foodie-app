@@ -9,6 +9,7 @@ export interface Recipe {
     medTime: number;
     steps: Step[];
     desc: string;
+    tags?: string[];
 }
 
 export interface Ingredient {
@@ -52,7 +53,17 @@ export const RecipesObject: Recipes = {
         ],
         image: 'https://img.taste.com.au/7PtDfK_I/w720-h480-cfill-q80/taste/2017/07/quick-and-easy-meal-planner-128684-2.jpg',
         medTime: 30,
-        steps: [],
+        steps: [
+            {step:'Obtenha um frango e corte o mesmo em cubos',
+            image:'https://thumbs.dreamstime.com/b/raw-chicken-knife-wooden-board-gradient-background-66123725.jpg'
+            },
+            {
+            step:'Aqueça uma panela, em fogo médio, com a margarina e doure os cubos de frango. Adicione a cebola, o pimentão e a cenoura e refogue por 5 minutos. Acrescente a abobrinha e refogue por 5 minutos ou até amaciar. Tempere com sal, pimenta e salsa e sirva acompanhado de arroz branco e salada verde.',
+            image:'https://cdn3.tmbi.com/toh/GoogleImages/Chicken-Piccata-with-Lemon-Sauce_EXPS_DSBZ17_26212_B01_13_5b.jpg',
+            },
+    
+    ],  
+        tags:['carne','frango','salsa','limoes'],
         desc: 'Picadinho de Frango é um dos meus pratos favoritos. Peito de galinha tenrinho mergulhado num molho de limão e grelhado até ficar dourado, yum!'
     },
     1: {
@@ -77,7 +88,20 @@ export const RecipesObject: Recipes = {
         ],
         image: 'https://www.iguaria.com/wp-content/uploads/2015/05/Panquecas-Banana-com-Mel-1024x768.jpg',
         medTime: 30,
-        steps: [],
+        steps: [
+            {
+                step:'Numa tigela grande esmague as bananas. Junte o iogurte, ovos, açúcar e baunilha e misture bem. Polvilhe as farinhas, fermento e bicarbonato por cima. Misture tudo com um garfo e reserve até necessitar.',
+                image:'https://www.asweetpeachef.com/wp-content/uploads/2016/05/banana-chia-pudding-8.jpg'
+            },
+            {
+                step:'Aqueça uma frigideira grande anti-aderente em lume médio e unte com manteiga. Use uma colher de gelado para todas as panquecas ficarem do mesmo tamanho – deite 3 ou 4 porções da massa na frigideira e cozinhe por 1 a 2 minutos ou até começar a dourar. Vire e cozinhe por mais um minuto ou até ficarem prontas.',
+                image:'https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/recipes/recipe/hero_article_image/1576/letterbox_Sweet-pancakes593.jpg',
+
+            }
+
+        ],
+        tags:['panquecas','banana','ovos','canela','saudável','pequeno-almoço'],
+
         desc: 'A receita de hoje é Panquecas de Banana, uma receita que não tem nem açúcar nem farinha ou leite. Só tem três ingredientes: bananas, ovos e canela. As bananas dão-lhes o toque doce necessário e, além disso, estas panquecas são ricas em proteínas, baixas em calorias (yupi!), sem glúten e, o melhor de tudo, são deliciosas. '
     },
     2: {
@@ -216,7 +240,7 @@ export const RecipesObject: Recipes = {
                 quantity: '1 chávena de chá',
             },
         ],
-        image: 'http://cozinhatravessa.com.br/wp-content/uploads/2015/04/DSC26841.jpg',
+        image: 'https://www.receitax.com/wp-content/uploads/2016/01/suspiro.jpg',
         medTime: 30,
         steps: [],
         desc: `Você ainda tem claras de ovo? Não as jogue fora! Faça esses deliciosos suspiros :-) Uma receita ideal e anti-desperdício para acompanhar o seu chá ou café.
