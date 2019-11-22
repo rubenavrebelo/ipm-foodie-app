@@ -9,6 +9,7 @@ import { navigate } from '@reach/router';
 import { User } from '../dt/user';
 import StarIcon from '@material-ui/icons/Star';
 import frogFavorite from '../static/frog_favorite.png'
+import ExtensionIcon from '@material-ui/icons/Extension';
 
 const styles = () => createStyles({
 })
@@ -107,18 +108,29 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                 <a onClick={this.onClick} style={{ cursor: 'pointer' }}>
                     <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
                 </a>
-                <div style={{ width: '250px' }}>
-                    <Typography variant={'subtitle2'}>{this.props.recipe.name}</Typography>
-                    <Grid container alignItems="center" >
+                <Grid container style={{ width: '250px', display: 'flex', marginTop: '5px' }}>
+                    <Grid item xs={4} sm={6} style={{ height: '25px' }}>
+                        <Typography variant={'subtitle2'} style={{
+                            width: '210px', textOverflow: 'ellipsis', height: '20px', overflow: 'hidden',
+                            whiteSpace: 'nowrap'
+                        }}>{this.props.recipe.name}</Typography>
+                    </Grid>
+                    <div style={{ marginLeft: 'auto', height: '25px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Typography variant={'caption'}>{this.props.recipe.difficulty}</Typography>
+                            <ExtensionIcon style={{ width: '20px', color: '#ff6d75' }} />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <Typography variant={'caption'}>{this.props.recipe.classification}</Typography>
+                            <StarIcon style={{ width: '20px', color: 'gold' }} />
+                        </div>
+                    </div>
+                    <Grid item style={{ display: 'flex' }} xs={12}>
                         {this.state.owner ? this.state.owner.image ? <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
                             <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} /> : <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
                         <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
-                        <Grid item style={{ marginLeft: 'auto', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
-                            <Typography variant={'caption'}>{this.props.recipe.classification}</Typography>
-                            <StarIcon style={{ width: '20px', color: 'gold' }} />
-                        </Grid>
                     </Grid>
-                </div>
+                </Grid>
                 {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
                     style={{ float: 'right', right: '5px', bottom: '90px', zIndex: 1 }}>
                     {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />

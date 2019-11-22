@@ -78,13 +78,18 @@ class MainPageHandler extends React.Component<{}, State> {
 
         if (classification) {
             initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.classification >= classification)
-            console.log(initialSearch)
         }
 
         if (time) {
             initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.medTime >= time[0] && recipe.medTime <= time[1])
 
         }
+
+        if (tags) {
+            initialSearch = Object.values(initialSearch).filter((recipe: Recipe) => recipe.tags && recipe.tags.some((tag) => tags.includes(tag)
+            ))
+        }
+
         this.setState({
             searchResults: initialSearch
         }, () => navigate('/search'))
