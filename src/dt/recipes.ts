@@ -52,7 +52,7 @@ export const RecipesObject: Recipes = {
             }
         ],
         image: 'https://img.taste.com.au/7PtDfK_I/w720-h480-cfill-q80/taste/2017/07/quick-and-easy-meal-planner-128684-2.jpg',
-        medTime: 30,
+        medTime: 40,
         steps: [
             {step:'Obtenha um frango e corte o mesmo em cubos',
             image:'https://thumbs.dreamstime.com/b/raw-chicken-knife-wooden-board-gradient-background-66123725.jpg'
@@ -87,7 +87,7 @@ export const RecipesObject: Recipes = {
 
         ],
         image: 'https://www.iguaria.com/wp-content/uploads/2015/05/Panquecas-Banana-com-Mel-1024x768.jpg',
-        medTime: 30,
+        medTime: 15,
         steps: [
             {
                 step:'Numa tigela grande esmague as bananas. Junte o iogurte, ovos, açúcar e baunilha e misture bem. Polvilhe as farinhas, fermento e bicarbonato por cima. Misture tudo com um garfo e reserve até necessitar.',
@@ -125,7 +125,7 @@ export const RecipesObject: Recipes = {
 
         ],
         image: 'https://www.iguaria.com/wp-content/uploads/2013/04/iguaria-geleia-de-framboesas.jpg',
-        medTime: 30,
+        medTime: 90,
         steps: [
             {
                 step:'Enxague as framboesas ao tirar do freezer, em seguida coloque as frutas em uma panela com metade do açúcar.',
@@ -202,7 +202,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://st3.depositphotos.com/1373322/15624/i/1600/depositphotos_156248380-stock-photo-broccoli-muffins-with-cheddar-cheese.jpg',
-        medTime: 30,
+        medTime: 100,
         steps: [
             {
                 step:'faça muffin de brocolis',
@@ -239,7 +239,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://lar-natural.com.br/laradmin/uploads/2015/05/5-receitas-macarr%C3%A3o-leite-de-amendoa.jpg',
-        medTime: 30,
+        medTime: 40,
         steps: [
             {
                 step:'Em uma panela média, refogue a cebola e o alho picados com o óleo de coco e o sal até que fiquem levemente dourados. Adicione o a cebola e o alho refogados, o leite de amêndoas, a levedura nutricional e a pimenta do reino em um liquidificador e bata até obter uma mistura bem homogênea. Prove e ajuste os temperos, caso ache necessário.',
@@ -288,7 +288,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://portal-amb-imgs.clubedaana.com.br/2018/10/Cheese-cake-600x400.jpg',
-        medTime: 30,
+        medTime: 60,
         steps: [
             {
                 step:`Derrete-se a manteiga em lume muito brando.
@@ -320,7 +320,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://www.receitax.com/wp-content/uploads/2016/01/suspiro.jpg',
-        medTime: 30,
+        medTime: 20,
         steps: [
             {
                 step:'Comece a bater as claras com um pouco de açúcar. Bata na velocidade mínima/média. Assim que estiver com uma textura de mousse, aumente a velocidade do batedeira e despeje/verta o açúcar aos poucos até as claras montarem em neve/castelo.',
@@ -367,7 +367,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://avidadoce.com/wp-content/uploads/2016/02/brigadeiro-gourmet-receita-e1530740232254.jpg',
-        medTime: 30,
+        medTime: 1,
         steps: [
             {
                 step:'Vá ao Continente (ou a outro supermercado) e compre um brigadeiro, os deles são bastante bons.',
@@ -402,7 +402,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://t1.rg.ltmcdn.com/pt/images/3/5/7/panini_na_frigideira_8753_600.jpg',
-        medTime: 30,
+        medTime: 40,
         steps: [
             {
                 step:'Em um recipiente, bata primeiro o ovo bem com um garfo, depois acrescente os outros ingredientes e bata por aproximadamente 1 minuto ou mais até ficar homogêneo.Leve ao micro-ondas por 3 minutos (dependendo da potência do seu micro-ondas, acrescente mais).',
@@ -448,7 +448,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'http://cdn.blogdamimis.com.br/wp-content/uploads/2012/09/frozen.jpeg',
-        medTime: 30,
+        medTime: 50,
         steps: [
             {
                 step:'Bata tudo com o mixer ou no liquidificador e sirva em seguida com algumas frutas por cima.',
@@ -481,7 +481,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2013/07/barrinhas.jpg?fit=640%2C547&ssl=1',
-        medTime: 30,
+        medTime: 80,
         steps: [
             {
                 step:'Comece por reunir os ingredientes necessários ao preparo desta receita para esportistas. Se você não encontrar algum destes ingredientes, pode substituir por outro do mesmo gênero (por exemplo: uva-passa, baga goji, tâmara, avelã, amêndoa, etc).',
@@ -531,7 +531,7 @@ export const RecipesObject: Recipes = {
             },
         ],
         image: 'https://i0.wp.com/panelaterapia.com/wp-content/uploads/2014/07/pizza_massa.jpg?zoom=1.25&resize=466%2C262',
-        medTime: 30,
+        medTime: 120,
         steps: [
             {
                 step:'Comece por reservar um dia do mês para poder fazer esta receita',
