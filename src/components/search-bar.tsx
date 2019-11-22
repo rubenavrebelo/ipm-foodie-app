@@ -3,6 +3,7 @@ import { createStyles, WithStyles, withStyles, TextField, Link, IconButton, Card
 import SearchIcon from '@material-ui/icons/Search';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import Rating from '@material-ui/lab/Rating';
 
 const styles = () => createStyles({
 })
@@ -48,19 +49,31 @@ class SearchBar extends React.Component<PropsWithStyles, State>{
         const { classes } = this.props;
 
         return (
-            <div style={{ position: 'relative', width: '100vh' }}>
-                <div style={{ width: '75%' }}>
-                    <TextField style={{ width: '90%' }} label={'Pesquisar Receita'} onChange={this.handleSearchChange} />
-                    <IconButton onClick={this.doSearch}><SearchIcon /></IconButton>
-                    {!this.state.advancedSearch &&
-                        <Link onClick={this.handleAdvancedSearch} style={{ position: 'relative', float: 'right', marginRight: '50px', marginTop: '10px' }}>
-                            Pesquisa Avançada <ArrowDropDownIcon />
-                        </Link>
-                    }
-                </div>
-                {this.state.advancedSearch && <Card style={{ width: '75%' }}>
+            <div style={{ position: 'relative', width: '90vh' }}>
+                <TextField style={{ width: '90%' }} label={'Pesquisar Receita'} onChange={this.handleSearchChange} />
+                <IconButton onClick={this.doSearch}><SearchIcon /></IconButton>
+                {!this.state.advancedSearch &&
+                    <Link onClick={this.handleAdvancedSearch} style={{ position: 'relative', float: 'right', marginRight: '50px', marginTop: '10px' }}>
+                        Pesquisa Avançada <ArrowDropDownIcon />
+                    </Link>
+                }
+                {this.state.advancedSearch && <Card style={{ width: '90%' }}>
                     <CardContent>
-                        <div>Dificuldade Classificação Tempo <IconButton onClick={this.handleAdvancedSearch}><ArrowDropUpIcon /></IconButton></div>
+                        <div>
+                            <div>
+                                <Typography>Dificuldade</Typography>
+                                <Rating
+                                    value={2}
+                                    precision={0.5} />
+                            </div>
+                            <div>
+                                <Typography>Classificação</Typography>
+                                <Rating
+                                    value={2}
+                                    precision={0.5} />
+                            </div>
+                            Tempo
+                            <IconButton onClick={this.handleAdvancedSearch}><ArrowDropUpIcon /></IconButton></div>
                         <div><Slider
                             style={{ width: '40%' }}
                             defaultValue={30}
