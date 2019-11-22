@@ -3,7 +3,7 @@ import CookingPost from '../components/feed-post';
 import { Typography, Avatar, Grid, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@material-ui/core';
 import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import { User } from '../dt/user';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Redirect } from '@reach/router';
 import * as _ from 'lodash';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -89,48 +89,49 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
 
     render = () => {
         return (
-            <div>
+            this.props.user.username === '' ? <Redirect to={'/'} noThrow /> :
                 <div>
-                    <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
-                        <Grid item style={{ width: '200px' }}>
-                            <Avatar style={{ width: '200px', height: '200px' }}>R</Avatar>
-                            <Typography style={{ margin: '0 auto', display: 'block' }}>Username</Typography>
+                    <div>
+                        <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
+                            <Grid item style={{ width: '200px' }}>
+                                <Avatar src={'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg'} style={{ width: '200px', height: '200px' }}>R</Avatar>
+                                <Typography style={{ margin: '0 auto', display: 'block' }}>Username</Typography>
+                            </Grid>
+                            <Grid item style={{ marginLeft: '50px' }}>
+                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
+                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.following} Following</Typography>
+                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.followers} Followers</Typography>
+                                <Typography>{this.props.user.description}</Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item style={{ marginLeft: '50px' }}>
-                            <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
-                            <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.following} Following</Typography>
-                            <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.followers} Followers</Typography>
-                            <Typography>{this.props.user.description}</Typography>
-                        </Grid>
-                    </Grid>
-                    <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />
-                    {!this.state.deleteMode ?
-                        <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }} onClick={this.handleDeleteMode}>
-                            <DeleteIcon /> Apagar Posts
+                        <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />
+                        {!this.state.deleteMode ?
+                            <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }} onClick={this.handleDeleteMode}>
+                                <DeleteIcon /> Apagar Posts
                         </Button>
-                        :
-                        <div>
-                            <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }}
-                                disabled={this.state.toDelete.length === 0}
-                                color={'secondary'}
-                                onClick={this.confirmDelete}>
-                                <DeleteForeverIcon /> Confirmar apagar
+                            :
+                            <div>
+                                <Button style={{ float: 'right', marginRight: '40px', marginTop: '10px' }}
+                                    disabled={this.state.toDelete.length === 0}
+                                    color={'secondary'}
+                                    onClick={this.confirmDelete}>
+                                    <DeleteForeverIcon /> Confirmar apagar
                              </Button>
-                            <Button onClick={this.cancelDelete} style={{ float: 'right', marginRight: '20px', marginTop: '10px' }}>Cancelar</Button>
-                        </div>}
-                    <div style={{ padding: '15px', paddingLeft: '20px' }}>
-                        {this.generatePosts()}
+                                <Button onClick={this.cancelDelete} style={{ float: 'right', marginRight: '20px', marginTop: '10px' }}>Cancelar</Button>
+                            </div>}
+                        <div style={{ padding: '15px', paddingLeft: '20px' }}>
+                            {this.generatePosts()}
+                        </div>
                     </div>
-                </div>
-                <Dialog open={this.state.confirmDelete}>
-                    <DialogTitle>Apagar Receitas</DialogTitle>
-                    <DialogContent>
-                        <Typography style={{ marginBottom: '60px' }}>Tem a certeza que deseja apagar as receitas que escolheu? Esta ação é irreversível.</Typography>
-                        <img src={deleteFrog} style={{ width: '40%', position: 'absolute', left: 0, bottom: 0, opacity: 0.5, }} />
-                    </DialogContent>
-                    <DialogActions style={{ position: 'relative' }}><Button onClick={this.cancelDelete}>Não</Button><Button color={'secondary'} onClick={this.doDelete}>Sim</Button></DialogActions>
-                </Dialog>
-            </div >
+                    <Dialog open={this.state.confirmDelete}>
+                        <DialogTitle>Apagar Receitas</DialogTitle>
+                        <DialogContent>
+                            <Typography style={{ marginBottom: '60px' }}>Tem a certeza que deseja apagar as receitas que escolheu? Esta ação é irreversível.</Typography>
+                            <img src={deleteFrog} style={{ width: '40%', position: 'absolute', left: 0, bottom: 0, opacity: 0.5, }} />
+                        </DialogContent>
+                        <DialogActions style={{ position: 'relative' }}><Button onClick={this.cancelDelete}>Não</Button><Button color={'secondary'} onClick={this.doDelete}>Sim</Button></DialogActions>
+                    </Dialog>
+                </div >
         )
     }
 }
