@@ -32,6 +32,20 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
         }
     }
 
+    renderSteps = () => {
+        if (this.props.recipe) {
+            return this.props.recipe.steps.map((step, i) => 
+            <div>
+            <Typography> {i+1}. {step.step} </Typography>
+            </div>
+            )
+        } else {
+            return <div />
+        }
+    }
+
+    
+
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
         navigate('/')
     }
@@ -65,6 +79,8 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                         <Typography style={{ marginTop: '15px', marginBottom: '15px' }}>{this.props.recipe ? this.props.recipe.desc : ''}</Typography>
                         <Typography variant={'h6'}>Ingredientes</Typography>
                         {this.renderIngredients()}
+                        <Typography variant={'h5'}>Passos a seguir:</Typography>
+                        {this.renderSteps()}
                     </Grid>
                 </Grid>
             </div>
