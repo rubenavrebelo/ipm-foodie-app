@@ -35,8 +35,8 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
     render = () => {
         return (
             <div>
-                <Button onClick={this.goBack}><ChevronLeftIcon /> Retornar</Button>
-                <Typography variant={'h2'}>Resultados para:</Typography><Typography variant={'h4'}></Typography>
+                <Button onClick={this.goBack} style={{ marginTop: '10px', marginLeft: '15px' }}><ChevronLeftIcon /> Retornar</Button>
+                <Typography variant={'h3'} style={{ marginLeft: '15px', marginTop: '20px' }}>Resultados para:</Typography><Typography variant={'h4'}></Typography>
                 <Grid container style={{ padding: '15px', paddingLeft: '20px' }}>
                     {this.generatePosts()}
                 </Grid>
