@@ -627,7 +627,7 @@ export const RecipesObject: Recipes = {
             },
             
         ],
-        tags:['sobremesa','saudável','pequeno-almoço'],
+        tags:['sobremesa','saudável'],
         desc: `É uma mousse de chocolate super fácil e que agradará toda a família!`
     },
     14: {
@@ -760,6 +760,7 @@ export const RecipesObject: Recipes = {
     
             },           
         ],
+        tags:['salgado'],
         desc: `As receitas de carne ficam ainda mais saborosas se forem servidas com um molho caseiro que complementa ou intensifica o sabor da carne escolhida. Existem várias receitas de molhos para carne que você pode experimentar, mas esta é a melhor!!!`
     },
     17: {
@@ -791,6 +792,7 @@ export const RecipesObject: Recipes = {
     
             },           
         ],
+        tags:['saudável', 'doce'],
         desc: `Receita de Cookies de banana e aveia
  
         Por Nídia do Carmo, Editora e redatora no TudoReceitas. 18 julho 2016
@@ -830,6 +832,7 @@ export const RecipesObject: Recipes = {
     
             },           
         ],
+        tags:['doce'],
         desc: `O bombocado é um daqueles doces que dá vontade de comer aos montes. Seja no café-da-manhã ou no lanche da tarde, este docinho é demais!`
     },
     19: {
@@ -857,10 +860,6 @@ export const RecipesObject: Recipes = {
             {
                 name: 'açúcar',
                 quantity: '150g'
-            },
-            {
-                name: 'Nutella',
-                quantity: '240g',
             },
             
         ],
@@ -891,8 +890,230 @@ export const RecipesObject: Recipes = {
     
             },           
         ],
+        tags:['doce'],
         desc: `Uma das melhores sobremesas da vida!!! É cremosa, é geladinha e é doce na medida, aquela receita pra quem ama Nutella assim como eu!`
     },
+
+    20: {
+        name: 'Bolo de Canela',
+        difficulty: 2,
+        creator: 'ClaireBA',
+        classification: 5,
+        ingredients: [
+            {
+                name: 'pacote de biscoitos de chocolate',
+                quantity: '1'
+            },
+            {
+                name: 'canela',
+                quantity: '3g',
+            },
+            {
+                name: 'Clara de ovo',
+                quantity: '3'
+            },
+            {
+                name: 'margarina',
+                quantity: '100g',
+            },
+            {
+                name: 'açúcar',
+                quantity: '150g'
+            },
+            
+        ],
+        image: 'https://mamapaleo.blogs.nit.pt/wp-content/uploads/2016/12/bolo.jpg',
+        medTime: 60,
+        steps: [
+            {
+                step:'Misture todos os ingredientes no liquidificador',
+                image:'https://mamapaleo.blogs.nit.pt/wp-content/uploads/2016/12/bolo.jpg',
+    
+            }, 
+            {
+                step:'ponha no forno, preaquecido, a 180ºC, por 45 minutos. Em seguida deixe arrefecer.',
+                image:'https://mamapaleo.blogs.nit.pt/wp-content/uploads/2016/12/bolo.jpg',
+    
+            },        
+        ],
+        tags:['doce', 'bolo'],
+        desc: `Bolo feito especialmente para amantes de canela`
+    },
+
+    21: {
+        name: 'Bolo de chololate',
+        difficulty: 2,
+        creator: 'ClaireBA',
+        classification: 5,
+        ingredients: [
+            {
+                name: 'pacote de biscoitos de chocolate',
+                quantity: '1'
+            },
+            {
+                name: 'Nutella',
+                quantity: '300g',
+            },
+            {
+                name: 'Clara de ovo',
+                quantity: '3'
+            },
+            {
+                name: 'margarina',
+                quantity: '100g',
+            },
+            {
+                name: 'açúcar',
+                quantity: '150g'
+            },
+            
+        ],
+        image: 'https://www.foodfromportugal.com/content/uploads/2017/02/bolo-chocolate-cafe.jpg',
+        medTime: 60,
+        steps: [
+            {
+                step:'Misture todos os ingredientes no liquidificador',
+                image:'https://mamapaleo.blogs.nit.pt/wp-content/uploads/2016/12/bolo.jpg',
+    
+            }, 
+            {
+                step:'ponha no forno, preaquecido, a 180ºC, por 45 minutos. Em seguida deixe arrefecer.',
+                image:'https://mamapaleo.blogs.nit.pt/wp-content/uploads/2016/12/bolo.jpg',
+    
+            },        
+        ],
+        tags:['doce', 'bolo'],
+        desc: `Bolo feito especialmente para amantes de chocolate`},
+
+        22: {
+            name: 'Bolo de brocólos',
+            difficulty: 2,
+            creator: 'AlienWoman',
+            classification: 5,
+            ingredients: [
+                
+                {
+                    name: 'bróculos',
+                    quantity: '300g',
+                },
+                {
+                    name: 'Clara de ovo',
+                    quantity: '3'
+                },
+                {
+                    name: 'margarina',
+                    quantity: '100g',
+                },
+                {
+                    name: 'açúcar',
+                    quantity: '150g'
+                },
+                
+            ],
+            image: 'https://portal-amb-imgs.clubedaana.com.br/2018/11/bolo-verde-de-gelatina-e-iogurte-1-1920x1080.jpg',
+            medTime: 60,
+            steps: [
+                {
+                    step:'Misture todos os ingredientes no liquidificador',
+                    image:'https://portal-amb-imgs.clubedaana.com.br/2018/11/bolo-verde-de-gelatina-e-iogurte-1-1920x1080.jpg',
+        
+                }, 
+                {
+                    step:'ponha no forno, preaquecido, a 180ºC, por 45 minutos. Em seguida deixe arrefecer.',
+                    image:'https://portal-amb-imgs.clubedaana.com.br/2018/11/bolo-verde-de-gelatina-e-iogurte-1-1920x1080.jpg',
+        
+                }, 
+                {
+                    step:'Já está pronto a servir!',
+                    image:'https://portal-amb-imgs.clubedaana.com.br/2018/11/bolo-verde-de-gelatina-e-iogurte-1-1920x1080.jpg',
+        
+                },        
+            ],
+            tags:['doce', 'bolo', 'saudável'],
+            desc: `Bolo feito especialmente para amantes de bróculos`},
+
+            23: {
+                name: 'Massa com Atúm',
+                difficulty: 1,
+                creator: 'ClaireBA',
+                classification: 5,
+                ingredients: [
+                    {
+                        name: 'Massa',
+                        quantity: '200g'
+                    },
+                    {
+                        name: 'lada de atúm',
+                        quantity: '1',
+                    },
+                    
+                ],
+                image: 'https://cozinhaalacarte.com/wp-content/uploads/2019/05/massaatum-1139x641.jpg',
+                medTime: 15,
+                steps: [
+                    {
+                        step:'coza a massa seguindo as instruções do pacote',
+                        image:'https://www.reluctantgourmet.com/wp-content/uploads/2018/04/g_how_not_to_make_pasta.jpg',
+            
+                    }, 
+                    {
+                        step:'Junte o atum.',
+                        image:'https://www.dicasonline.com/wp-content/uploads/receitas-com-atum-em-lata-758x474.jpg',
+            
+                    },
+                    {
+                        step:'Pronto a servir!',
+                        image:'https://cozinhaalacarte.com/wp-content/uploads/2019/05/massaatum-1139x641.jpg',
+            
+                    },        
+                ],
+                tags:['doce', 'bolo'],
+                desc: `Bolo feito especialmente para amantes de limão`},
+                
+                24: {
+                    name: 'Bolo de Limão',
+                    difficulty: 2,
+                    creator: 'ClaireBA',
+                    classification: 5,
+                    ingredients: [
+                        {
+                            name: 'pacote de biscoitos de chocolate',
+                            quantity: '1'
+                        },
+                        {
+                            name: 'limão',
+                            quantity: '1',
+                        },
+                        {
+                            name: 'Clara de ovo',
+                            quantity: '3'
+                        },
+                        {
+                            name: 'margarina',
+                            quantity: '100g',
+                        },
+                        {
+                            name: 'açúcar',
+                            quantity: '150g'
+                        },
+                        
+                    ],
+                    image: 'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/9F3F686F-4D60-414D-9AC9-733C31385588/Derivates/0BB06147-B56E-4D1F-BC35-CC0BB7E14404.jpg',
+                    medTime: 60,
+                    steps: [
+                        {
+                            step:'Misture todos os ingredientes no liquidificador',
+                            image:'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/9F3F686F-4D60-414D-9AC9-733C31385588/Derivates/0BB06147-B56E-4D1F-BC35-CC0BB7E14404.jpg',
+                
+                        }, 
+                        {
+                            step:'ponha no forno, preaquecido, a 180ºC, por 45 minutos. Em seguida deixe arrefecer.',
+                            image:'https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/9F3F686F-4D60-414D-9AC9-733C31385588/Derivates/0BB06147-B56E-4D1F-BC35-CC0BB7E14404.jpg',
+                
+                        },        
+                    ],
+                    tags:['doce', 'bolo'],
+                    desc: `Bolo feito especialmente para amantes de limão`},
 }
 
 export const UserRecipes: Recipes = {
