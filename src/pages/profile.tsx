@@ -98,7 +98,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
             this.props.user.username === '' ? <Redirect to={'/'} noThrow /> :
                 <div>
                     <div>
-                        <Button onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
+                    <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                         <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
                             <Grid item style={{ width: '200px' }}>
                                 <Avatar src={'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg'} style={{ width: '200px', height: '200px' }}>R</Avatar>
