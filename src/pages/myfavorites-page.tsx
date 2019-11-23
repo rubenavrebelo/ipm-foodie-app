@@ -1,6 +1,6 @@
 import * as React from 'react';
 import CookingPost from '../components/feed-post';
-import { RecipesObject, Recipe } from '../dt/recipes';
+import { RecipesObject, Recipe, UserRecipes } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps } from '@reach/router';
 import { navigate } from '@reach/router';
@@ -29,7 +29,8 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
       }
 
     generatePosts = () => {
-        const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.user.favorites.includes(RecipesObject[i]))
+        let arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.user.favorites.includes(RecipesObject[i]))
+        const userRecipes = UserRecipes(this.props.user.username)
         return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
             addToFavorite={this.props.addToFavorite} selectRecipe={this.props.selectRecipe} getOwner={this.props.getOwner}
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.user.username !== ''} />)
@@ -47,7 +48,6 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
             <div>
                 <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os meus favoritos:</Typography>
                 <div>{this.generatePosts()}</div>
-            </div>
             </div>
         )
     }

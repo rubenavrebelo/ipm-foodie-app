@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar } from '@material-ui/core';
+import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar, IconButton } from '@material-ui/core';
 import { Recipe, RecipesObject } from '../dt/recipes';
-import { User } from '../dt/user';
+import { User, DummyUsers } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
 import { navigate } from '@reach/router';
@@ -9,15 +9,20 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import StarIcon from '@material-ui/icons/Star';
 import TimerIcon from '@material-ui/icons/Timer';
-import FavoriteIcon from '@material-ui/icons/Favorite'
 import TryRecipe from '../components/try-recipe';
 import Comments from '../components/comments';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 
 
 export interface Props {
-    user: User,
-    recipe?: Recipe,
+    user: User;
+    recipe?: Recipe;
     goBackPath: string,
+    favorited: boolean;
+    addToFavorite: (id: number) => void;
+    id: number;
 }
 
 class RecipePage extends React.Component<Props & RouteComponentProps> {
@@ -55,25 +60,13 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
     }
 
     addToFavorites = () => {
-        if(this.props.recipe!=null){
-        if (this.props.user.favorites.includes(this.props.recipe)) {
-            const newUser = this.props.user;
-            newUser.favorites.splice(newUser.favorites.indexOf(this.props.recipe), 1)
-            this.setState({
-                user: newUser
-            })
-        } else {
-            const newUser = this.props.user;
-            newUser.favorites = newUser.favorites.concat(this.props.recipe)
-            this.setState({
-                user: newUser
-            })
-        }
-    }
+        this.props.addToFavorite(this.props.id)
     }
 
-    addComment = () => {
+    findOwner = (username: string) => {
+        console.log(DummyUsers.find((user) => user.name === username))
 
+        return DummyUsers.find((user) => user.name === username);
     }
 
     componentDidMount() {
@@ -81,21 +74,28 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
       }
 
     render = () => {
+        let owner;
+        if (this.props.recipe) {
+            owner = this.findOwner(this.props.recipe.creator);
+        }
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
                 {this.componentDidMount()}
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
+                        {this.props.user.name !== '' ?
+                            <IconButton onClick={this.addToFavorites} style={{ position: 'absolute' }}>
+                                {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
+                                    : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
+                            </ IconButton>
+                            : <div />}
                         <div>
                             <img src={this.props.recipe ? this.props.recipe.image : ''} style={{ width: '100%' }} />
                             <Card>
                                 <CardHeader title={this.props.recipe ? this.props.recipe.name : ''} />
-                                {(this.props.user.name !== '')? 
-                                <Button onClick={this.addToFavorites}>< FavoriteIcon /></Button>
-                                : null }
                                 <CardContent>
-                                    <Typography>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
+                                    <Avatar src={owner ? owner.image : ''} /><Typography>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><ExtensionIcon style={{ marginRight: '10px' }} /> Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><StarIcon style={{ marginRight: '10px' }} />Classificação: {this.props.recipe ? this.props.recipe.classification : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><TimerIcon style={{ marginRight: '10px' }} />Tempo Médio: {this.props.recipe ? this.props.recipe.medTime : ''} minutos</Typography>

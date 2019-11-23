@@ -16,6 +16,7 @@ interface State {
     recipeSelected?: Recipe;
     searched: String;
     goBackPath: string;
+    currentRecipeId: number;
 }
 
 class MainPageHandler extends React.Component<{}, State> {
@@ -34,7 +35,8 @@ class MainPageHandler extends React.Component<{}, State> {
             searchResults: [],
             searched: '',
             recipeSelected: undefined,
-            goBackPath:'/'
+            goBackPath: '/',
+            currentRecipeId: -1
         };
     }
 
@@ -62,9 +64,19 @@ class MainPageHandler extends React.Component<{}, State> {
         })
     }
 
+    getRecipeId = (recipe: Recipe) => {
+        const find = Object.keys(RecipesObject).find((rcp) => RecipesObject[parseInt(rcp)] === recipe)
+        if (!isUndefined(find)) {
+            return find
+        } else {
+            return '-1'
+        }
+    }
+
     selectViewRecipe = (recipe: Recipe) => {
         this.setState({
-            recipeSelected: recipe
+            recipeSelected: recipe,
+            currentRecipeId: parseInt(this.getRecipeId(recipe))
         }, () => navigate('/recipe'))
     }
 
@@ -106,15 +118,23 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     addToFavorites = (id: number) => {
-        if (this.state.user.favorites.includes(RecipesObject[id])) {
+        const userRecipes = UserRecipes(this.state.user.username)
+        if (this.state.user.favorites.includes(RecipesObject[id]) || this.state.user.favorites.includes(userRecipes[id])) {
             const newUser = this.state.user;
-            newUser.favorites.splice(newUser.favorites.indexOf(RecipesObject[id]), 1)
+            if (this.state.user.favorites.includes(RecipesObject[id])) {
+                newUser.favorites.splice(newUser.favorites.indexOf(RecipesObject[id]), 1)
+            } else {
+                newUser.favorites.splice(newUser.favorites.indexOf(userRecipes[id]), 1)
+
+            }
             this.setState({
                 user: newUser
             })
         } else {
             const newUser = this.state.user;
-            newUser.favorites = newUser.favorites.concat(RecipesObject[id])
+            let recipe;
+            RecipesObject[id] ? recipe = RecipesObject[id] : recipe = userRecipes[id]
+            newUser.favorites = newUser.favorites.concat(recipe)
             this.setState({
                 user: newUser
             })
@@ -125,8 +145,11 @@ class MainPageHandler extends React.Component<{}, State> {
         return DummyUsers.filter((user) => user.username === username)[0]
     }
 
-    isFavorited = (recipe: Recipe) => {
-        return this.state.user.favorites.includes(recipe)
+    isFavorited = (recipe?: Recipe) => {
+        if (recipe) {
+            return this.state.user.favorites.includes(recipe)
+        }
+        return false;
     }
 
     deleteUserPosts = (recipes: Recipes) => {
@@ -138,7 +161,7 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     updateGoBackPath = (path: string) => {
-        this.setState({goBackPath: path})
+        this.setState({ goBackPath: path })
     }
 
     componentDidMount() {
@@ -146,21 +169,22 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
 
-
     render = () => {
+        console.log(this.state.user.favorites)
         return (
             <div>
                 <Navbar createUser={this.createUser} addRecipeToUser={this.addRecipeToUser} />
                 <Router>
                     <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner}
-                        deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} updatePath={this.updateGoBackPath}/>
+                        deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} updatePath={this.updateGoBackPath} />
                     <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'} selectRecipe={this.selectViewRecipe}
-                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch}/>
+                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch} />
                     <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
-                        selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} updatePath={this.updateGoBackPath}/>
+                        selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} updatePath={this.updateGoBackPath} />
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}
-                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} updatePath={this.updateGoBackPath}/>
-                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} goBackPath={this.state.goBackPath} />
+                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} updatePath={this.updateGoBackPath} />
+                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} goBackPath={this.state.goBackPath} favorited={this.isFavorited(this.state.recipeSelected)}
+                        addToFavorite={this.addToFavorites} id={this.state.currentRecipeId} />
                 </Router>
             </div>
         )
