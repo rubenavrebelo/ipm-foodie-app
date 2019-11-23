@@ -53,11 +53,11 @@ class Navbar extends React.Component<PropsWithStyles, State>{
     }
 
     goToFavorites = (event: React.MouseEvent) => {
-        navigate(process.env.PUBLIC_URL + '/favorites')
+        navigate('/favorites')
     }
 
     goToHome = (event: React.MouseEvent) => {
-        navigate(process.env.PUBLIC_URL + '/')
+        navigate('/')
     }
 
     render = () => {

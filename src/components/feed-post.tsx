@@ -78,7 +78,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
 
     onClick = (event: React.MouseEvent) => {
         this.props.selectRecipe(this.props.recipe)
-        navigate(process.env.PUBLIC_URL + '/')
+        navigate('/')
     }
 
     handleViewUser = (event: React.MouseEvent) => {

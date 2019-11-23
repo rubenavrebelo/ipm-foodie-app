@@ -68,7 +68,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps, State> {
 
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
-        navigate(process.env.PUBLIC_URL + this.props.goBackPath)
+        navigate(this.props.goBackPath)
     }
 
     addToFavorites = () => {

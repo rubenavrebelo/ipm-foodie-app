@@ -109,8 +109,8 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     }
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
-        this.props.updatePath(process.env.PUBLIC_URL + '/');
-        navigate(process.env.PUBLIC_URL + '/')
+        this.props.updatePath('/');
+        navigate('/')
     }
 
     render = () => {

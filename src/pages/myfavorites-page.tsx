@@ -41,7 +41,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
         this.props.updatePath('/');
-        navigate(process.env.PUBLIC_URL + '/')
+        navigate('/')
     }
 
     render = () => {
@@ -50,7 +50,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <div>
                     <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os Meus Mavoritos:</Typography>
-                    <div style={{ marginLeft: '75px'}}>{this.generatePosts()}</div>
+                    <div style={{ marginLeft: '75px' }}>{this.generatePosts()}</div>
                 </div>
             </div>
         )

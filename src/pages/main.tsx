@@ -36,7 +36,7 @@ class MainPageHandler extends React.Component<{}, State> {
             searchResults: [],
             searched: '',
             recipeSelected: undefined,
-            goBackPath: process.env.PUBLIC_URL + '/',
+            goBackPath: '/',
             currentRecipeId: -1
         };
     }
@@ -78,14 +78,14 @@ class MainPageHandler extends React.Component<{}, State> {
         this.setState({
             recipeSelected: recipe,
             currentRecipeId: parseInt(this.getRecipeId(recipe))
-        }, () => navigate(process.env.PUBLIC_URL + '/recipe'))
+        }, () => navigate('/recipe'))
     }
 
     filterSearch = (search: String) => {
         this.setState({ searched: search })
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
-        }, () => navigate(process.env.PUBLIC_URL + '/search'))
+        }, () => navigate('/search'))
     }
 
     advancedFilterSearch = (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => {
@@ -114,7 +114,7 @@ class MainPageHandler extends React.Component<{}, State> {
 
         this.setState({
             searchResults: initialSearch
-        }, () => navigate(process.env.PUBLIC_URL + '/search'))
+        }, () => navigate('/search'))
 
     }
 
@@ -188,7 +188,7 @@ class MainPageHandler extends React.Component<{}, State> {
         if (dummyView) {
             this.setState({
                 currentViewingUser: dummyView
-            }, () => navigate(process.env.PUBLIC_URL + '/profile'))
+            }, () => navigate('/profile'))
         }
     }
 
@@ -196,8 +196,8 @@ class MainPageHandler extends React.Component<{}, State> {
         this.setState({
             currentViewingUser: undefined
         }, () => {
-            navigate(process.env.PUBLIC_URL + '/')
-            navigate(process.env.PUBLIC_URL + '/profile')
+            navigate('/')
+            navigate('/profile')
         })
     }
 
@@ -208,18 +208,18 @@ class MainPageHandler extends React.Component<{}, State> {
                 <Navbar createUser={this.createUser} addRecipeToUser={this.addRecipeToUser} notViewUser={this.notViewUser} />
                 <Router>
                     <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} viewingRecipes={this.getUserRecipes()} viewUser={this.viewUser}
-                        deletePosts={this.deleteUserPosts} user={this.state.user} viewingUser={this.state.currentViewingUser && this.state.currentViewingUser} path={process.env.PUBLIC_URL + '/profile'} addToFavorites={this.addToFavorites} updatePath={this.updateGoBackPath} />
+                        deletePosts={this.deleteUserPosts} user={this.state.user} viewingUser={this.state.currentViewingUser && this.state.currentViewingUser} path={'/profile'} addToFavorites={this.addToFavorites} updatePath={this.updateGoBackPath} />
 
-                    <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={process.env.PUBLIC_URL + '/'} selectRecipe={this.selectViewRecipe} viewUser={this.viewUser}
+                    <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'} selectRecipe={this.selectViewRecipe} viewUser={this.viewUser}
                         isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch} viewingUser={this.state.currentViewingUser} />
 
-                    <MyFavoritesPage path={process.env.PUBLIC_URL + '/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited} viewUser={this.viewUser}
+                    <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited} viewUser={this.viewUser}
                         selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} updatePath={this.updateGoBackPath} viewingUser={this.state.currentViewingUser} />
 
-                    <SearchResultsPage path={process.env.PUBLIC_URL + '/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults} viewUser={this.viewUser}
+                    <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults} viewUser={this.viewUser}
                         loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} updatePath={this.updateGoBackPath} />
 
-                    <RecipePage path={process.env.PUBLIC_URL + '/recipe'} user={this.state.user} recipe={this.state.recipeSelected} goBackPath={this.state.goBackPath} favorited={this.isFavorited(this.state.recipeSelected)}
+                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} goBackPath={this.state.goBackPath} favorited={this.isFavorited(this.state.recipeSelected)}
                         addToFavorite={this.addToFavorites} id={this.state.currentRecipeId} />
                 </Router>
             </div>
