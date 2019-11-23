@@ -1153,7 +1153,7 @@ export const UserRecipes = (username: string) => {
         22: {
             name: 'ovo recheado',
             difficulty: 1,
-            creator: 'username',
+            creator: username,
             classification: 4,
             ingredients: [
                 {
