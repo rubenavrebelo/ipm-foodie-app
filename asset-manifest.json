@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ipm-foodie-app/static/css/main.188bc96d.chunk.css",
-    "main.js": "/ipm-foodie-app/static/js/main.942ad004.chunk.js",
-    "main.js.map": "/ipm-foodie-app/static/js/main.942ad004.chunk.js.map",
+    "main.js": "/ipm-foodie-app/static/js/main.b608b4ab.chunk.js",
+    "main.js.map": "/ipm-foodie-app/static/js/main.b608b4ab.chunk.js.map",
     "runtime-main.js": "/ipm-foodie-app/static/js/runtime-main.7aa31d6b.js",
     "runtime-main.js.map": "/ipm-foodie-app/static/js/runtime-main.7aa31d6b.js.map",
     "static/js/2.c988f7bb.chunk.js": "/ipm-foodie-app/static/js/2.c988f7bb.chunk.js",
     "static/js/2.c988f7bb.chunk.js.map": "/ipm-foodie-app/static/js/2.c988f7bb.chunk.js.map",
     "index.html": "/ipm-foodie-app/index.html",
-    "precache-manifest.6c72cbc43c1638fad75766b04a88c96c.js": "/ipm-foodie-app/precache-manifest.6c72cbc43c1638fad75766b04a88c96c.js",
+    "precache-manifest.e5fb8b158fb672fd3d5cb8df48ea731e.js": "/ipm-foodie-app/precache-manifest.e5fb8b158fb672fd3d5cb8df48ea731e.js",
     "service-worker.js": "/ipm-foodie-app/service-worker.js",
     "static/css/main.188bc96d.chunk.css.map": "/ipm-foodie-app/static/css/main.188bc96d.chunk.css.map",
     "static/media/delete_frog.png": "/ipm-foodie-app/static/media/delete_frog.f2f5fb8a.png",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.7aa31d6b.js",
     "static/js/2.c988f7bb.chunk.js",
     "static/css/main.188bc96d.chunk.css",
-    "static/js/main.942ad004.chunk.js"
+    "static/js/main.b608b4ab.chunk.js"
   ]
 }
