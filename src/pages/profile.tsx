@@ -113,10 +113,10 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
                                 <Typography style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}>{this.props.user.username}</Typography>
                             </Grid>
                             <Grid item style={{ marginLeft: '50px' }}>
-                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
-                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.following} Following</Typography>
-                                <Typography style={{ display: 'inline-block', marginRight: '20px' }}>{this.props.user.followers} Followers</Typography>
-                                <Typography>{this.props.user.description}</Typography>
+                                <Typography style={{ display: 'inline-block', marginRight: '100px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
+                                <Typography style={{ display: 'inline-block', marginRight: '100px' }}>{this.props.user.following} Following</Typography>
+                                <Typography style={{ display: 'inline-block', marginRight: '100px' }}>{this.props.user.followers} Followers</Typography>
+                                <p></p><Typography style={{ }}>{this.props.user.description}</Typography>
                             </Grid>
                         </Grid>
                         <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />
