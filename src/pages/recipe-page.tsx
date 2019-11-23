@@ -64,14 +64,12 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
     }
 
     findOwner = (username: string) => {
-        console.log(DummyUsers.find((user) => user.name === username))
-
-        return DummyUsers.find((user) => user.name === username);
+        return DummyUsers.find((user) => user.username === username);
     }
 
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
 
     render = () => {
         let owner;
@@ -85,7 +83,8 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
                         {this.props.user.name !== '' ?
-                            <IconButton onClick={this.addToFavorites} style={{ position: 'absolute' }}>
+                            this.props.user.username !== this.props.recipe.creator &&
+                            < IconButton onClick={this.addToFavorites} style={{ position: 'absolute' }}>
                                 {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
                                     : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
                             </ IconButton>
@@ -95,7 +94,8 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                             <Card>
                                 <CardHeader title={this.props.recipe ? this.props.recipe.name : ''} />
                                 <CardContent>
-                                    <Avatar src={owner ? owner.image : ''} /><Typography>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
+                                    <Avatar src={owner ? owner.image : this.props.user.image} style={{ display: 'inline-block' }} />
+                                    <Typography style={{ display: 'inline-block' }}>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><ExtensionIcon style={{ marginRight: '10px' }} /> Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><StarIcon style={{ marginRight: '10px' }} />Classificação: {this.props.recipe ? this.props.recipe.classification : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><TimerIcon style={{ marginRight: '10px' }} />Tempo Médio: {this.props.recipe ? this.props.recipe.medTime : ''} minutos</Typography>
@@ -119,7 +119,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                         <Comments user={this.props.user} comments={this.props.recipe.comments} />
                     </Grid>
                 </Grid>
-            </div>
+            </div >
         )
     }
 }

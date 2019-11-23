@@ -26,12 +26,13 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
 
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
 
     generatePosts = () => {
         let arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.user.favorites.includes(RecipesObject[i]))
         const userRecipes = UserRecipes(this.props.user.username)
         return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
+            username={this.props.user.username}
             addToFavorite={this.props.addToFavorite} selectRecipe={this.props.selectRecipe} getOwner={this.props.getOwner}
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.user.username !== ''} />)
     }
@@ -44,10 +45,11 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
     render = () => {
         return (
             <div>
-            <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
-            <div>
-                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os meus favoritos:</Typography>
-                <div>{this.generatePosts()}</div>
+                <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
+                <div>
+                    <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os meus favoritos:</Typography>
+                    <div>{this.generatePosts()}</div>
+                </div>
             </div>
         )
     }

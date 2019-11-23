@@ -30,6 +30,7 @@ interface Props {
     favorited: boolean;
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (usenrame: string) => User;
+    username: string;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -135,6 +136,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                     </Grid>
                 </Grid>
                 {!this.props.loggedIn ? <div /> :
+                    this.props.recipe.creator !== this.props.username &&
                     <div>
                         {!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
                             style={{ float: 'right', right: '5px', bottom: '100px', zIndex: 1 }}>

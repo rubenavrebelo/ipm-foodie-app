@@ -27,6 +27,7 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
     generatePosts = () => {
         const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.searchResults.includes(RecipesObject[i]))
         return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
+            username={''}
             addToFavorite={this.props.addToFavorites} selectRecipe={this.props.selectRecipe} getOwner={this.props.getOwner}
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.loggedIn} />)
     }
@@ -40,11 +41,11 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
         return (
             <div>
                 <Button onClick={this.goBack} style={{ marginTop: '10px', marginLeft: '15px' }}><ChevronLeftIcon /> Retornar</Button>
-                <div style = {{display: 'flex', alignItems: 'flex-end'}}>
+                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                     <Typography variant={'h3'} style={{ marginLeft: '15px', marginTop: '20px' }}>Resultados para: </Typography>
                     <Typography variant={'h4'} style={{ marginLeft: '25px', marginTop: '20px' }}>{this.props.search}</Typography>
                 </div>
-                
+
                 <Grid container style={{ padding: '15px', paddingLeft: '20px' }}>
                     {this.generatePosts()}
                 </Grid>

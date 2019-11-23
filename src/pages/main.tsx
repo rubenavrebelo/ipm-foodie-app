@@ -167,8 +167,6 @@ class MainPageHandler extends React.Component<{}, State> {
     componentDidMount() {
         window.scrollTo(0, 0)
     }
-
-
     render = () => {
         console.log(this.state.user.favorites)
         return (
