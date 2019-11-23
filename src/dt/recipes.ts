@@ -48,7 +48,7 @@ export const RecipesObject: Recipes = {
             },
             {
                 name: 'Salsa',
-                quantity: 'A gosto',
+                quantity: '100g',
             }
         ],
         image: 'https://img.taste.com.au/7PtDfK_I/w720-h480-cfill-q80/taste/2017/07/quick-and-easy-meal-planner-128684-2.jpg',
@@ -168,7 +168,7 @@ export const RecipesObject: Recipes = {
         steps: [
             {
                 step:'Numa tigela misture bem o leite condensado e as natas até ficar um creme homogéneo.',
-                image:'https://previews.123rf.com/images/denismart/denismart1810/denismart181000178/109757543-fresh-dairy-products-on-white-table-background-glass-of-milk-bowl-of-sour-cream-cottage-cheese-and-b.jpg'
+                image:'https://www.iguaria.com/wp-content/uploads/2013/07/natas-bem-batidas.jpg'
             },
             {
                 step:'Junte lentamente o sumo dos limões, em fio e mexendo sempre até que o ácido do limão engrosse as natas.',
@@ -210,7 +210,7 @@ export const RecipesObject: Recipes = {
             },
             {
                 step:'adicione queijo cheddar',
-                image:'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=5719033(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=512&height=512&defaultOptions=1'
+                image:'http://www.nechiocongelados.com.br/produtos/Diversos_01.jpg'
             },
 
         ],
@@ -324,11 +324,11 @@ export const RecipesObject: Recipes = {
         steps: [
             {
                 step:'Comece a bater as claras com um pouco de açúcar. Bata na velocidade mínima/média. Assim que estiver com uma textura de mousse, aumente a velocidade do batedeira e despeje/verta o açúcar aos poucos até as claras montarem em neve/castelo.',
-                image:'https://pt.petitchef.com/imgupl/recipe-step/sm-454977s2091226.jpg'
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091226.jpg'
             },
             {
                 step:'Caso bata a mão, sentirá as claras mais densas e apertadas. Bata até que se forme o que chamamos de "bico do pássaro". Essa é uma excelente dica para ver a textura.',
-                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091226.jpg'
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091227.jpg'
             },
             {
                 step:'Imediatamente, coloque então as claras montadas com açúcar no saco pasteleiro e faça os suspiros (forre a forma com papel vegetal/manteiga).',
@@ -370,13 +370,17 @@ export const RecipesObject: Recipes = {
         medTime: 1,
         steps: [
             {
-                step:'Vá ao Continente (ou a outro supermercado) e compre um brigadeiro, os deles são bastante bons.',
-                image:'https://media.continente.pt/Sonae.eGlobal.Presentation.Web.Media/media.axd?resourceSearchType=2&resource=ProductId=5421337(eCsf$RetekProductCatalog$MegastoreContinenteOnline$Continente)&siteId=1&channelId=1&width=512&height=512&defaultOptions=1'
+                step:'Em uma panela funda, acrescente o leite condensado, a margarina e o chocolate em pó.',
+                image:'https://ak1.picdn.net/shutterstock/videos/1019075821/thumb/1.jpg'
             },
             {
-                step:'Coma o brigadeiro.',
-                image:'https://www.thesun.co.uk/wp-content/uploads/2018/01/nintchdbpict000380619882.jpg?strip=all&quality=100&w=1200&h=800&crop=1'
+                step:'Cozinhe em fogo médio e mexa até que o brigadeiro comece a desgrudar da panela.',
+                image:'https://previews.123rf.com/images/fotosmurf/fotosmurf1010/fotosmurf101000020/8071210-brunette-taking-the-cake-out-of-the-oven.jpg'
             },
+            {
+                step:'Deixe esfriar e faça pequenas bolas com a mão passando a massa no chocolate granulado.',
+                image:'http://www.receitasnestle.com.br/images/default-source/recipes/brigadeiro_alta.jpg'
+            }
 
         ],
         tags:['doce'],
@@ -888,5 +892,35 @@ export const RecipesObject: Recipes = {
             },           
         ],
         desc: `Uma das melhores sobremesas da vida!!! É cremosa, é geladinha e é doce na medida, aquela receita pra quem ama Nutella assim como eu!`
+    },
+}
+
+export const UserRecipes: Recipes = {
+    0: {
+        name: 'prometoQueMetoIstoDemanha',
+        difficulty: 1,
+        creator: 'user?',
+        classification: 4,
+        ingredients: [
+            {
+                name: 'Assim que acordar',
+                quantity: 3
+            },
+            {
+                name: 'acabo isto',
+                quantity: '100g',
+            },
+        ],
+        image: 'https://st3.depositphotos.com/1373322/15624/i/1600/depositphotos_156248380-stock-photo-broccoli-muffins-with-cheddar-cheese.jpg',
+        medTime: 100,
+        steps: [
+            {
+            step:'tba',
+            image:'https://cdn3.tmbi.com/toh/GoogleImages/Chicken-Piccata-with-Lemon-Sauce_EXPS_DSBZ17_26212_B01_13_5b.jpg',
+            },
+    
+    ],  
+        tags:['carne'],
+        desc: 'yay'
     },
 }
