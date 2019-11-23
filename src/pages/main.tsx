@@ -36,7 +36,7 @@ class MainPageHandler extends React.Component<{}, State> {
             searchResults: [],
             searched: '',
             recipeSelected: undefined,
-            goBackPath: '/',
+            goBackPath: process.env.PUBLIC_URL + '/',
             currentRecipeId: -1
         };
     }
