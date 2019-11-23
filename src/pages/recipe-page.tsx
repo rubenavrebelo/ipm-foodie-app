@@ -76,9 +76,14 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
 
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     render = () => {
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
+                {this.componentDidMount()}
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>

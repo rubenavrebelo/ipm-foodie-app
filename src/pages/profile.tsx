@@ -39,6 +39,10 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
         this.props.updatePath('/profile');
     }
 
+    componentDidMount() {
+    window.scrollTo(0, 0)
+    }
+
     generatePosts = () => {
         return Object.keys(this.props.user.recipes).map((recipeName, i) =>
             <CookingPost recipe={this.props.user.recipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
@@ -100,6 +104,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
         return (
             this.props.user.username === '' ? <Redirect to={'/'} noThrow /> :
                 <div>
+                    {this.componentDidMount()}
                     <div>
                     <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                         <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
