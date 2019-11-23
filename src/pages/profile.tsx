@@ -139,7 +139,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
                             </Grid>
                         </Grid>
                         <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />
-                        {!this.state.deleteMode ?
+                        {!this.props.viewingUser ? !this.state.deleteMode ?
                             <Button style={{ position: 'absolute', right: 25 }} onClick={this.handleDeleteMode}>
                                 <DeleteIcon /> Apagar Posts
                         </Button>
@@ -152,7 +152,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
                                     <DeleteForeverIcon /> Confirmar apagar
                              </Button>
                                 <Button onClick={this.cancelDelete} style={{ float: 'right', marginRight: '20px', marginTop: '10px' }}>Cancelar</Button>
-                            </div>}
+                            </div> : <div />}
                         <div style={{ padding: '15px', paddingLeft: '20px', marginTop: '20px' }}>
                             {this.generatePosts()}
                         </div>
