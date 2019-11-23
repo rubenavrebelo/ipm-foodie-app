@@ -61,17 +61,17 @@ class Navbar extends React.Component<PropsWithStyles, State>{
         return (
             <AppBar style={{ background: 'orange', position: 'relative', height: '60px' }} elevation={0}>
                 <Toolbar style={{ padding: '10px' }}>
-                    <img src={logo} style={{ width: '10%', marginBottom: 'auto' }} />
-                    <div style={{ right: '20px', position: 'absolute' }}>
+                    <img src={logo} style={{ width: '10%',  marginBottom: 'auto' }} />
+                    <div style={{right:'20px', position:'absolute', marginBottom: 'auto' }}>
                         {(this.state.username !== '' && this.state.currentUser) ?
-                            <Grid container alignItems="center">
+                            <Grid container >
                                 <Grid item style={{ display: 'contents' }}>
                                     <CreateRecipe username={this.state.username} addRecipeToUser={this.props.addRecipeToUser} />
-                                    <Button style={{ marginRight: '20px', color: 'white' }} onClick={this.goToFavorites}>
+                                    <Button style={{ marginRight: '20px', color: 'white', marginBottom: '5%' }} onClick={this.goToFavorites}>
                                         <FavoriteIconBorder /> <Typography>Favoritos</Typography>
                                     </Button>
                                 </Grid>
-                                <Grid item>
+                                <Grid item >
                                     <UserDropdown currentUser={this.state.currentUser} />
                                 </Grid>
                             </Grid> : <Login handleCreateUser={this.handleCreateAccount} handleLogin={this.handleLogin} />}
