@@ -168,7 +168,7 @@ class TryRecipe extends React.Component<Props, State> {
                             backgroundSize: 'cover', backgroundPosition: 'center center'
                         }}>
                         </Grid>
-                        <Grid item xs={6} style={{ padding: 20, margin: 'auto' }}>
+                        <Grid item xs={6} style={{ padding: 20, margin: 'auto', paddingRight: '60px' }}>
                             <Typography variant={'h5'}>{this.props.recipe.name} - Passo {this.state.currentStep + 1} de {this.props.recipe.steps.length}</Typography>
                             <Typography style={{ marginTop: '20px' }}>{this.props.recipe.steps[this.state.currentStep].step}</Typography>
                         </Grid>
