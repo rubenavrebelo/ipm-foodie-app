@@ -170,8 +170,8 @@ class TryRecipe extends React.Component<Props, State> {
                         </Grid>
                         <Grid item xs={6} style={{ padding: 20, margin: 'auto' }}>
                             <Typography variant={'h5'}>{this.props.recipe.name} - Passo {this.state.currentStep + 1} de {this.props.recipe.steps.length}</Typography>
-                            <Typography style={{ marginTop: '20px' }}>{this.props.recipe.steps[this.state.currentStep].step}</Typography>
-                        </Grid>
+                            <div style={{ padding:'40xp' }}><Typography style={{ marginTop: '20px', marginRight:'8%' , marginLeft:'20xp'}}>{this.props.recipe.steps[this.state.currentStep].step}</Typography></div>
+                            <div>blabla</div></Grid>
                     </Grid>
                     {this.state.currentStep !== this.props.recipe.steps.length - 1 ? <IconButton style={{ position: 'absolute', right: '10px', top: '50%', border: 'grey 1px solid' }}
                         onClick={this.handleNext}><ArrowForwardIcon /></IconButton> : <IconButton style={{
