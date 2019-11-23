@@ -15,7 +15,8 @@ import TryRecipe from '../components/try-recipe';
 
 export interface Props {
     user: User,
-    recipe?: Recipe
+    recipe?: Recipe,
+    goBackPath: string,
 }
 
 class RecipePage extends React.Component<Props & RouteComponentProps> {
@@ -49,7 +50,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
 
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
-        navigate('/')
+        navigate(this.props.goBackPath)
     }
 
     addToFavorites = () => {

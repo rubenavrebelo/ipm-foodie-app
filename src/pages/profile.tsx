@@ -18,6 +18,7 @@ export interface Props {
     isFavorited: (recipe: Recipe) => boolean;
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
+    updatePath: (path: string) => void;
 }
 
 export interface State {
@@ -35,6 +36,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
             deleteMode: false,
             confirmDelete: false
         }
+        this.props.updatePath('/profile');
     }
 
     generatePosts = () => {
@@ -90,6 +92,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     }
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+        this.props.updatePath('/');
         navigate('/')
     }
 

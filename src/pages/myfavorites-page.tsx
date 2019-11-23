@@ -14,12 +14,14 @@ export interface Props {
     addToFavorite: (id: number) => void;
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
+    updatePath: (path: string) => void;
 }
 
 class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
 
     constructor(props: RouteComponentProps & Props) {
-        super(props)
+        super(props);
+        this.props.updatePath('/favorites');
     }
 
     generatePosts = () => {
@@ -30,6 +32,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
     }
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+        this.props.updatePath('/');
         navigate('/')
     }
 

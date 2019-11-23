@@ -14,12 +14,14 @@ interface Prop {
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
     search: String;
+    updatePath: (path: string) => void;
 }
 
 class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
 
     constructor(props: Prop & RouteComponentProps) {
-        super(props)
+        super(props);
+        this.props.updatePath('/search');
     }
 
     generatePosts = () => {
@@ -30,6 +32,7 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
     }
 
     goBack = (event: React.MouseEvent) => {
+        this.props.updatePath('/');
         navigate('/')
     }
 
