@@ -201,7 +201,7 @@ export const RecipesObject: Recipes = {
                 quantity: '1/2 chávena',
             },
         ],
-        image: 'https://st3.depositphotos.com/1373322/15624/i/1600/depositphotos_156248380-stock-photo-broccoli-muffins-with-cheddar-cheese.jpg',
+        image: 'https://acozinhadaavomaria.files.wordpress.com/2017/02/muffinslegumes.jpg',
         medTime: 100,
         steps: [
             {

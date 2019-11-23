@@ -52,7 +52,7 @@ class UserDropdown extends React.Component<PropsWithStyles, State>{
         return (
             <Grid container alignItems="center">
                 <ButtonBase onClick={this.handleMenu}>
-                    <Avatar style={{ marginRight: '10px' }}>R</Avatar><Typography>Hi, {this.props.currentUser.name}</Typography><ArrowDropDownIcon />
+                    <Avatar style={{ marginRight: '10px' }} src="https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg">R</Avatar><Typography>Hi, {this.props.currentUser.name}</Typography><ArrowDropDownIcon />
                 </ButtonBase>
                 <Popper open={Boolean(this.state.anchorEl)} anchorEl={this.state.anchorEl} role={undefined} transition disablePortal>
                     {({ TransitionProps, placement }) => (
