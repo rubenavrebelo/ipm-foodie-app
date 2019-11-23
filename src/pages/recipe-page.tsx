@@ -121,30 +121,38 @@ class RecipePage extends React.Component<Props & RouteComponentProps, State> {
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
-                        {this.props.user.name !== '' ?
+                        <div>
+                            <img src={this.props.recipe ? this.props.recipe.image : ''} style={{ width: '100%' }} />
+
+                            <Card>
+                                <div>
+                                <CardHeader style={{ position: 'relative', float:'left',top:'0px' }} 
+                                title={this.props.recipe ? this.props.recipe.name : ''} 
+                                />
+                             {this.props.user.name !== '' ?
                             this.props.user.username !== this.props.recipe.creator &&
-                            < IconButton onClick={this.addToFavorites} style={{ position: 'absolute' }}>
-                                {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
+                            < IconButton onClick={this.addToFavorites} style={{ position: 'relative', float:'right', top:'0px', right:'0px' }}>
+                                {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'black' }} icon={faHeart} />
                                     : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
                             </ IconButton>
                             : <div />}
-                        <div>
-                            <img src={this.props.recipe ? this.props.recipe.image : ''} style={{ width: '100%' }} />
-                            <Card>
-                                <CardHeader title={this.props.recipe ? this.props.recipe.name : ''} />
-                                <CardContent>
+                            </div>
+                            
+                                <CardContent style={{ marginTop:'10%' }} >
                                     <Avatar src={owner ? owner.image : this.props.user.image} style={{ display: 'inline-block' }} />
                                     <Typography style={{ display: 'inline-block' }}>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><ExtensionIcon style={{ marginRight: '10px' }} /> Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><StarIcon style={{ marginRight: '10px' }} />Classificação: {this.props.recipe ? this.props.recipe.classification : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><TimerIcon style={{ marginRight: '10px' }} />Tempo Médio: {this.props.recipe ? this.props.recipe.medTime : ''} minutos</Typography>
                                 </CardContent>
+              
                             </Card>
                             <Card>
                                 <CardContent style={{ textAlign: 'center' }}>
                                     <TryRecipe recipe={this.props.recipe} />
                                 </CardContent>
                             </Card>
+                            
                         </div>
                     </Grid>
                     <Grid item xs={6} style={{ padding: '20px' }}>
