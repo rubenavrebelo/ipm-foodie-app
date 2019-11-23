@@ -275,15 +275,16 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                             ref={(ref) => this.importRef = ref}
                             id={'input-file'} style={{
                                 display: 'none',
-                                border: 'lightgrey 1px solid',
-                                width: '250px', height: '250px', background: `url(${this.state.currentImage}) 50% 50% no-repeat`,
-                                cursor: 'pointer'
                             }} onChange={this.testImage} />
                         <ButtonBase onClick={this.callInput} style={{
                             border: this.state.errorImage ? '#f44336 1px solid' : 'lightgrey 1px solid',
-                            width: '250px', height: '250px', background: `url(${this.state.currentImage}) 50% 50% no-repeat`,
+                            width: '250px', height: '250px',
+                            backgroundImage: `url(${this.state.currentImage})`,
+                            backgroundSize: 'cover',
                             cursor: 'pointer'
-                        }}>{this.state.currentImage ? <div /> : <AddPhotoIcon style={{ fontSize: '150px' }} />}</ButtonBase>
+                        }}>
+                            {this.state.currentImage ? <div /> : <AddPhotoIcon style={{ fontSize: '150px' }} />}
+                        </ButtonBase>
                         {this.state.errorImage && <Typography variant={'caption'} style={{ color: '#f44336', marginTop: '5px', display: 'block' }}>É necessário colocar uma fotografia.</Typography>}
 
                     </Grid>
