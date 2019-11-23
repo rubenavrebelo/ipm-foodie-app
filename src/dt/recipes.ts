@@ -1207,7 +1207,7 @@ export let RecipesObject: Recipes = {
     },
 
     23: {
-        name: 'Massa com Atúm',
+        name: 'Massa com Atum',
         difficulty: 1,
         creator: 'TodTheMan',
         classification: 5,
