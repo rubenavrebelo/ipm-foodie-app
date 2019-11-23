@@ -55,14 +55,18 @@ class Navbar extends React.Component<PropsWithStyles, State>{
         navigate('/favorites')
     }
 
+    goToHome = (event: React.MouseEvent) => {
+        navigate('/')
+    }
+
     render = () => {
         const { classes } = this.props;
 
         return (
             <AppBar style={{ background: 'orange', position: 'relative', height: '60px' }} elevation={0}>
                 <Toolbar style={{ padding: '10px' }}>
-                    <img src={logo} style={{ width: '10%',  marginBottom: 'auto' }} />
-                    <div style={{right:'20px', position:'absolute', marginBottom: 'auto' }}>
+                    <img src={logo} style={{ width: '10%', marginBottom: 'auto', cursor: 'pointer' }} onClick={this.goToHome} />
+                    <div style={{ right: '20px', position: 'absolute', marginBottom: 'auto' }}>
                         {(this.state.username !== '' && this.state.currentUser) ?
                             <Grid container >
                                 <Grid item style={{ display: 'contents' }}>
