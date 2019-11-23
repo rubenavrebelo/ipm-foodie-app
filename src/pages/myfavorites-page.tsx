@@ -24,6 +24,10 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
         this.props.updatePath('/favorites');
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
+
     generatePosts = () => {
         const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.user.favorites.includes(RecipesObject[i]))
         return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
@@ -41,7 +45,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
             <div>
             <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
             <div>
-                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>My Favorites Recipes</Typography>
+                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os meus favoritos:</Typography>
                 <div>{this.generatePosts()}</div>
             </div>
             </div>

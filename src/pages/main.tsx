@@ -141,6 +141,10 @@ class MainPageHandler extends React.Component<{}, State> {
         this.setState({goBackPath: path})
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0)
+    }
+
 
 
     render = () => {

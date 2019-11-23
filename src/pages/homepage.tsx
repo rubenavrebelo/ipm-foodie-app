@@ -19,6 +19,10 @@ interface Props {
 
 class Homepage extends React.Component<Props & RouteComponentProps>{
 
+    componentDidMount() {
+    window.scrollTo(0, 0)
+    }
+
     generatePosts = () => {
         return Object.keys(RecipesObject).map((recipeName, i) =>
             <CookingPost favorited={this.props.isFavorited(RecipesObject[i])} getOwner={this.props.getOwner}
@@ -28,7 +32,9 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
 
     render = () => {
         return (
+            
             <div style={{ width: '100%' }}>
+                {this.componentDidMount()}
                 <div style={{ margin: '0 auto', width: '40%', display: 'block', marginTop: '50px' }}>
                     <img src={HomepageFrog} style={{ width: '80%', display: 'block', margin: '0 auto' }} />
                 </div>
