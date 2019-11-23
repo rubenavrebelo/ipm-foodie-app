@@ -15,6 +15,7 @@ interface State {
     searchResults: Recipe[];
     recipeSelected?: Recipe;
     searched: String;
+    goBackPath: string;
 }
 
 class MainPageHandler extends React.Component<{}, State> {
@@ -32,7 +33,8 @@ class MainPageHandler extends React.Component<{}, State> {
             },
             searchResults: [],
             searched: '',
-            recipeSelected: undefined
+            recipeSelected: undefined,
+            goBackPath:'/'
         };
     }
 
@@ -134,20 +136,26 @@ class MainPageHandler extends React.Component<{}, State> {
         })
     }
 
+    updateGoBackPath = (path: string) => {
+        this.setState({goBackPath: path})
+    }
+
+
+
     render = () => {
         return (
             <div>
                 <Navbar createUser={this.createUser} addRecipeToUser={this.addRecipeToUser} />
                 <Router>
                     <ProfilePage isFavorited={this.isFavorited} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner}
-                        deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} />
+                        deletePosts={this.deleteUserPosts} user={this.state.user} path={'/profile'} addToFavorites={this.addToFavorites} updatePath={this.updateGoBackPath}/>
                     <Homepage addToFavorites={this.addToFavorites} loggedIn={this.state.user.username !== ''} path={'/'} selectRecipe={this.selectViewRecipe}
-                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch} />
+                        isFavorited={this.isFavorited} handleSearch={this.filterSearch} getOwner={this.getRecipeOwner} advancedFilterSearch={this.advancedFilterSearch}/>
                     <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
-                        selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
+                        selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} updatePath={this.updateGoBackPath}/>
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}
-                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} />
-                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} />
+                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} updatePath={this.updateGoBackPath}/>
+                    <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} goBackPath={this.state.goBackPath} />
                 </Router>
             </div>
         )
