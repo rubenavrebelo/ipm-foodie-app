@@ -1118,30 +1118,192 @@ export const RecipesObject: Recipes = {
 
 export const UserRecipes: Recipes = {
     0: {
-        name: 'prometoQueMetoIstoDemanha',
+        name: 'Croissants',
         difficulty: 1,
         creator: 'user?',
         classification: 4,
         ingredients: [
             {
-                name: 'Assim que acordar',
-                quantity: 3
-            },
-            {
-                name: 'acabo isto',
-                quantity: '100g',
+                name: 'Massa Folhada',
+                quantity: '200g'
             },
         ],
-        image: 'https://st3.depositphotos.com/1373322/15624/i/1600/depositphotos_156248380-stock-photo-broccoli-muffins-with-cheddar-cheese.jpg',
-        medTime: 100,
+        image: 'https://www.pingodoce.pt/wp-content/uploads/2017/05/croissants_step39.jpg',
+        medTime: 20,
         steps: [
             {
-            step:'tba',
-            image:'https://cdn3.tmbi.com/toh/GoogleImages/Chicken-Piccata-with-Lemon-Sauce_EXPS_DSBZ17_26212_B01_13_5b.jpg',
+            step:'cortar a massa folhada',
+            image:'https://www.pingodoce.pt/wp-content/uploads/2017/05/croissants_step31.jpg',
+            },
+            {
+                step:'colocar no forno em 200 ºC até dourar',
+                image:'https://www.pingodoce.pt/wp-content/uploads/2017/05/croissants_step39.jpg',
             },
     
     ],  
-        tags:['carne'],
-        desc: 'yay'
+        tags:['doce'],
+        desc: 'A Receita mais simples que provavelmente irá encontrar'
+    },
+    1: {
+        name: 'ovo recheado',
+        difficulty: 1,
+        creator: 'user?',
+        classification: 4,
+        ingredients: [
+            {
+                name: 'ovo',
+                quantity: '4'
+            },
+            {
+                name: 'mayonese',
+                quantity: '100gml',
+            },
+        ],
+        image: 'https://images.media-allrecipes.com/userphotos/560x315/3275386.jpg',
+        medTime: 100,
+        steps: [
+            {
+                step:'Coza os ovos em agua a ferver por 10 minutos. deixe-os arrefecer e em seguida corte-os ao meio',
+                image:'https://images.glaciermedia.ca/polopoly_fs/1.2217581.1459075810!/fileImage/httpImage/image.jpg_gen/derivatives/landscape_804/new-new-c1-027-akis-jpg.jpg',
+                },
+                {
+            step:'retire a gema, misture com a mayonese e volte a colocar nas metades das claras de ovo',
+            image:'https://images.media-allrecipes.com/userphotos/560x315/3275386.jpg',
+            },
+    
+    ],  
+        tags:['salgado'],
+        desc: 'Entrada simples que agradará a todos.'
+    },
+    2: {
+        name: 'Mousse de chocolate light',
+        difficulty: 2,
+        creator: 'user?',
+        classification: 5,
+        ingredients: [
+            {
+                name: 'Chocolate de culinária',
+                quantity: '200g'
+            },
+            {
+                name: 'Ovos',
+                quantity: '6',
+            },
+            {
+                name: 'Açúcar',
+                quantity: '100g',
+            },
+            {
+                name: 'Manteiga',
+                quantity: '50g',
+            },
+        ],
+        image: 'https://images.vidaativa.pt/articles/850_400_chocolate-mousse_1492986627.jpg',
+        medTime: 30,
+        steps: [
+            {
+                step:'Pique a tablete de chocolate em pedaços pequeninos e coloque numa taça de pirex',
+                image:'https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_420,w_631/v1/img/upload/package/holiday/H2_Holidays_Chocolate_Chopping_2.jpg'
+            },
+            {
+                step:'Leve a derreter em banho-maria o chocolate com a manteiga',
+                image:'https://img.sndimg.com/food/image/upload/fl_progressive,c_fill,q_80,h_420,w_631/v1/img/upload/package/holiday/H2_Holidays_Chocolate_Just_Melted_4.jpg',
+    
+            },
+            {
+                step:'À parte, numa batedeira, bata as gemas com o açúcar até obter uma mistura cremosa',
+                image:'https://www.iguaria.com/wp-content/uploads/2015/01/Bater-Bolo-Castela-Verde.jpg',
+    
+            },
+            {
+                step:'Incorpore o chocolate que reservou',
+                image:'https://4.bp.blogspot.com/-DZvgJYMKvkQ/W7SuH7p6vpI/AAAAAAAAEus/oARK7HP0pj4nh4k1cYEeswieO4wU8jQQACLcBGAs/s1600/IMG_1215.JPG',
+    
+            }
+            ,
+            {
+                step:'Bata as claras em castelo e envolva manualmente no preparado anterior, até que fique um creme homogéneo',
+                image:'https://2.bp.blogspot.com/-c6yYZiaRGog/W7Suc8iLp0I/AAAAAAAAEvI/GQlcJCh0sxQfDXLHHEZf8wgrjpQvvaaDACEwYBhgL/s1600/IMG_1216.JPG',
+    
+            },
+            {
+                step:'Distribua por ´tacinhas`, leve ao frigorífico umas horas e está pronto a servir!',
+                image:'https://images-gmi-pmc.edge-generalmills.com/fe558022-4544-458f-aaa0-eda0de1bcf99.jpg',
+    
+            },
+            
+        ],
+        tags:['sobremesa','saudável'],
+        desc: `É uma mousse de chocolate super fácil e que agradará toda a família!`
+    },
+    3: {
+        name: 'Bifanas',
+        difficulty: 1,
+        creator: 'user?',
+        classification: 4,
+        ingredients: [
+            {
+                name: 'bifanas',
+                quantity: '600g'
+            },
+            {
+                name: 'dentes de alho',
+                quantity: '4',
+            },
+            {
+                name: 'cerveja branca',
+                quantity: '100ml',
+            },
+        ],
+        image: 'https://www.teleculinaria.pt/wp-content/uploads/2016/01/Bifanas-no-pão-à-Moda-Vendas-Novas-CHLM-3.jpg',
+        medTime: 50,
+        steps: [
+            {
+            step:'misture todos os ingredientes e coloque numa frigideira em lume brando até completamente bem passadas',
+            image:'https://www.teleculinaria.pt/wp-content/uploads/2016/01/Bifanas-no-pão-à-Moda-Vendas-Novas-CHLM-3.jpg',
+            },
+    
+    ],  
+        tags:['carne', 'salgado'],
+        desc: 'bom e barato'
+    },
+    4: {
+        name: 'Suspiros da Terrinha',
+        difficulty: 2,
+        creator: 'user?',
+        classification: 3,
+        ingredients: [
+            {
+                name: 'Ovos',
+                quantity: '3'
+            },
+            {
+                name: 'Açúcar',
+                quantity: '1 chávena de chá',
+            },
+        ],
+        image: 'https://www.gazetadopovo.com.br/bomgourmet/wp-content/uploads/2019/07/suspiros-1-670x430.jpg',
+        medTime: 20,
+        steps: [
+            {
+                step:'Comece a bater as claras com um pouco de açúcar. Bata na velocidade mínima/média. Assim que estiver com uma textura de mousse, aumente a velocidade do batedeira e despeje/verta o açúcar aos poucos até as claras montarem em neve/castelo.',
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091226.jpg'
+            },
+            {
+                step:'Caso bata a mão, sentirá as claras mais densas e apertadas. Bata até que se forme o que chamamos de "bico do pássaro". Essa é uma excelente dica para ver a textura.',
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091227.jpg'
+            },
+            {
+                step:'Imediatamente, coloque então as claras montadas com açúcar no saco pasteleiro e faça os suspiros (forre a forma com papel vegetal/manteiga).',
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091228.jpg'
+            },
+            {
+                step:'Leve ao forno a 120°C durante 1h15min, e passado esse tempo, desligue-o e deixe os suspiros secarem no interior do forno por algumas horas : eles estarão perfeitamente cozidos!',
+                image:'https://pt.petitchef.com/imgupl/recipe-step/454977s2091229.jpg'
+            },
+        ],
+        tags:['suspiros','doce','sobremesa','pequeno-almoço','almoço','jantar','snack'],
+        desc: `Você ainda tem claras de ovo? Não as jogue fora! Faça esses deliciosos suspiros :-) Uma receita ideal e anti-desperdício para acompanhar o seu chá ou café.
+        Com apenas 2 ingredientes, faça esta receita com nossas instruções passo a passo abaixo`
     },
 }

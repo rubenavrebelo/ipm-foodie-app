@@ -38,7 +38,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
             <div>
             <Button onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
             <div>
-                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>My favorites recipes</Typography>
+                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>My Favorites Recipes</Typography>
                 <div>{this.generatePosts()}</div>
             </div>
             </div>
