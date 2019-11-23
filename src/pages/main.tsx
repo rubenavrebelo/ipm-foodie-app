@@ -78,14 +78,14 @@ class MainPageHandler extends React.Component<{}, State> {
         this.setState({
             recipeSelected: recipe,
             currentRecipeId: parseInt(this.getRecipeId(recipe))
-        }, () => navigate('/recipe'))
+        }, () => navigate(process.env.PUBLIC_URL + '/recipe'))
     }
 
     filterSearch = (search: String) => {
         this.setState({ searched: search })
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
-        }, () => navigate('/search'))
+        }, () => navigate(process.env.PUBLIC_URL + '/search'))
     }
 
     advancedFilterSearch = (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => {
@@ -114,7 +114,7 @@ class MainPageHandler extends React.Component<{}, State> {
 
         this.setState({
             searchResults: initialSearch
-        }, () => navigate('/search'))
+        }, () => navigate(process.env.PUBLIC_URL + '/search'))
 
     }
 
@@ -188,7 +188,7 @@ class MainPageHandler extends React.Component<{}, State> {
         if (dummyView) {
             this.setState({
                 currentViewingUser: dummyView
-            }, () => navigate('/profile'))
+            }, () => navigate(process.env.PUBLIC_URL + '/profile'))
         }
     }
 
@@ -196,8 +196,8 @@ class MainPageHandler extends React.Component<{}, State> {
         this.setState({
             currentViewingUser: undefined
         }, () => {
-            navigate('/')
-            navigate('/profile')
+            navigate(process.env.PUBLIC_URL + '/')
+            navigate(process.env.PUBLIC_URL + '/profile')
         })
     }
 
