@@ -41,7 +41,7 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
         this.props.updatePath('/');
-        navigate('/')
+        navigate(process.env.PUBLIC_URL + '/')
     }
 
     render = () => {

@@ -35,8 +35,8 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
     }
 
     goBack = (event: React.MouseEvent) => {
-        this.props.updatePath('/');
-        navigate('/')
+        this.props.updatePath(process.env.PUBLIC_URL + '/');
+        navigate(process.env.PUBLIC_URL + '/')
     }
 
     render = () => {
