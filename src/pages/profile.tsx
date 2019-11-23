@@ -19,6 +19,9 @@ export interface Props {
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
     updatePath: (path: string) => void;
+    viewingUser?: User;
+    viewingRecipes?: Recipes
+    viewUser: (username: string) => void;
 }
 
 export interface State {
@@ -34,7 +37,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
         this.state = {
             toDelete: [],
             deleteMode: false,
-            confirmDelete: false
+            confirmDelete: false,
         }
         this.props.updatePath('/profile');
     }
@@ -44,10 +47,20 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     }
 
     generatePosts = () => {
+        const viewingRecipes = this.props.viewingRecipes
+        if (viewingRecipes && Object.keys(viewingRecipes).length > 0) {
+            return Object.keys(viewingRecipes).map((recipeName, i) =>
+                <CookingPost viewUser={this.props.viewUser} viewingMode={false}
+                    recipe={viewingRecipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={this.props.user.username !== ''} addToFavorite={this.props.addToFavorites}
+                    selectForDelete={this.addToDelete} favorited={this.props.isFavorited(viewingRecipes[parseInt(recipeName)])} selectRecipe={this.props.selectRecipe}
+                    getOwner={this.props.getOwner} username={this.props.user.username} />)
+        }
         return Object.keys(this.props.user.recipes).map((recipeName, i) =>
-            <CookingPost recipe={this.props.user.recipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
+            <CookingPost viewUser={this.props.viewUser} viewingMode={true}
+                recipe={this.props.user.recipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={this.props.user.username !== ''} addToFavorite={this.props.addToFavorites}
                 selectForDelete={this.addToDelete} favorited={this.props.isFavorited(this.props.user.recipes[parseInt(recipeName)])} selectRecipe={this.props.selectRecipe}
                 getOwner={this.props.getOwner} username={this.props.user.username} />)
+
     }
 
     handleDeleteMode = (event: React.MouseEvent) => {
@@ -102,21 +115,27 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
 
     render = () => {
         return (
-            this.props.user.username === '' ? <Redirect to={'/'} noThrow /> :
+            this.props.user.username === '' && !this.props.viewingUser ? <Redirect to={'/'} noThrow /> :
                 <div>
                     {this.componentDidMount()}
                     <div>
                         <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                         <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
                             <Grid item style={{ width: '200px' }}>
-                                <Avatar src={'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg'} style={{ width: '200px', height: '200px' }}>R</Avatar>
-                                <Typography variant={'h6'} style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}>{this.props.user.username}</Typography>
+                                <Avatar src={this.props.viewingUser ? this.props.viewingUser.image : this.props.user.image} style={{ width: '200px', height: '200px' }}>R</Avatar>
+                                <Typography variant={'h6'} style={{ textAlign: 'center', display: 'block', marginTop: '5px' }}>
+                                    {this.props.viewingUser ? this.props.viewingUser.username : this.props.user.username}
+                                </Typography>
                             </Grid>
                             <Grid item style={{ marginLeft: '50px' }}>
                                 <Typography variant={'h5'} style={{ display: 'inline-block', marginRight: '100px' }}>{Object.keys(this.props.user.recipes).length} Recipes</Typography>
-                                <Typography variant={'h5'} style={{ display: 'inline-block', marginRight: '100px' }}>{this.props.user.following} Following</Typography>
-                                <Typography variant={'h5'} style={{ display: 'inline-block', marginRight: '100px' }}>{this.props.user.followers} Followers</Typography>
-                                <p></p><Typography variant={'h6'}>{this.props.user.description}</Typography>
+                                <Typography variant={'h5'} style={{ display: 'inline-block', marginRight: '100px' }}>
+                                    {this.props.viewingUser ? this.props.viewingUser.following : this.props.user.following} Following</Typography>
+                                <Typography variant={'h5'} style={{ display: 'inline-block', marginRight: '100px' }}>
+                                    {this.props.viewingUser ? this.props.viewingUser.followers : this.props.user.followers} Followers</Typography>
+                                <p></p><Typography variant={'h6'}>
+                                    {this.props.viewingUser ? this.props.viewingUser.description : this.props.user.description}
+                                </Typography>
                             </Grid>
                         </Grid>
                         <div style={{ width: '95%', height: '2px', backgroundColor: 'lightgrey', margin: '0 auto' }} />

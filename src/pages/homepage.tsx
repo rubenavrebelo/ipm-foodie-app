@@ -15,18 +15,15 @@ interface Props {
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (username: string) => User;
     advancedFilterSearch: (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => void;
+    viewUser: (username: string) => void;
+    viewingUser?: User;
 }
 
 class Homepage extends React.Component<Props & RouteComponentProps>{
-
-    componentDidUpdate() {
-        window.scrollTo(0, 0)
-    }
-
     generatePosts = () => {
         return Object.keys(RecipesObject).map((recipeName, i) =>
-            <CookingPost favorited={this.props.isFavorited(RecipesObject[i])} getOwner={this.props.getOwner}
-                username={''}
+            <CookingPost viewUser={this.props.viewUser} favorited={this.props.isFavorited(RecipesObject[i])} getOwner={this.props.getOwner}
+                username={''} viewingMode={this.props.viewingUser ? true : false}
                 addToFavorite={this.props.addToFavorites} selectRecipe={this.props.selectRecipe}
                 recipe={RecipesObject[i]} id={i} deleteMode={false} loggedIn={this.props.loggedIn} />)
     }

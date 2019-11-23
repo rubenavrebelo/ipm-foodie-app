@@ -12,7 +12,8 @@ interface State {
 }
 
 interface Props {
-    currentUser: User
+    currentUser: User;
+    notViewUser: () => void;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -40,7 +41,7 @@ class UserDropdown extends React.Component<PropsWithStyles, State>{
     }
 
     navigateTo = (event: React.MouseEvent) => {
-        navigate('/profile')
+        this.props.notViewUser()
         this.setState({
             anchorEl: null
         })

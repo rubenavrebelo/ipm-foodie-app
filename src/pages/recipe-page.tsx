@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar, IconButton } from '@material-ui/core';
+import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar, IconButton, Snackbar } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import { Recipe, RecipesObject } from '../dt/recipes';
 import { User, DummyUsers } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
-import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
 import { navigate } from '@reach/router';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExtensionIcon from '@material-ui/icons/Extension';
@@ -14,7 +14,7 @@ import Comments from '../components/comments';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-
+import frogFavorite from '../static/frog_favorite.png'
 
 export interface Props {
     user: User;
@@ -25,10 +25,17 @@ export interface Props {
     id: number;
 }
 
-class RecipePage extends React.Component<Props & RouteComponentProps> {
+export interface State {
+    snackBarOpen: boolean
+}
+
+class RecipePage extends React.Component<Props & RouteComponentProps, State> {
 
     constructor(props: Props & RouteComponentProps) {
         super(props)
+        this.state = {
+            snackBarOpen: false
+        }
     }
 
     renderIngredients = () => {
@@ -53,6 +60,11 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
         }
     }
 
+    handleCloseSnackbar = (event: React.SyntheticEvent | React.MouseEvent) => {
+        this.setState({
+            snackBarOpen: false
+        });
+    }
 
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -60,6 +72,9 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
     }
 
     addToFavorites = () => {
+        this.setState({
+            snackBarOpen: true
+        });
         this.props.addToFavorite(this.props.id)
     }
 
@@ -78,7 +93,31 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
         }
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
-                {this.componentDidMount()}
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
+                    open={this.state.snackBarOpen}
+                    autoHideDuration={3000}
+                    onClose={this.handleCloseSnackbar}
+                    ContentProps={{
+                        'aria-describedby': 'message-id',
+                    }}
+                    message={<div>
+                        {this.props.favorited && <img src={frogFavorite} style={{ width: '15%', position: 'absolute', left: 0, bottom: 0 }} />}<Typography style={{ width: '300px', marginLeft: '15%' }}>{this.props.favorited ? 'A receita foi adicionada aos favoritos!' :
+                            'A receita foi removida dos favoritos.'} </Typography></div>}
+                    action={[
+                        <IconButton
+                            key="close"
+                            aria-label="close"
+                            color="inherit"
+                            onClick={this.handleCloseSnackbar}
+                        >
+                            <CloseIcon />
+                        </IconButton>,
+                    ]}
+                />
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>

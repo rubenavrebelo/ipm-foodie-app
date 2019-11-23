@@ -31,6 +31,8 @@ interface Props {
     selectRecipe: (recipe: Recipe) => void;
     getOwner: (usenrame: string) => User;
     username: string;
+    viewUser: (username: string) => void;
+    viewingMode: boolean;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -77,6 +79,10 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
     onClick = (event: React.MouseEvent) => {
         this.props.selectRecipe(this.props.recipe)
         navigate('/')
+    }
+
+    handleViewUser = (event: React.MouseEvent) => {
+        this.props.viewUser(this.props.recipe.creator)
     }
 
     render = () => {
@@ -130,22 +136,22 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                         </div>
                     </div>
                     <Grid item style={{ display: 'flex' }} xs={12}>
-                        {this.state.owner ? this.state.owner.image ? <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
-                            <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} /> : <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
-                        <Typography variant={'caption'}>{this.props.recipe.creator}</Typography>
+                        {this.state.owner && this.state.owner.image ?
+                            <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} src={this.state.owner.image} /> :
+                            <Avatar style={{ width: '20px', height: '20px', marginRight: '5px' }} />}
+                        <Typography variant={'caption'} onClick={this.handleViewUser}
+                            style={{ cursor: 'pointer' }}>{this.props.recipe.creator}</Typography>
                     </Grid>
                 </Grid>
-                {!this.props.loggedIn ? <div /> :
-                    this.props.recipe.creator !== this.props.username &&
-                    <div>
+                {this.props.loggedIn && this.props.recipe.creator !== this.props.username &&
+                    < div >
                         {!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
                             style={{ float: 'right', right: '5px', bottom: '100px', zIndex: 1 }}>
                             {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
                                 : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
                         </IconButton> : <Checkbox style={{ float: 'right', right: '-18px', top: '-315px', zIndex: 1 }}
                             onClick={this.handleCheckbox} />}
-                    </div>
-                }
+                    </div>}
 
             </Grid>
         )

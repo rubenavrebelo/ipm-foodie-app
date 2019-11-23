@@ -15,6 +15,8 @@ interface Prop {
     getOwner: (username: string) => User;
     search: String;
     updatePath: (path: string) => void;
+    viewUser: (username: string) => void;
+    viewingUser?: User;
 }
 
 class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
@@ -26,8 +28,8 @@ class SearchResultsPage extends React.Component<Prop & RouteComponentProps> {
 
     generatePosts = () => {
         const arr = Object.keys(RecipesObject).filter((recipeName, i) => this.props.searchResults.includes(RecipesObject[i]))
-        return arr.map((recipeName, i) => <CookingPost favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])}
-            username={''}
+        return arr.map((recipeName, i) => <CookingPost viewUser={this.props.viewUser} viewingMode={this.props.viewingUser ? true : false}
+            favorited={this.props.isFavorited(RecipesObject[parseInt(arr[i])])} username={''}
             addToFavorite={this.props.addToFavorites} selectRecipe={this.props.selectRecipe} getOwner={this.props.getOwner}
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.loggedIn} />)
     }

@@ -25,6 +25,7 @@ interface State {
 interface Props {
     createUser: (user: User) => void;
     addRecipeToUser: (recipe: Recipe) => void;
+    notViewUser: () => void;
 }
 
 type PropsWithStyles = Props & WithStyles<typeof styles>
@@ -76,7 +77,7 @@ class Navbar extends React.Component<PropsWithStyles, State>{
                                     </Button>
                                 </Grid>
                                 <Grid item >
-                                    <UserDropdown currentUser={this.state.currentUser} />
+                                    <UserDropdown currentUser={this.state.currentUser} notViewUser={this.props.notViewUser} />
                                 </Grid>
                             </Grid> : <Login handleCreateUser={this.handleCreateAccount} handleLogin={this.handleLogin} />}
                     </div>
