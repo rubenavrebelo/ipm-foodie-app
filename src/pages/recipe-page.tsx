@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import StarIcon from '@material-ui/icons/Star';
 import TimerIcon from '@material-ui/icons/Timer';
+import FavoriteIcon from '@material-ui/icons/Favorite'
 import TryRecipe from '../components/try-recipe';
 
 
@@ -51,6 +52,24 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
         navigate('/')
     }
 
+    addToFavorites = () => {
+        if(this.props.recipe!=null){
+        if (this.props.user.favorites.includes(this.props.recipe)) {
+            const newUser = this.props.user;
+            newUser.favorites.splice(newUser.favorites.indexOf(this.props.recipe), 1)
+            this.setState({
+                user: newUser
+            })
+        } else {
+            const newUser = this.props.user;
+            newUser.favorites = newUser.favorites.concat(this.props.recipe)
+            this.setState({
+                user: newUser
+            })
+        }
+    }
+    }
+
     render = () => {
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
@@ -61,6 +80,9 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                             <img src={this.props.recipe ? this.props.recipe.image : ''} style={{ width: '100%' }} />
                             <Card>
                                 <CardHeader title={this.props.recipe ? this.props.recipe.name : ''} />
+                                {(this.props.user.name !== '')? 
+                                <Button onClick={this.addToFavorites}>< FavoriteIcon /></Button>
+                                : null }
                                 <CardContent>
                                     <Typography>{this.props.recipe ? this.props.recipe.creator : ''}</Typography>
                                     <Typography style={{ display: 'flex' }}><ExtensionIcon style={{ marginRight: '10px' }} /> Dificuldade: {this.props.recipe ? this.props.recipe.difficulty : ''}</Typography>
