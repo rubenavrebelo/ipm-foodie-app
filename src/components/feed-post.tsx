@@ -145,14 +145,13 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                 </Grid>
                 {this.props.loggedIn && this.props.recipe.creator !== this.props.username &&
                     < div >
-                        {!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
-                            style={{ float: 'right', right: '5px', bottom: '100px', zIndex: 1 }}>
+                        {!this.props.deleteMode && <IconButton onClick={this.onFavoriting} style={{ float: 'right', right: '5px', bottom: '100px', zIndex: 1 }}>
                             {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
                                 : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
-                        </IconButton> : <Checkbox style={{ float: 'right', right: '-18px', top: '-315px', zIndex: 1 }}
-                            onClick={this.handleCheckbox} />}
+                        </IconButton>}
                     </div>}
-
+                {this.props.deleteMode && <Checkbox style={{ float: 'right', right: '-18px', top: '-315px', zIndex: 1 }}
+                    onClick={this.handleCheckbox} />}
             </Grid>
         )
     }
