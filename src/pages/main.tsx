@@ -4,7 +4,7 @@ import Homepage from './homepage';
 import ProfilePage from './profile';
 import { User, DummyUsers } from '../dt/user';
 import { Router, navigate } from '@reach/router';
-import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
+import { RecipesObject, Recipe, Recipes, UserRecipes } from '../dt/recipes';
 import MyFavoritesPage from './myfavorites-page';
 import SearchResultsPage from './search-results';
 import RecipePage from './recipe-page';
@@ -37,6 +37,9 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     createUser = (user: User) => {
+        const newUser = user;
+        const userRecipes = UserRecipes(user.username)
+        user.recipes = userRecipes;
         this.setState({
             user
         })
@@ -63,7 +66,7 @@ class MainPageHandler extends React.Component<{}, State> {
     }
 
     filterSearch = (search: String) => {
-        this.setState({searched: search})
+        this.setState({ searched: search })
         this.setState({
             searchResults: Object.values(RecipesObject).filter((recipe) => recipe.name.toLowerCase().includes(search))
         }, () => navigate('/search'))
@@ -143,7 +146,7 @@ class MainPageHandler extends React.Component<{}, State> {
                     <MyFavoritesPage path={'/favorites'} user={this.state.user} addToFavorite={this.addToFavorites} isFavorited={this.isFavorited}
                         selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} />
                     <SearchResultsPage path={'/search'} addToFavorites={this.addToFavorites} isFavorited={this.isFavorited} searchResults={this.state.searchResults}
-                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched}/>
+                        loggedIn={this.state.user.username !== ''} selectRecipe={this.selectViewRecipe} getOwner={this.getRecipeOwner} search={this.state.searched} />
                     <RecipePage path={'/recipe'} user={this.state.user} recipe={this.state.recipeSelected} />
                 </Router>
             </div>

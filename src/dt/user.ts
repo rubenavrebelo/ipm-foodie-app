@@ -1,7 +1,7 @@
 import { Recipes, Recipe } from "./recipes";
 
 export interface User {
-    username: String;
+    username: string;
     name: String;
     recipes: Recipes;
     description: String;
@@ -15,7 +15,7 @@ export const dummy1: User = {
     username: 'Trishaa',
     name: 'Trisha',
     recipes: {
-    
+
     },
     description: 'I am the best cooker in the universe!!!! Unicorns will reign!!!!',
     followers: 1,
