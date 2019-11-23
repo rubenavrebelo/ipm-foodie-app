@@ -35,7 +35,7 @@ class Homepage extends React.Component<Props & RouteComponentProps>{
                 <div style={{ margin: '0 auto', width: '40%', position: 'relative', display: 'block' }}>
                     <SearchBar handleSearch={this.props.handleSearch} advancedFilterSearch={this.props.advancedFilterSearch} />
                 </div>
-                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '30px' }}>Feed de Receitas</Typography>
+                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Feed de Receitas</Typography>
 
                 <Grid container style={{ padding: '15px', paddingLeft: '70px' }}>
                     {this.generatePosts()}

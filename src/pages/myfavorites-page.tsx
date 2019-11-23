@@ -3,7 +3,9 @@ import CookingPost from '../components/feed-post';
 import { RecipesObject, Recipe } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps } from '@reach/router';
-import { Typography } from '@material-ui/core';
+import { navigate } from '@reach/router';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { Typography, Button } from '@material-ui/core';
 
 
 export interface Props {
@@ -27,11 +29,18 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
             recipe={RecipesObject[parseInt(arr[i])]} id={parseInt(arr[i])} deleteMode={false} loggedIn={this.props.user.username !== ''} />)
     }
 
+    handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+        navigate('/')
+    }
+
     render = () => {
         return (
             <div>
-                <Typography>Hi! These are you favorites recipes:</Typography>
+            <Button onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
+            <div>
+                <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>My favorites recipes</Typography>
                 <div>{this.generatePosts()}</div>
+            </div>
             </div>
         )
     }

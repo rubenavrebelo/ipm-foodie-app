@@ -1035,7 +1035,7 @@ export const RecipesObject: Recipes = {
             23: {
                 name: 'Massa com Atúm',
                 difficulty: 1,
-                creator: 'ClaireBA',
+                creator: 'TodTheMan',
                 classification: 5,
                 ingredients: [
                     {

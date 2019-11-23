@@ -5,9 +5,11 @@ import { RecipesObject, Recipe, Recipes } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import * as _ from 'lodash';
+import { navigate } from '@reach/router';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import DeleteIcon from '@material-ui/icons/Delete'
 import deleteFrog from '../static/delete_frog.png'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 export interface Props {
     user: User
@@ -87,11 +89,16 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
         })
     }
 
+    handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
+        navigate('/')
+    }
+
     render = () => {
         return (
             this.props.user.username === '' ? <Redirect to={'/'} noThrow /> :
                 <div>
                     <div>
+                    <Button onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                         <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
                             <Grid item style={{ width: '200px' }}>
                                 <Avatar src={'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg'} style={{ width: '200px', height: '200px' }}>R</Avatar>
