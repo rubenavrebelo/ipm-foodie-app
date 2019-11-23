@@ -9,6 +9,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import StarIcon from '@material-ui/icons/Star';
 import TimerIcon from '@material-ui/icons/Timer';
+import TryRecipe from '../components/try-recipe';
 
 
 export interface Props {
@@ -34,17 +35,17 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
 
     renderSteps = () => {
         if (this.props.recipe) {
-            return this.props.recipe.steps.map((step, i) => 
-            <div>
-            <Typography> {i+1}. {step.step} </Typography>
-            </div>
+            return this.props.recipe.steps.map((step, i) =>
+                <div>
+                    <Typography> {i + 1}. {step.step} </Typography>
+                </div>
             )
         } else {
             return <div />
         }
     }
 
-    
+
 
     handleButton = (event: React.MouseEvent<HTMLButtonElement>) => {
         navigate('/')
@@ -69,7 +70,7 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                             </Card>
                             <Card>
                                 <CardContent style={{ textAlign: 'center' }}>
-                                    <Typography variant={'h5'}>Experimente a receita agora!</Typography><PlayCircleIcon />
+                                    <TryRecipe recipe={this.props.recipe} />
                                 </CardContent>
                             </Card>
                         </div>

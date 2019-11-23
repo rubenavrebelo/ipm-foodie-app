@@ -106,7 +106,10 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                     ]}
                 />
                 <a onClick={this.onClick} style={{ cursor: 'pointer' }}>
-                    <div style={{ width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat` }} />
+                    <div style={{
+                        width: '250px', height: '250px', background: `url(${this.props.recipe.image}) 50% 50% no-repeat`, backgroundSize:
+                            'cover'
+                    }} />
                 </a>
                 <Grid container style={{ width: '250px', display: 'flex', marginTop: '5px' }}>
                     <Grid item xs={4} sm={6} style={{ height: '25px' }}>
@@ -132,7 +135,7 @@ class CookingPost extends React.Component<PropsWithStyles, State>{
                     </Grid>
                 </Grid>
                 {!this.props.loggedIn ? <div /> : <div>{!this.props.deleteMode ? <IconButton onClick={this.onFavoriting}
-                    style={{ float: 'right', right: '5px', bottom: '90px', zIndex: 1 }}>
+                    style={{ float: 'right', right: '5px', bottom: '100px', zIndex: 1 }}>
                     {!this.props.favorited ? <FontAwesomeIcon style={{ fontSize: '20px', color: 'white' }} icon={faHeart} />
                         : <FontAwesomeIcon style={{ fontSize: '20px', color: 'red' }} icon={faHeartSolid} />}
                 </IconButton> : <Checkbox style={{ float: 'right', right: '-18px', top: '-315px', zIndex: 1 }}
