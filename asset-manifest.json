@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/ipm-foodie-app/static/css/main.188bc96d.chunk.css",
+    "main.js": "/ipm-foodie-app/static/js/main.942ad004.chunk.js",
+    "main.js.map": "/ipm-foodie-app/static/js/main.942ad004.chunk.js.map",
+    "runtime-main.js": "/ipm-foodie-app/static/js/runtime-main.7aa31d6b.js",
+    "runtime-main.js.map": "/ipm-foodie-app/static/js/runtime-main.7aa31d6b.js.map",
+    "static/js/2.c988f7bb.chunk.js": "/ipm-foodie-app/static/js/2.c988f7bb.chunk.js",
+    "static/js/2.c988f7bb.chunk.js.map": "/ipm-foodie-app/static/js/2.c988f7bb.chunk.js.map",
+    "index.html": "/ipm-foodie-app/index.html",
+    "precache-manifest.6c72cbc43c1638fad75766b04a88c96c.js": "/ipm-foodie-app/precache-manifest.6c72cbc43c1638fad75766b04a88c96c.js",
+    "service-worker.js": "/ipm-foodie-app/service-worker.js",
+    "static/css/main.188bc96d.chunk.css.map": "/ipm-foodie-app/static/css/main.188bc96d.chunk.css.map",
+    "static/media/delete_frog.png": "/ipm-foodie-app/static/media/delete_frog.f2f5fb8a.png",
+    "static/media/frog_favorite.png": "/ipm-foodie-app/static/media/frog_favorite.f640524f.png",
+    "static/media/homepage_frog.png": "/ipm-foodie-app/static/media/homepage_frog.f6249409.png",
+    "static/media/logo.png": "/ipm-foodie-app/static/media/logo.6922359a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7aa31d6b.js",
+    "static/js/2.c988f7bb.chunk.js",
+    "static/css/main.188bc96d.chunk.css",
+    "static/js/main.942ad004.chunk.js"
+  ]
+}
