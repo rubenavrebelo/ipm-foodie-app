@@ -42,6 +42,7 @@ class MainPageHandler extends React.Component<{}, State> {
         const newUser = user;
         const userRecipes = UserRecipes(user.username)
         user.recipes = userRecipes;
+        user.image = 'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg';
         this.setState({
             user
         })

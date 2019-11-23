@@ -475,7 +475,8 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
             medTime: this.state.currentMedTime,
             steps: this.state.currentSteps,
             desc: this.state.currentDesc,
-            image: this.state.currentImage ? this.state.currentImage : ''
+            image: this.state.currentImage ? this.state.currentImage : '',
+            comments: []
         }
 
         this.props.addRecipeToUser(recipe)

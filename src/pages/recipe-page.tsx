@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Typography, Grid, CardHeader, CardContent, Card, Button, Avatar } from '@material-ui/core';
-import { Recipe } from '../dt/recipes';
+import { Recipe, RecipesObject } from '../dt/recipes';
 import { User } from '../dt/user';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import PlayCircleIcon from '@material-ui/icons/PlayCircleFilledOutlined';
@@ -11,6 +11,7 @@ import StarIcon from '@material-ui/icons/Star';
 import TimerIcon from '@material-ui/icons/Timer';
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import TryRecipe from '../components/try-recipe';
+import Comments from '../components/comments';
 
 
 export interface Props {
@@ -71,10 +72,14 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
     }
     }
 
+    addComment = () => {
+
+    }
+
     render = () => {
         return (
             !this.props.recipe ? <Redirect from={'/recipe'} to={'/'} noThrow /> : <div>
-                <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
+                <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <Grid container>
                     <Grid item xs={6} style={{ padding: '30px' }}>
                         <div>
@@ -105,6 +110,8 @@ class RecipePage extends React.Component<Props & RouteComponentProps> {
                         {this.renderIngredients()}
                         <Typography variant={'h5'} style={{ marginTop: '10px', marginBottom: '10px' }}>Passos a seguir:</Typography>
                         {this.renderSteps()}
+                        <Typography variant={'h6'} style={{ marginTop: '20px', marginBottom: '10px' }}>Comentários:</Typography>
+                        <Comments user={this.props.user} comments={this.props.recipe.comments} />
                     </Grid>
                 </Grid>
             </div>
