@@ -84,7 +84,7 @@ export let RecipesObject: Recipes = {
             author: 'Trishaa',
         },
         {
-            comment: 'My grandma could do better than that and she is dead',
+            comment: 'Its dry!',
             author: 'GordonRamsay',
         }]
     },
@@ -125,7 +125,26 @@ export let RecipesObject: Recipes = {
         tags: ['panquecas', 'banana', 'ovos', 'canela', 'saudável', 'pequeno-almoço', 'doce'],
 
         desc: 'A receita de hoje é Panquecas de Banana, uma receita que não tem nem açúcar nem farinha ou leite. Só tem três ingredientes: bananas, ovos e canela. As bananas dão-lhes o toque doce necessário e, além disso, estas panquecas são ricas em proteínas, baixas em calorias (yupi!), sem glúten e, o melhor de tudo, são deliciosas. ',
-        comments: []
+        comments: [{
+            comment: 'Super Saudável!',
+            author: 'ClaireBA',
+        }, {
+            comment: 'nope',
+            author: 'GordonRamsay',
+        },
+        {
+            comment: 'Bom trabalho, saudável ficou',
+            author: 'YodaBestCook',
+        },
+        {
+            comment: 'Para a semana vou experimentar esta receita!',
+            author: 'Trishaa',
+        },
+        {
+            comment: 'gdsik ksvdo',
+            author: 'AlienWoman',
+        }
+        ]
     },
     2: {
         name: 'Geleia de Framboesa',
@@ -166,7 +185,22 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['geleia', 'fambroesa', 'caseiro', 'doce'],
         desc: 'A framboesa é um fruto vermelho rico em antioxidantes, o que significa que atua no combate ao envelhecimento das células, ajudando a prevenir doenças como câncer. Além disso a framboesa é deliciosa com o seu sabor delicado e aromático. Se você gosta desta frutinha, preste atenção nesta receita de geleia de framboesa caseira passo a passo e prepare para vender ou oferecer!',
-        comments: []
+        comments: [{
+            comment: 'Espero que gostem!',
+            author: 'Trishaa',
+        },{
+            comment: 'Sugiro um pouco de raspas de limão para dar mais sabor!',
+            author: 'ClaireBA',
+        },
+        {
+            comment: 'gdanjkm ioakmOX0 P+ AKJdo',
+            author: 'AlienWoman',
+        }, {
+            comment: 'Finalmente uma receita semi ok',
+            author: 'GordonRamsay',
+        },
+        
+        ]
     },
     3: {
         name: 'Mousse de Limão',
@@ -205,7 +239,15 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['limão', 'mousse', 'doce', 'snack', 'sobremesa'],
         desc: 'Uma sobremesa leve e deliciosa, ideal para o final de uma refeição com pratos elaborados. Sirva a mousse de limão bem fresca.',
-        comments: []
+        comments: [{
+            comment: 'Muito bom! ',
+            author: 'Trishaa',
+        },
+        {
+            comment: '8NJXWEJU89 C4E8N MCX,M9CRJ nksvdo!',
+            author: 'AlienWoman',
+        }
+        ]
     },
     4: {
         name: 'Muffin de Bróculos e Cheddar',
@@ -243,7 +285,14 @@ export let RecipesObject: Recipes = {
         desc: `Nem todo muffin precisa ser doce! Eu não sei quanto a vocês, mas eu tenho uma queda maior por salgados do que por doces! E também tenho loucura por muffins, acho a textura deles fantástica! Por isso tenho algumas receitinhas de muffins salgados deliciosos que quero dividir com vocês. \n
          Essa receita de muffin de brócolis e cheddar é uma preferidinha, e ela pode ser facilmente alterada, trocando o brocólis por outro legumes ou adicionando bacon ou linguiça, por exemplo. Imaginação na cozinha é tudo! E é sem glúten, por que não precisamos comer glutezinho todo dia não é mesmo? \n
         Continue lendo para saber como fazer muffin de brócolis fit e sem glúten, uma ótima sugestão de lanche da tarde salgado e saudável. Confira o preparo passo a passo em fotos e experimente!`,
-        comments: []
+        comments: [{
+            comment: 'tão bom aspecto!',
+            author: 'Trishaa',
+        },
+        {
+            comment: 'kfw9cmoij4 nec ?? 9O  BMJMOnans AJdo',
+            author: 'AlienWoman',
+        }]
     },
     5: {
         name: 'Macarrão e queijo com leite de amêndoas',
@@ -281,7 +330,14 @@ export let RecipesObject: Recipes = {
         desc: `Eis a receita mais repetida aqui em casa: Mac and Cheese Vegano, ou, em português, Macarrão ao Molho de Queijo Vegano. Fazemos já há alguns anos e, deixa eu dizer, foi uma feliz descoberta. Servimos em diferentes ocasiões para familiares e amigos e é sucesso sempre. Simples, fácil de fazer e cheinho de sabor. \n
 
         Ele fica especialmente ótimo quando servido com ervas frescas e Parmesão Vegano. Pode ser preparado como prato principal ou como acompanhamento para outro prato. O molho pode até ser usado em outros tipos de preparações, como tortas salgadas e lasanhas. Use e abuse de sua criatividade. 🙂`,
-        comments: []
+        comments: [{
+            comment: 'I want it all!',
+            author: 'Trishaa',
+        },
+        {
+            comment: 'gd s i k  k s v890do',
+            author: 'AlienWoman',
+        }]
     },
     6: {
         name: 'Cheesecake',
@@ -330,7 +386,14 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['cheesecake', 'sobremesa', 'chocolate-branco', 'saudável', 'doce'],
         desc: 'Olá! Hoje trago-lhe uma receita nova. Desta vez uma sobremesa deliciosa! Cheesecake, gosta? Não está sozinho! Eu adoro! É simplesmente maravilhoso. Então, mãos à obra! Delicie-se e delicie toda a família com esta iguaria que é tão saborosa e, ao mesmo tempo, super fácil de fazer!',
-        comments: []
+        comments: [{
+            comment: 'Isto sim é uma boa receita!',
+            author: 'Trishaa',
+        },
+        {
+            comment: 'vu3qam9 n ,m hj,r9854jw',
+            author: 'AlienWoman',
+        }]
     },
     7: {
         name: 'Suspiros',
@@ -370,7 +433,11 @@ export let RecipesObject: Recipes = {
         tags: ['suspiros', 'doce', 'sobremesa', 'pequeno-almoço', 'almoço', 'jantar', 'snack'],
         desc: `Você ainda tem claras de ovo? Não as jogue fora! Faça esses deliciosos suspiros :-) Uma receita ideal e anti-desperdício para acompanhar o seu chá ou café.
         Com apenas 2 ingredientes, faça esta receita com nossas instruções passo a passo abaixo`,
-        comments: []
+        comments: [
+            {
+                comment: '56789 890 99?OOF',
+                author: 'AlienWoman',
+            }]
     },
     8: {
         name: 'Brigadeiro de chocolate',
@@ -414,7 +481,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce'],
         desc: `O brigadeiro é um dos mais tradicionais doces do Brasil, mas é apreciado em todo o mundo, e Portugal não é excepção! Aprenda a fazê-los!`,
-        comments: []
+        comments: [{
+            comment: '5AFWCSNO  KLM6789 890 99?OOF',
+            author: 'AlienWoman',
+        }]
     },
     9: {
         name: 'Panini',
@@ -461,7 +531,13 @@ export let RecipesObject: Recipes = {
         Ele fica super macio e crocante, além de ser delicioso
         
         Vamos a receita então!`,
-        comments: []
+        comments: [{
+            comment: '.´.+-.+. GF´+..L',
+            author: 'AlienWoman',
+        } ,{
+            comment: 'Adorei',
+            author: 'Trishaa',
+        }]
     },
     10: {
         name: 'Frozen yogurt de framboesa',
@@ -495,7 +571,10 @@ export let RecipesObject: Recipes = {
         Perfeita para um lanche da tarde, ou uma sobremesa saudável.
         
         Você pode usar frutas da sua preferência!`,
-        comments: []
+        comments: [{
+            comment: '5-+.´Ç432.90 99?OOF',
+            author: 'AlienWoman',
+        }]
     },
     11: {
         name: 'Barra energética',
@@ -549,7 +628,10 @@ export let RecipesObject: Recipes = {
         desc: `Manter a forma não é tarefa fácil: exige disciplina, força de vontade, consciência e foco. É, ainda, preciso concordar que o objetivo pode parecer impossível de alcançar quando comemos de forma errada ou, ainda pior, quando seguimos uma dieta que não nos agrada. Se se identifica com problema e é fã dos snacks inteligentes, vai gostar de experimentar as nossas receitas de barras energéticas para fazer em casa.
 
         Sim, estes são um dos melhores snacks para complementar uma dieta e acompanhar uma rotina de exercício físico, e se está farto de comprar as suas, coloque mãos à obra e descubra como preparar estas pequenas delícias fit na sua cozinha.`,
-        comments: []
+        comments: [{
+            comment: '´2N3QF9H HK0L.º+ºÇ ´Ç',
+            author: 'AlienWoman',
+        }]
     },
     12: {
         name: 'Massa de pizza',
@@ -601,7 +683,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['salgado'],
         desc: `É bom`,
-        comments: []
+        comments: [{
+            comment: '56BWSVD 000000000000000000000789 890 99?OOF',
+            author: 'AlienWoman',
+        }]
     },
     13: {
         name: 'Mousse de chocolate',
@@ -663,7 +748,17 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['sobremesa', 'saudável'],
         desc: `É uma mousse de chocolate super fácil e que agradará toda a família!`,
-        comments: []
+        comments: [{
+            comment: 'Delicioso, mas podia ter mais açúcar',
+            author: 'Trishaa',
+        },{
+            comment: 'tHEY ARE COMMING',
+            author: 'AlienWoman',
+        },
+        {
+            comment: 'My dog can do better than that',
+            author: 'GordonRamsay',
+        }]
     },
     14: {
         name: 'Patê de Atum',
@@ -705,7 +800,10 @@ export let RecipesObject: Recipes = {
         desc: `É sempre bom ter algumas latas de atum no armário da cozinha para quando quiser preparar uma receita prática, rápida e deliciosa, como é o caso do paté de atum. Este preparado é ótimo para fazer quando receber convidados e quiser servir uma entradinha ou mesmo para barrar em sandes e acompanhar as saladas do dia-a-dia.
 
         Para além de ser uma receita simples e saborosa, ainda vai tirar partido do valor nutricional do atum, que é um peixe rico em proteínas, potássio, magnésio, para além de outros minerais e vitaminas importantes para a saúde. Sempre que possível, prefira utilizar o atum fresco à versão em lata, pois é ainda mais saudável.`,
-        comments: []
+        comments: [{
+            comment: 'Bóculos',
+            author: 'AlienWoman',
+        }]
     },
     15: {
         name: 'Patê de Peito de Peru',
@@ -737,7 +835,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['salgado', 'saudável', 'carne'],
         desc: `Simples de fazer e toda a gente adora <3`,
-        comments: []
+        comments: [{
+            comment: 'Não gostei :/',
+            author: 'Trishaa',
+        }]
     },
     16: {
         name: 'Molho para Carne',
@@ -799,7 +900,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['salgado'],
         desc: `As receitas de carne ficam ainda mais saborosas se forem servidas com um molho caseiro que complementa ou intensifica o sabor da carne escolhida. Existem várias receitas de molhos para carne que você pode experimentar, mas esta é a melhor!!!`,
-        comments: []
+        comments: [{
+            comment: 'sim',
+            author: 'AlienWoman',
+        }]
     },
     17: {
         name: 'Biscoitos de banana e aveia',
@@ -833,7 +937,13 @@ export let RecipesObject: Recipes = {
         tags: ['saudável', 'doce'],
         desc: `
         Os cookies de banana e aveia são uma opção saudável, simples e rápida para quem busca um lanche ou café da manhã nutritivo e saboroso. Como são naturalmente doces, não é necessário acrescentar açúcar. Além disso, estes biscoitinhos de banana são ainda perfeitos para vegetarianos ou veganos. Se você gostaria de saber como preparar esse cookie saudável, veio ao sitío certo!`,
-        comments: []
+        comments: [{
+            comment: '567 aa a aaaaaa',
+            author: 'AlienWoman',
+        },{
+            comment: 'Yodabest is the best',
+            author: 'Trishaa',
+        }]
     },
     18: {
         name: 'Bombocado',
@@ -870,7 +980,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce'],
         desc: `O bombocado é um daqueles doces que dá vontade de comer aos montes. Seja no café-da-manhã ou no lanche da tarde, este docinho é demais!`,
-        comments: []
+        comments: [{
+            comment: 'côco',
+            author: 'AlienWoman',
+        }]
     },
     19: {
         name: 'Torta de nutella',
@@ -929,7 +1042,13 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce'],
         desc: `Uma das melhores sobremesas da vida!!! É cremosa, é geladinha e é doce na medida, aquela receita pra quem ama Nutella assim como eu!`,
-        comments: []
+        comments: [{
+            comment: 'nutella',
+            author: 'AlienWoman',
+        },{
+            comment: 'Uau!',
+            author: 'Trishaa',
+        }]
     },
 
     20: {
@@ -976,7 +1095,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce', 'bolo'],
         desc: `Bolo feito especialmente para amantes de canela`,
-        comments: []
+        comments: [{
+            comment: 'caneca?',
+            author: 'AlienWoman',
+        }]
     },
 
     21: {
@@ -1023,7 +1145,10 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce', 'bolo'],
         desc: `Bolo feito especialmente para amantes de chocolate`,
-        comments: []
+        comments: [{
+            comment: 'qnoca bolo 0-+.ç',
+            author: 'AlienWoman',
+        }]
     },
 
     22: {
@@ -1072,7 +1197,13 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce', 'bolo', 'saudável'],
         desc: `Bolo feito especialmente para amantes de bróculos`,
-        comments: []
+        comments: [{
+            comment: 'bróculos sim',
+            author: 'AlienWoman',
+        },{
+            comment: 'Sabe a saudável',
+            author: 'Trishaa',
+        }]
     },
 
     23: {
@@ -1111,8 +1242,20 @@ export let RecipesObject: Recipes = {
             },
         ],
         tags: ['salgado'],
-        desc: `Bolo feito especialmente para amantes de limão`,
-        comments: []
+        desc: `fácil e salgado`,
+        comments: [
+            {
+                comment: 'humm.. é... fácil! ',
+                author: 'Trishaa',
+            },{
+                comment: '546jrtyfg ',
+                author: 'AlienWoman',
+            },
+            {
+                comment: 'É uma boa primeira receita!',
+                author: 'ClaireBA',
+            },
+        ]
     },
 
     24: {
@@ -1159,7 +1302,13 @@ export let RecipesObject: Recipes = {
         ],
         tags: ['doce', 'bolo'],
         desc: `Bolo feito especialmente para amantes de limão`,
-        comments: []
+        comments: [{
+            comment: 'alien',
+            author: 'AlienWoman',
+        },{
+            comment: 'Mais açucar!',
+            author: 'Trishaa',
+        }]
     },
 }
 
