@@ -1067,7 +1067,7 @@ export const RecipesObject: Recipes = {
             
                     },        
                 ],
-                tags:['doce', 'bolo'],
+                tags:['salgado'],
                 desc: `Bolo feito especialmente para amantes de limão`},
                 
                 24: {
