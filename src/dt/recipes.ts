@@ -74,6 +74,18 @@ export let RecipesObject: Recipes = {
         comments: [{
             comment: 'Super Cool!',
             author: 'ClaireBA',
+        },
+        {
+            comment: 'Bom trabalho, delicioso ficou',
+            author: 'YodaBestCook',
+        },
+        {
+            comment: 'OMG! Isto é perfeito!',
+            author: 'Trishaa',
+        },
+        {
+            comment: 'My grandma could do better than that and she is dead',
+            author: 'GordonRamsay',
         }]
     },
     1: {
@@ -1151,9 +1163,9 @@ export let RecipesObject: Recipes = {
     },
 }
 
-export const UserRecipes = (username: string) => {
+export const UserRecipes = (username: string): Recipes => {
     return {
-        21: {
+        25: {
             name: 'Croissants',
             difficulty: 1,
             creator: username,
@@ -1181,7 +1193,7 @@ export const UserRecipes = (username: string) => {
             desc: 'A Receita mais simples que provavelmente irá encontrar',
             comments: []
         },
-        22: {
+        26: {
             name: 'ovo recheado',
             difficulty: 1,
             creator: username,
@@ -1213,7 +1225,7 @@ export const UserRecipes = (username: string) => {
             desc: 'Entrada simples que agradará a todos.',
             comments: []
         },
-        23: {
+        27: {
             name: 'Mousse de chocolate light',
             difficulty: 2,
             creator: username,
@@ -1275,7 +1287,7 @@ export const UserRecipes = (username: string) => {
             desc: `É uma mousse de chocolate super fácil e que agradará toda a família!`,
             comments: []
         },
-        24: {
+        28: {
             name: 'Bifanas',
             difficulty: 1,
             creator: username,
@@ -1307,7 +1319,7 @@ export const UserRecipes = (username: string) => {
             desc: 'bom e barato',
             comments: []
         },
-        25: {
+        29: {
             name: 'Suspiros da Terrinha',
             difficulty: 2,
             creator: username,

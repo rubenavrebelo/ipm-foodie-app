@@ -40,14 +40,14 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
     }
 
     componentDidMount() {
-    window.scrollTo(0, 0)
+        window.scrollTo(0, 0)
     }
 
     generatePosts = () => {
         return Object.keys(this.props.user.recipes).map((recipeName, i) =>
             <CookingPost recipe={this.props.user.recipes[parseInt(recipeName)]} id={parseInt(recipeName)} deleteMode={this.state.deleteMode} loggedIn={true} addToFavorite={this.props.addToFavorites}
                 selectForDelete={this.addToDelete} favorited={this.props.isFavorited(this.props.user.recipes[parseInt(recipeName)])} selectRecipe={this.props.selectRecipe}
-                getOwner={this.props.getOwner} />)
+                getOwner={this.props.getOwner} username={this.props.user.username} />)
     }
 
     handleDeleteMode = (event: React.MouseEvent) => {
@@ -106,7 +106,7 @@ class ProfilePage extends React.Component<Props & RouteComponentProps, State> {
                 <div>
                     {this.componentDidMount()}
                     <div>
-                    <Button style={{ marginTop:'20px'}} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
+                        <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                         <Grid container alignItems="center" style={{ paddingRight: '50px', paddingLeft: '80px', paddingTop: '30px', paddingBottom: '30px' }}>
                             <Grid item style={{ width: '200px' }}>
                                 <Avatar src={'https://cdn1-www.dogtime.com/assets/uploads/2015/10/cook-for-your-pets-day.jpg'} style={{ width: '200px', height: '200px' }}>R</Avatar>

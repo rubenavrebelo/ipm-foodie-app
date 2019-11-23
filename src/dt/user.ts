@@ -85,15 +85,15 @@ export const dummy6: User = {
 }
 
 export const dummy7: User = {
-    username: 'GrampaCarl',
-    name: 'Carl Jackson',
+    username: 'GordonRamsay',
+    name: 'Gordon Ramsay',
     recipes: {
     },
-    description: 'Im Carl and im here to help you learn some basic recipes!',
+    description: 'hey',
     followers: 50680,
     following: 920,
     favorites: [],
-    image: 'https://static.wixstatic.com/media/aa04cd_8577e11bdc6e49f0bacf85d22dca80cb.jpg/v1/fill/w_420,h_658,al_c,lg_1,q_80/aa04cd_8577e11bdc6e49f0bacf85d22dca80cb.webp'
+    image: 'https://media.bizj.us/view/img/11427796/gordon-ramsay-1*750xx3840-2166-0-66.jpg'
 }
 
 
@@ -104,5 +104,6 @@ export const DummyUsers: User[] = [
     dummy3,
     dummy4,
     dummy5,
-    dummy6
+    dummy6,
+    dummy7,
 ]
