@@ -49,8 +49,8 @@ class MyFavoritesPage extends React.Component<RouteComponentProps & Props> {
             <div>
                 <Button style={{ marginTop: '20px' }} onClick={this.handleButton}><ChevronLeftIcon />Voltar</Button>
                 <div>
-                    <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os meus favoritos:</Typography>
-                    <div>{this.generatePosts()}</div>
+                    <Typography variant={'h4'} style={{ marginTop: '60px', marginLeft: '80px' }}>Os Meus Mavoritos:</Typography>
+                    <div style={{ marginLeft: '75px'}}>{this.generatePosts()}</div>
                 </div>
             </div>
         )
