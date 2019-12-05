@@ -525,7 +525,7 @@ class CreateRecipe extends React.Component<PropsWithStyles, State>{
                                     Próximo
                             </Button>
                                 :
-                                <Button variant={'contained'} color={'primary'} onClick={this.createRecipe}>Criar Receita</Button>}
+                                <Button disabled={this.state.currentSteps.length === 0} variant={'contained'} color={'primary'} onClick={this.createRecipe}>Criar Receita</Button>}
                         </DialogActions>
                     </DialogContent>
                 </Dialog>
