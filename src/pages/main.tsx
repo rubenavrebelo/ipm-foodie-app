@@ -91,11 +91,11 @@ class MainPageHandler extends React.Component<{}, State> {
     advancedFilterSearch = (search: string, classification?: number, difficulty?: number, time?: number[], tags?: string[]) => {
         let initialSearch = Object.values(RecipesObject).filter((recipe: Recipe) => recipe.name.toLowerCase().includes(search))
 
-        if (tags) {
-
-        }
         if (!isUndefined(difficulty)) {
-            initialSearch = Object.values(initialSearch).filter((recipe) => recipe.difficulty <= difficulty)
+            initialSearch = initialSearch.filter((recipe: Recipe) => {
+                console.log(recipe.difficulty, difficulty as number)
+                return recipe.difficulty <= (difficulty as number)
+            })
         }
 
         if (classification) {

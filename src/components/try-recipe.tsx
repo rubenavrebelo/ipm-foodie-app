@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Dialog, DialogContent, Typography, Grid, IconButton, Button, withStyles, DialogActions } from '@material-ui/core'
+import { Dialog, DialogContent, Typography, Grid, IconButton, Button, withStyles, DialogActions, Snackbar } from '@material-ui/core'
 import { Recipe } from '../dt/recipes'
 import ArrowBackIcon from '@material-ui/icons/ChevronLeft'
 import ArrowForwardIcon from '@material-ui/icons/ChevronRight'
@@ -19,6 +19,7 @@ export interface State {
     openDialogEnding: boolean;
     difficulty: number;
     classification: number;
+    openSnackbar: boolean;
 }
 
 const labels: { [index: string]: string } = {
@@ -38,11 +39,11 @@ const labels: { [index: string]: string } = {
 const labelsClass: { [index: string]: string } = {
     0.5: 'Terrível',
     1: 'Má',
-    1.5: '??',
+    1.5: 'Mehzinha',
     2: 'Meh',
-    2.5: '??',
+    2.5: 'Mediana',
     3: 'Média',
-    3.5: '??',
+    3.5: 'Boazinha',
     4: 'Boa',
     4.5: 'Muito Boa',
     5: 'Excelente',
@@ -64,7 +65,8 @@ class TryRecipe extends React.Component<Props, State> {
             openDialog: false,
             openDialogEnding: false,
             difficulty: 0,
-            classification: 0
+            classification: 0,
+            openSnackbar: false
         }
     }
 
@@ -86,7 +88,6 @@ class TryRecipe extends React.Component<Props, State> {
             openDialog: false,
             openDialogEnding: true,
             currentStep: 0,
-
         })
     }
 
@@ -119,14 +120,44 @@ class TryRecipe extends React.Component<Props, State> {
     handleEndingDialog = (event: React.MouseEvent<HTMLButtonElement>) => {
         this.setState({
             openDialogEnding: false,
-            currentStep: 0
+            currentStep: 0,
+            openSnackbar: true
+
         })
     }
 
+    handleCloseSnackbar = (event: React.SyntheticEvent | React.MouseEvent) => {
+        this.setState({
+            openSnackbar: false
+        });
+    }
 
     render = () => {
         return (
             <div>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                    }}
+                    open={this.state.openSnackbar}
+                    autoHideDuration={6000}
+                    onClose={this.handleCloseSnackbar}
+                    ContentProps={{
+                        'aria-describedby': 'message-id',
+                    }}
+                    message={<span id="message-id">O seu feedback foi inserido, obrigado!</span>}
+                    action={[
+                        <IconButton
+                            key="close"
+                            aria-label="close"
+                            color="inherit"
+                            onClick={this.handleCloseSnackbar}
+                        >
+                            <CloseIcon />
+                        </IconButton>,
+                    ]}
+                />
                 <Button onClick={this.handleDialog}><Typography variant={'h5'}>Experimente a receita agora!</Typography></Button>
                 <Dialog open={this.state.openDialogEnding}>
                     <DialogContent>
@@ -170,7 +201,7 @@ class TryRecipe extends React.Component<Props, State> {
                         </Grid>
                         <Grid item xs={6} style={{ padding: 20, margin: 'auto', paddingRight: '60px' }}>
                             <Typography variant={'h5'}>{this.props.recipe.name} - Passo {this.state.currentStep + 1} de {this.props.recipe.steps.length}</Typography>
-                            <div style={{ padding:'40xp' }}><Typography style={{ marginTop: '20px', marginRight:'8%' , marginLeft:'20xp'}}>{this.props.recipe.steps[this.state.currentStep].step}</Typography></div>
+                            <div style={{ padding: '40xp' }}><Typography style={{ marginTop: '20px', marginRight: '8%', marginLeft: '20xp' }}>{this.props.recipe.steps[this.state.currentStep].step}</Typography></div>
                             <div>blabla</div></Grid>
                     </Grid>
                     {this.state.currentStep !== this.props.recipe.steps.length - 1 ? <IconButton style={{ position: 'absolute', right: '10px', top: '50%', border: 'grey 1px solid' }}
