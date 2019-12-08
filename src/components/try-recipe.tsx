@@ -138,7 +138,7 @@ class TryRecipe extends React.Component<Props, State> {
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
-                        horizontal: 'left',
+                        horizontal: 'right',
                     }}
                     open={this.state.openSnackbar}
                     autoHideDuration={6000}
